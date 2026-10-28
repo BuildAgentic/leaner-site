@@ -1,0 +1,1206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Partner Line | leaner.app</title>
+<meta name="description" content="A field guide to running partner programs with technology companies, hyperscalers and marketplaces, GSIs, and resellers. One five-step process, a different playbook for each.">
+<meta property="og:title" content="The Partner Line">
+<meta property="og:description" content="One process. Four kinds of partners. A field guide for partner leaders.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='0' y='7' width='32' height='4' fill='%232350D8'/%3E%3Crect x='0' y='14' width='32' height='4' fill='%23D9920B'/%3E%3Crect x='0' y='21' width='32' height='4' fill='%230B8F7F'/%3E%3Crect x='9' y='3' width='14' height='26' rx='7' fill='white' stroke='%2313213A' stroke-width='3'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --paper: #F2F5F8;
+    --surface: #FFFFFF;
+    --ink: #13213A;
+    --muted: #56627A;
+    --rule: #D5DCE5;
+    --tech: #2350D8;
+    --cloud: #D9920B;
+    --gsi: #0B8F7F;
+    --resell: #B4387A;
+    --active: var(--tech);
+    --gutter: clamp(16px, 4vw, 40px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #0F1726;
+      --surface: #172238;
+      --ink: #E8EDF5;
+      --muted: #9AA6BC;
+      --rule: #2A3752;
+      --tech: #5B82F0;
+      --cloud: #F0B83A;
+      --gsi: #2BB8A5;
+      --resell: #E0679F;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "Archivo", system-ui, sans-serif; font-stretch: 100%;
+    font-size: 18px; line-height: 1.55; -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+  main > section.wrap { padding-top: 64px; padding-bottom: 64px; }
+
+  h2 {
+    font-stretch: 125%; font-weight: 800; letter-spacing: -0.01em;
+    font-size: clamp(30px, 4.4vw, 48px); line-height: 1.05; margin: 0 0 12px;
+  }
+  .intro { color: var(--muted); max-width: 38em; margin: 0 0 40px; }
+
+  .btn {
+    display: inline-block; text-decoration: none; font-weight: 700; font-size: 16px;
+    padding: 12px 20px; border-radius: 999px; border: 2px solid var(--ink);
+    background: var(--ink); color: var(--paper); cursor: pointer; font-family: inherit;
+    transition: background .15s, color .15s;
+  }
+  .btn:hover { background: transparent; color: var(--ink); }
+  .btn.ghost { background: transparent; color: var(--ink); }
+  .btn.ghost:hover { background: var(--ink); color: var(--paper); }
+
+  /* ---------- Top ---------- */
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 22px; padding-bottom: 22px; }
+  .wordmark { font-stretch: 125%; font-weight: 800; font-size: 19px; text-decoration: none; }
+  .top nav { display: flex; align-items: center; gap: 22px; font-size: 16px; }
+  .top nav a:not(.btn) { text-decoration: none; color: var(--muted); }
+  .top nav a:not(.btn):hover { color: var(--ink); }
+  .top .btn { padding: 9px 16px; font-size: 15px; }
+
+  /* ---------- Hero ---------- */
+  main > section.wrap.hero { padding-top: clamp(40px, 7vw, 88px); padding-bottom: 24px; }
+  .hero h1 {
+    font-stretch: 125%; font-weight: 800; font-size: clamp(40px, 7.2vw, 92px);
+    line-height: .96; letter-spacing: -0.02em; margin: 0 0 24px; max-width: 11em;
+  }
+  .hero .lede { font-size: clamp(19px, 2.1vw, 22px); max-width: 36em; margin: 0 0 8px; }
+  .hero .byline { color: var(--muted); font-size: 16px; margin: 0; }
+
+  .map { position: relative; margin: 48px 0 0; }
+  .map svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .map .ln { fill: none; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }
+  .map .ln { stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: draw 1.6s cubic-bezier(.6,.05,.2,1) forwards; }
+  .map .ln:nth-of-type(2) { animation-delay: .12s; }
+  .map .ln:nth-of-type(3) { animation-delay: .24s; }
+  .map .ln:nth-of-type(4) { animation-delay: .36s; }
+  .map .stn { fill: var(--surface); stroke: var(--ink); stroke-width: 5; opacity: 0; animation: pop .3s ease-out forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @keyframes pop { to { opacity: 1; } }
+  .map .labels { position: relative; height: 56px; margin-top: 6px; }
+  .map .labels a {
+    position: absolute; transform: translateX(-50%); text-align: center; text-decoration: none;
+    font-stretch: 112%; font-weight: 750; font-size: clamp(13px, 1.7vw, 19px); line-height: 1.15; white-space: nowrap;
+  }
+  .map .labels a span { display: block; color: var(--muted); font-weight: 600; font-size: .75em; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 22px 0 0; padding: 0; list-style: none; font-size: 15px; color: var(--muted); }
+  .legend li { display: flex; align-items: center; gap: 8px; }
+  .legend i { width: 22px; height: 6px; border-radius: 3px; display: inline-block; }
+
+  /* ---------- Stats ---------- */
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 2px solid var(--ink); }
+  .stat { padding: 22px 22px 6px 0; }
+  .stat + .stat { padding-left: 22px; border-left: 1px solid var(--rule); }
+  .stat b { display: block; font-stretch: 125%; font-weight: 800; font-size: clamp(34px, 4vw, 48px); line-height: 1; margin-bottom: 10px; }
+  .stat p { margin: 0 0 8px; font-size: 16px; }
+  .stat small { color: var(--muted); font-size: 13px; }
+
+  /* ---------- Shifts ---------- */
+  .shifts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 48px; }
+  .shift { border-top: 2px solid var(--ink); padding-top: 18px; }
+  .from-to { display: grid; grid-template-columns: auto; gap: 6px; margin-bottom: 14px; }
+  .from-to .from { color: var(--muted); font-size: 16px; }
+  .from-to .track {
+    position: relative; height: 18px; width: 100%; max-width: 220px;
+  }
+  .from-to .track::before {
+    content: ""; position: absolute; left: 6px; right: 12px; top: 6px; height: 6px; border-radius: 3px;
+    background: linear-gradient(90deg, var(--rule), var(--ink));
+  }
+  .from-to .track::after {
+    content: ""; position: absolute; right: 0; top: 0; width: 18px; height: 18px; border-radius: 50%;
+    background: var(--surface); border: 5px solid var(--ink); box-sizing: border-box;
+  }
+  .from-to .to { font-stretch: 112%; font-weight: 800; font-size: 23px; line-height: 1.2; }
+  .shift p { margin: 0 0 12px; font-size: 17px; max-width: 34em; }
+  .shift .fact { font-size: 15px; font-weight: 600; padding-left: 14px; border-left: 4px solid var(--ink); }
+  .shift .fact span { display: block; font-weight: 400; color: var(--muted); font-size: 13px; margin-top: 2px; }
+
+  /* ---------- Currencies ---------- */
+  .currencies { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+  .cur {
+    background: var(--surface); border: 2px solid var(--rule); border-radius: 16px;
+    padding: 0 22px 22px; display: flex; flex-direction: column; overflow: hidden;
+  }
+  .cur::before { content: ""; display: block; height: 10px; margin: 0 -22px 20px; background: var(--c); }
+  .cur h3 { font-stretch: 112%; font-weight: 750; font-size: 19px; line-height: 1.25; margin: 0 0 14px; }
+  .cur .paid { font-stretch: 100%; font-weight: 800; font-size: 27px; line-height: 1.1; margin: 0 0 4px; color: var(--c); letter-spacing: -0.01em; }
+  @media (min-width: 1101px) {
+    .cur h3 { min-height: 2.5em; }
+    .cur .paid { font-size: clamp(24px, 2.2vw, 27px); }
+  }
+  .cur .paid-label { font-size: 14px; color: var(--muted); margin: 0; }
+  .cur p.need { font-size: 16px; margin: 14px 0 18px; flex: 1; }
+  .cur button {
+    align-self: flex-start; font: inherit; font-size: 15px; font-weight: 700; color: var(--ink);
+    background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 4px;
+    text-decoration-color: var(--c); text-decoration-thickness: 3px;
+  }
+
+  /* ---------- Process ---------- */
+  .switch {
+    position: sticky; top: 0; z-index: 5; background: var(--paper);
+    display: flex; gap: 8px; flex-wrap: wrap; padding: 14px 0; margin-bottom: 28px; border-bottom: 1px solid var(--rule);
+  }
+  .switch button {
+    font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; color: var(--ink);
+    padding: 9px 16px 9px 36px; border-radius: 999px; border: 2px solid var(--rule); background: var(--surface);
+    position: relative; transition: border-color .15s, background .15s, color .15s;
+  }
+  .switch button::before {
+    content: ""; position: absolute; left: 13px; top: 50%; width: 14px; height: 6px; margin-top: -3px;
+    border-radius: 3px; background: var(--c);
+  }
+  .switch button[aria-selected="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  .steps { list-style: none; margin: 0; padding: 0 0 0 64px; position: relative; }
+  .steps::before {
+    content: ""; position: absolute; left: 20px; top: 14px; bottom: 14px; width: 10px; border-radius: 5px;
+    background: var(--active); transition: background .3s;
+  }
+  .step {
+    position: relative; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.4fr);
+    gap: 32px; padding-bottom: 52px;
+  }
+  .step:last-child { padding-bottom: 0; }
+  .step::before {
+    content: attr(data-n); position: absolute; left: -64px; top: 0;
+    width: 50px; height: 50px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--surface); border: 6px solid var(--ink);
+    font-stretch: 125%; font-weight: 800; font-size: 18px;
+  }
+  .step h3 { font-stretch: 125%; font-weight: 800; font-size: 30px; line-height: 1.1; margin: 8px 0 8px; }
+  .step .principle { margin: 0; color: var(--muted); max-width: 22em; }
+  .play {
+    background: var(--surface); border: 2px solid var(--rule); border-radius: 16px; padding: 22px 24px;
+    border-left: 6px solid var(--active); transition: border-color .3s;
+  }
+  .play dl { margin: 0; display: grid; gap: 14px; }
+  .play dt { font-weight: 750; font-size: 15px; color: var(--muted); margin: 0 0 2px; }
+  .play dd { margin: 0; }
+  .play dd.metric { font-weight: 700; }
+  .play .data { font-size: 14px; color: var(--muted); margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--rule); }
+  .next {
+    margin-top: 16px; padding: 12px 14px; border-radius: 10px;
+    background: color-mix(in srgb, var(--ink) 6%, var(--surface));
+    display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start;
+  }
+  .next .tag {
+    font-size: 13px; font-weight: 800; white-space: nowrap; padding: 3px 9px; border-radius: 999px;
+    background: var(--ink); color: var(--paper); margin-top: 1px;
+  }
+  .next p { margin: 0; font-size: 16px; }
+  .ex-toggle {
+    margin-top: 18px; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer;
+    color: var(--ink); background: transparent; border: 2px solid var(--ink); border-radius: 999px;
+    padding: 8px 16px 8px 14px; display: inline-flex; align-items: center; gap: 8px;
+    transition: background .15s, color .15s;
+  }
+  .ex-toggle:hover { background: var(--ink); color: var(--paper); }
+  .ex-toggle .chev { display: inline-block; width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg) translate(-2px, -2px); transition: transform .2s; }
+  .ex-toggle[aria-expanded="true"] .chev { transform: rotate(-135deg) translate(-2px, -2px); }
+  .example {
+    margin-top: 16px; padding: 18px 20px; border-radius: 12px;
+    background: color-mix(in srgb, var(--active) 9%, var(--surface));
+    border: 1px solid color-mix(in srgb, var(--active) 35%, var(--rule));
+  }
+  .example[hidden] { display: none; }
+  .example h4 { font-stretch: 112%; font-weight: 750; font-size: 18px; line-height: 1.25; margin: 0 0 2px; }
+  .example .when { font-size: 14px; color: var(--muted); margin: 0 0 10px; }
+  .example p { margin: 0 0 10px; font-size: 16px; }
+  .example .lesson { font-weight: 650; }
+  .example .src { font-size: 14px; color: var(--muted); margin: 0; }
+  .example .src a { color: var(--ink); text-underline-offset: 3px; }
+  .play.swap { animation: swap .28s ease-out; }
+  @keyframes swap { from { opacity: .2; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+  /* ---------- Step asides (checklist, first project) ---------- */
+  .aside {
+    margin-top: 22px; padding: 18px 18px 16px; border-radius: 14px;
+    background: var(--surface); border: 2px dashed var(--rule);
+  }
+  .aside h4 { font-stretch: 112%; font-weight: 750; font-size: 18px; line-height: 1.25; margin: 0 0 6px; }
+  .aside p { margin: 0 0 10px; font-size: 15px; color: var(--muted); }
+  .aside .aside-note { margin: 10px 0 0; }
+  .rules { margin: 0; padding-left: 20px; font-size: 15px; }
+  .rules li { margin-bottom: 4px; }
+  .checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .checklist label { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; font-size: 15px; cursor: pointer; }
+  .checklist input { width: 20px; height: 20px; margin: 1px 0 0; accent-color: var(--ink); cursor: pointer; }
+  .verdict { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--rule); font-size: 15px; font-weight: 650; color: var(--ink); }
+  .verdict b { font-stretch: 112%; }
+
+  /* ---------- Health check ---------- */
+  .health { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+  .areas { display: grid; gap: 16px; }
+  .area { margin: 0; padding: 18px 20px; border: 2px solid var(--rule); border-radius: 14px; background: var(--surface); }
+  .area legend { font-stretch: 112%; font-weight: 800; font-size: 20px; padding: 0 6px; margin-left: -6px; }
+  .area .signals { margin: 0 0 14px; font-size: 15px; color: var(--muted); }
+  .seg { display: flex; gap: 8px; flex-wrap: wrap; }
+  .seg label { position: relative; cursor: pointer; }
+  .seg input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+  .seg span {
+    display: inline-block; padding: 8px 18px; border-radius: 999px; border: 2px solid var(--rule);
+    font-weight: 700; font-size: 15px; background: var(--paper); transition: background .15s, border-color .15s, color .15s;
+  }
+  .seg input:focus-visible + span { outline: 3px solid var(--ink); outline-offset: 2px; }
+  .seg input:checked + span { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  .result {
+    position: sticky; top: 90px; padding: 26px 24px; border-radius: 18px; background: var(--ink); color: var(--paper);
+  }
+  .lamp { display: flex; gap: 10px; margin-bottom: 18px; }
+  .lamp i { width: 30px; height: 30px; border-radius: 50%; background: color-mix(in srgb, var(--paper) 14%, transparent); transition: background .25s, box-shadow .25s; }
+  .result[data-state="green"]  .lamp i:nth-child(1) { background: #2FB36B; box-shadow: 0 0 18px #2FB36B; }
+  .result[data-state="yellow"] .lamp i:nth-child(2) { background: #F0B83A; box-shadow: 0 0 18px #F0B83A; }
+  .result[data-state="red"]    .lamp i:nth-child(3) { background: #E5484D; box-shadow: 0 0 18px #E5484D; }
+  .result .state { font-stretch: 125%; font-weight: 800; font-size: 28px; line-height: 1.1; margin: 0 0 10px; }
+  .result .action { margin: 0; font-size: 16px; color: color-mix(in srgb, var(--paper) 85%, transparent); }
+
+  /* ---------- Agents ---------- */
+  .agent-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .agent-card { background: var(--surface); border: 2px solid var(--rule); border-radius: 16px; padding: 22px; }
+  .agent-card h3 { font-stretch: 125%; font-weight: 800; font-size: 26px; margin: 0 0 10px; }
+  .agent-card p { margin: 0 0 12px; font-size: 16px; }
+  .agent-card .rules { margin-bottom: 12px; font-size: 16px; }
+  .agent-card .fact { font-size: 15px; font-weight: 600; padding-left: 14px; border-left: 4px solid var(--ink); }
+  .agent-card .fact span { display: block; font-weight: 400; color: var(--muted); font-size: 13px; margin-top: 2px; }
+  h3.sub { font-stretch: 112%; font-weight: 800; font-size: 24px; margin: 48px 0 16px; }
+
+  .uses { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 2px solid var(--ink); }
+  .use { padding: 16px 16px 4px 0; }
+  .use + .use { padding-left: 16px; border-left: 1px solid var(--rule); }
+  .use b { font-stretch: 112%; font-size: 18px; display: block; margin-bottom: 6px; }
+  .use p { margin: 0; font-size: 15px; color: var(--muted); }
+
+  .crw { background: var(--surface); border: 2px solid var(--rule); border-radius: 18px; padding: 8px 24px 26px; }
+  .crw-track { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); margin: 0 0 8px; }
+  .crw-track::before {
+    content: ""; position: absolute; left: 16.66%; right: 16.66%; top: 34px; height: 8px; border-radius: 4px;
+    background: linear-gradient(90deg, var(--rule), var(--ink));
+  }
+  .crw-track button {
+    position: relative; background: none; border: 0; cursor: pointer; font: inherit; color: var(--ink);
+    padding: 20px 6px 14px; display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+  .crw-track .dot {
+    width: 36px; height: 36px; border-radius: 50%; background: var(--surface); border: 6px solid var(--ink);
+    margin-bottom: 6px; transition: transform .2s, background .2s;
+  }
+  .crw-track button[aria-selected="true"] .dot { background: var(--ink); transform: scale(1.15); }
+  .crw-track .pill {
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    min-width: 132px; padding: 10px 18px 10px; border-radius: 14px;
+    border: 2px solid var(--rule); background: var(--paper);
+    box-shadow: 0 2px 0 var(--rule);
+    transition: background .15s, border-color .15s, color .15s, transform .15s, box-shadow .15s;
+  }
+  .crw-track b { font-stretch: 125%; font-weight: 800; font-size: 22px; }
+  .crw-track small { color: var(--muted); font-size: 14px; }
+  .crw-track button:hover .pill { border-color: var(--ink); transform: translateY(-2px); box-shadow: 0 4px 0 var(--ink); }
+  .crw-track button:focus-visible { outline: none; }
+  .crw-track button:focus-visible .pill { outline: 3px solid var(--ink); outline-offset: 3px; }
+  .crw-track button[aria-selected="true"] .pill { background: var(--ink); border-color: var(--ink); box-shadow: 0 2px 0 var(--ink); transform: none; }
+  .crw-track button[aria-selected="true"] b,
+  .crw-track button[aria-selected="true"] small { color: var(--paper); }
+  .crw-hint { margin: -6px 0 12px; font-size: 15px; color: var(--muted); }
+
+  .crw-panel h4 { font-stretch: 112%; font-weight: 800; font-size: 20px; margin: 4px 0 4px; }
+  .crw-panel .lead { margin: 0 0 18px; color: var(--muted); }
+  .crw-rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 32px; margin: 0; }
+  .crw-rows div { border-top: 1px solid var(--rule); padding-top: 10px; }
+  .crw-rows dt { font-weight: 750; font-size: 14px; color: var(--muted); margin-bottom: 2px; }
+  .crw-rows dd { margin: 0; font-size: 16px; }
+  .crw-rows .invest { grid-column: 1 / -1; background: color-mix(in srgb, var(--ink) 6%, var(--surface)); border-top: 0; padding: 12px 14px; border-radius: 10px; }
+  .crw-note { margin: 18px 0 0; font-size: 13px; color: var(--muted); }
+  .crw-panel.swap { animation: swap .28s ease-out; }
+
+  /* ---------- Author ---------- */
+  .author {
+    background: var(--ink); color: var(--paper); border-radius: 22px; padding: clamp(32px, 6vw, 64px);
+    display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 40px; align-items: end;
+  }
+  .author h2 { color: var(--paper); }
+  .author p { margin: 0 0 14px; max-width: 34em; color: color-mix(in srgb, var(--paper) 80%, transparent); }
+  .author .btn { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+  .author .btn:hover { background: transparent; color: var(--paper); }
+  .author .creds { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 16px; }
+  .author .creds li { padding-left: 22px; position: relative; color: color-mix(in srgb, var(--paper) 88%, transparent); }
+  .author .creds li::before { content: ""; position: absolute; left: 0; top: .5em; width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+
+  /* ---------- Footer ---------- */
+  footer { padding: 40px 0 56px; color: var(--muted); font-size: 14px; }
+  footer h4 { font-size: 14px; margin: 0 0 8px; color: var(--ink); }
+  footer ol { margin: 0 0 24px; padding-left: 20px; }
+  footer li { margin-bottom: 4px; }
+  footer .bottom { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; }
+  footer .bottom nav { display: flex; gap: 20px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stat:nth-child(3) { padding-left: 0; border-left: 0; }
+    .stat:nth-child(n+3) { border-top: 1px solid var(--rule); }
+    .currencies { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .shifts { grid-template-columns: 1fr; gap: 32px; }
+    .health { grid-template-columns: 1fr; }
+    .agent-grid { grid-template-columns: 1fr; }
+    .uses { grid-template-columns: 1fr; }
+    .use, .use + .use { padding: 12px 0; border-left: 0; }
+    .use + .use { border-top: 1px solid var(--rule); }
+    .crw-rows { grid-template-columns: 1fr; }
+    .result { position: static; }
+    .step { grid-template-columns: 1fr; gap: 16px; }
+    .author { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 1100px) {
+    .currencies { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 1000px) {
+    .top nav a:not(.btn) { display: none; }
+  }
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    .crw { padding: 4px 14px 20px; }
+    .crw-track b { font-size: 17px; }
+    .crw-track .pill { min-width: 0; width: 100%; padding: 8px 6px; }
+    .crw-track button { padding-left: 3px; padding-right: 3px; }
+    .crw-track small { font-size: 12px; }
+    .top nav a:not(.btn) { display: none; }
+    .currencies { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr; }
+    .stat, .stat + .stat { padding-left: 0; border-left: 0; }
+    .stat + .stat { border-top: 1px solid var(--rule); }
+    .steps { padding-left: 52px; }
+    .steps::before { left: 15px; width: 8px; }
+    .step::before { left: -52px; width: 40px; height: 40px; border-width: 5px; font-size: 15px; }
+    .step h3 { font-size: 26px; margin-top: 4px; }
+    .switch button { font-size: 14px; padding: 8px 12px 8px 30px; }
+    .switch button::before { left: 11px; width: 12px; }
+    .map .labels a span { display: none; }
+    .map .labels { height: 30px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .map .ln { animation: none; stroke-dashoffset: 0; }
+    .map .stn { animation: none; opacity: 1; }
+    .play.swap { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!--
+  ===========================================================
+  EDIT HERE: your links. Every button on the page uses these.
+  ===========================================================
+-->
+<script>
+  const LINKS = {
+    booking:  "https://calendar.app.google/REPLACE-ME",   // Google Calendar appointment schedule link
+    linkedin: "https://www.linkedin.com/in/REPLACE-ME"
+  };
+</script>
+
+<header class="wrap top">
+  <a class="wordmark" href="#top">The Partner Line</a>
+  <nav aria-label="Main">
+    <a href="#shifts">What's changing</a>
+    <a href="#currencies">Partner types</a>
+    <a href="#process">The process</a>
+    <a href="#health">Health check</a>
+    <a href="#agents">Agents</a>
+    <a class="btn" data-link="booking" href="#author">Book a call</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="wrap hero" aria-labelledby="hero-title">
+    <h1 id="hero-title">One process. Four kinds of partners.</h1>
+    <p class="lede">A field guide to running partner programs with technology companies, hyperscalers and marketplaces, global systems integrators, and resellers. The five steps stay the same. What you do at each step changes with who you're partnering with, and with how AI agents are reshaping partnering in 2026 and 2027.</p>
+    <p class="byline">By Andrew Mackenzie</p>
+
+    <div class="map" aria-hidden="true">
+      <svg viewBox="0 0 1000 240" role="img">
+        <path class="ln" stroke="var(--tech)"   d="M0,30 H50 L110,90 H890 L950,30 H1000"/>
+        <path class="ln" stroke="var(--cloud)"  d="M0,110 H1000"/>
+        <path class="ln" stroke="var(--gsi)"    d="M0,130 H1000"/>
+        <path class="ln" stroke="var(--resell)" d="M0,210 H50 L110,150 H890 L950,210 H1000"/>
+        <g>
+          <rect class="stn" x="126" y="72" width="28" height="96" rx="14" style="animation-delay:1.0s"/>
+          <rect class="stn" x="306" y="72" width="28" height="96" rx="14" style="animation-delay:1.1s"/>
+          <rect class="stn" x="486" y="72" width="28" height="96" rx="14" style="animation-delay:1.2s"/>
+          <rect class="stn" x="666" y="72" width="28" height="96" rx="14" style="animation-delay:1.3s"/>
+          <rect class="stn" x="846" y="72" width="28" height="96" rx="14" style="animation-delay:1.4s"/>
+        </g>
+      </svg>
+      <div class="labels">
+        <a href="#step-1" style="left:14%">Choose<span>Step 1</span></a>
+        <a href="#step-2" style="left:32%">Build<span>Step 2</span></a>
+        <a href="#step-3" style="left:50%">Enable<span>Step 3</span></a>
+        <a href="#step-4" style="left:68%">Co-sell<span>Step 4</span></a>
+        <a href="#step-5" style="left:86%">Measure<span>Step 5</span></a>
+      </div>
+    </div>
+    <ul class="legend">
+      <li><i style="background:var(--tech)"></i>Technology partners</li>
+      <li><i style="background:var(--cloud)"></i>Hyperscalers and marketplaces</li>
+      <li><i style="background:var(--gsi)"></i>GSIs</li>
+      <li><i style="background:var(--resell)"></i>Resellers</li>
+    </ul>
+  </section>
+
+  <section class="wrap" aria-labelledby="why-title">
+    <h2 id="why-title">Why partners decide who wins</h2>
+    <p class="intro">Most technology is now bought through, with, or alongside a partner. Getting the program right is no longer a side project.</p>
+    <div class="stats">
+      <div class="stat"><b>70%</b><p>of global IT spend in 2025 goes to, through, or with channel partners.</p><small>Canalys, 2025 <sup>1</sup></small></div>
+      <div class="stat"><b>$163B</b><p>forecast yearly spend through hyperscaler marketplaces by 2030, up from $16B in 2023.</p><small>Canalys / Omdia <sup>2, 3</sup></small></div>
+      <div class="stat"><b>59%</b><p>of that marketplace spend is expected to flow through channel partners by 2030.</p><small>Canalys / Omdia, 2025 <sup>2</sup></small></div>
+      <div class="stat"><b>58%</b><p>less likely to churn: customers who use a product's integrations.</p><small>Crossbeam, 2023 <sup>4</sup></small></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="shifts" aria-labelledby="shifts-title">
+    <h2 id="shifts-title">What's changing in 2026 and 2027</h2>
+    <p class="intro">AI agents are changing what partners sell, how they price it, and how customers find it. Seven shifts every partner leader should plan for, whichever partner type you work with.</p>
+    <ol class="shifts">
+      <li class="shift">
+        <div class="from-to">
+          <span class="from">Reselling licences and running projects</span>
+          <span class="track" aria-hidden="true"></span>
+          <span class="to">Delivering outcomes with AI agents</span>
+        </div>
+        <p>Partners are adding AI and agents to every service line. Routine work such as migration and support gets cheaper as agents take more of it on, while new work opens up in designing, building, and running agents for customers.</p>
+        <p class="fact">82% of AWS partners already deliver some form of AI to customers. <span>Omdia 2025, via AWS <sup>5</sup></span></p>
+      </li>
+      <li class="shift">
+        <div class="from-to">
+          <span class="from">Hourly rates and fixed fees</span>
+          <span class="track" aria-hidden="true"></span>
+          <span class="to">Pricing tied to business outcomes</span>
+        </div>
+        <p>Customers want partners to share the risk. Build offers where you and your partner are paid against a business result, and pitch them to line-of-business leaders, not only IT.</p>
+        <p class="fact">Outcome-based pricing doubled from 18% to 36% of engagements, while fixed-price work fell from 49% to 29%. 75% of line-of-business buyers say partner relationships are essential. <span>IDC, via AWS <sup>5</sup></span></p>
+      </li>
+      <li class="shift">
+        <div class="from-to">
+          <span class="from">One vendor, one listing</span>
+          <span class="track" aria-hidden="true"></span>
+          <span class="to">Multi-vendor solutions sold as one</span>
+        </div>
+        <p>Cloud marketplaces now sell bundles that combine several vendors' products with professional services, billed by milestone or outcome. The winning offer is often a solution assembled by three or four partners.</p>
+        <p class="fact">AWS Marketplace added multi-product solutions and variable payments for services in late 2025. <span>AWS <sup>5</sup></span></p>
+      </li>
+      <li class="shift">
+        <div class="from-to">
+          <span class="from">Buyers searching and booking demos</span>
+          <span class="track" aria-hidden="true"></span>
+          <span class="to">Buyers asking an AI assistant</span>
+        </div>
+        <p>Marketplaces are adding conversational discovery, where buyers describe their problem in plain language and get matched to solutions. Listings and documentation now need to answer use-case questions directly, for people and for AI.</p>
+        <p class="fact">AWS Marketplace launched an AI-powered "agent mode" for discovery in late 2025. <span>AWS <sup>5</sup></span></p>
+      </li>
+      <li class="shift">
+        <div class="from-to">
+          <span class="from">Partners selling your product</span>
+          <span class="track" aria-hidden="true"></span>
+          <span class="to">Partners building IP on your product</span>
+        </div>
+        <p>The strongest partners package their know-how into reusable, industry-specific agents and accelerators that they own and list on marketplaces. Help them build that IP on your platform: it raises their margin and makes your product harder to replace.</p>
+      </li>
+      <li class="shift">
+        <div class="from-to">
+          <span class="from">Spreadsheets and partner portals</span>
+          <span class="track" aria-hidden="true"></span>
+          <span class="to">Connected, AI-run partner operations</span>
+        </div>
+        <p>Cloud partner portals now offer APIs that connect to your CRM, so co-sell referrals, funding requests, and listings sync automatically. Be your own first customer: run your partner team on the AI tools you ask partners to sell.</p>
+        <p class="fact">Partners that actively co-sell with AWS see 51% greater revenue growth. <span>Canalys, via AWS <sup>5</sup></span></p>
+      </li>
+      <li class="shift">
+        <div class="from-to">
+          <span class="from">Closing the deal and moving on</span>
+          <span class="track" aria-hidden="true"></span>
+          <span class="to">Driving usage after the sale</span>
+        </div>
+        <p>When customers pay for what they use, such as API calls, tokens, or compute, a signed contract only buys access. Revenue arrives as usage grows. Partners earn their place by staying after go-live: helping customers adopt, finding the next use case, and measuring results like time saved rather than logins.</p>
+        <p>AI is arriving faster than most customers can absorb it. The partners who close that gap become hard to replace.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="wrap" id="currencies" aria-labelledby="cur-title">
+    <h2 id="cur-title">Find their currency first</h2>
+    <p class="intro">Every partner type gets paid in something different. A program works when your offer helps them earn more of it. If you only remember one idea from this page, make it this one.</p>
+    <div class="currencies">
+      <article class="cur" style="--c:var(--tech)">
+        <h3>Technology partners</h3>
+        <p class="paid">Retention</p>
+        <p class="paid-label">What they're paid in</p>
+        <p class="need">An integration that makes their product harder to leave and easier to sell.</p>
+        <button type="button" data-pick="tech">See their playbook</button>
+      </article>
+      <article class="cur" style="--c:var(--cloud)">
+        <h3>Hyperscalers and marketplaces</h3>
+        <p class="paid">Consumption</p>
+        <p class="paid-label">What they're paid in</p>
+        <p class="need">Deals that draw down customers' committed cloud spend and count toward their sellers' numbers.</p>
+        <button type="button" data-pick="cloud">See their playbook</button>
+      </article>
+      <article class="cur" style="--c:var(--gsi)">
+        <h3>Global systems integrators</h3>
+        <p class="paid">Services</p>
+        <p class="paid-label">What they're paid in</p>
+        <p class="need">Billable work attached to your product, and an edge in large transformation deals.</p>
+        <button type="button" data-pick="gsi">See their playbook</button>
+      </article>
+      <article class="cur" style="--c:var(--resell)">
+        <h3>Resellers</h3>
+        <p class="paid">Margin</p>
+        <p class="paid-label">What they're paid in</p>
+        <p class="need">Healthy margin on deals they find, protected so your direct team can't take them.</p>
+        <button type="button" data-pick="resell">See their playbook</button>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" id="process" aria-labelledby="proc-title">
+    <h2 id="proc-title">The five-step process</h2>
+    <p class="intro">Pick a partner type to see the playbook for it. Each step has one move to make, one trap to avoid, one number to watch, what's changing for 2026–27, and a real company that did it.</p>
+
+    <div class="switch" role="tablist" aria-label="Partner type">
+      <button role="tab" id="tab-tech"   data-type="tech"   style="--c:var(--tech)"   aria-selected="true"  aria-controls="steps">Technology</button>
+      <button role="tab" id="tab-cloud"  data-type="cloud"  style="--c:var(--cloud)"  aria-selected="false" aria-controls="steps" tabindex="-1">Hyperscalers</button>
+      <button role="tab" id="tab-gsi"    data-type="gsi"    style="--c:var(--gsi)"    aria-selected="false" aria-controls="steps" tabindex="-1">GSIs</button>
+      <button role="tab" id="tab-resell" data-type="resell" style="--c:var(--resell)" aria-selected="false" aria-controls="steps" tabindex="-1">Resellers</button>
+    </div>
+
+    <ol class="steps" id="steps" role="tabpanel" aria-labelledby="tab-tech">
+      <li class="step" id="step-1" data-n="1">
+        <div>
+          <h3>Choose</h3><p class="principle">Fewer, better partners. Every partnership costs focus, so pick the ones that share your customers.</p>
+          <div class="aside">
+            <h4>Is this partner any good?</h4>
+            <p class="aside-intro">Tick what's true. Use it before you recommend a partner to a customer.</p>
+            <ul class="checklist" id="checklist">
+              <li><label><input type="checkbox"> They use your product in their own business, not just in demos</label></li>
+              <li><label><input type="checkbox"> They have clear rules for using AI responsibly, and turn down bad-fit work</label></li>
+              <li><label><input type="checkbox"> They have a dedicated, certified team for your product</label></li>
+              <li><label><input type="checkbox"> They can show recent, measurable customer results, with references</label></li>
+              <li><label><input type="checkbox"> They stay with customers after go-live and are open about problems</label></li>
+              <li><label><input type="checkbox"> They've built their own tools or IP on your product</label></li>
+            </ul>
+            <p class="verdict" id="verdict" aria-live="polite">0 of 6. Tick the traits this partner has.</p>
+          </div>
+        </div>
+        <div class="play" data-step="0"></div>
+      </li>
+      <li class="step" id="step-2" data-n="2">
+        <div>
+          <h3>Build</h3><p class="principle">Create joint value you can describe in one sentence, before anyone signs anything.</p>
+          <div class="aside">
+            <h4>Expect the first project to be rough</h4>
+            <p>Two companies that haven't worked together will hit slow approvals, mismatched goals, and cautious teams. Plan for it:</p>
+            <ul class="rules">
+              <li>Keep it small enough to finish in weeks, not quarters.</li>
+              <li>Agree on one measure of success and cut anything that doesn't serve it.</li>
+              <li>Name one accountable owner on each side.</li>
+              <li>Walk through their legal and security reviews before you build.</li>
+            </ul>
+            <p class="aside-note">Good first projects: a joint sales training session, co-written content, or a lightweight connector. What you learn about how they work is worth as much as the result.</p>
+          </div>
+        </div>
+        <div class="play" data-step="1"></div>
+      </li>
+      <li class="step" id="step-3" data-n="3">
+        <div><h3>Enable</h3><p class="principle">Make it easy for their sellers to win without you in the room. Show, don't tell: a live demo on the customer's own data beats any one-pager.</p></div>
+        <div class="play" data-step="2"></div>
+      </li>
+      <li class="step" id="step-4" data-n="4">
+        <div><h3>Co-sell</h3><p class="principle">Turn the partnership into named deals in named accounts.</p></div>
+        <div class="play" data-step="3"></div>
+      </li>
+      <li class="step" id="step-5" data-n="5">
+        <div><h3>Measure</h3><p class="principle">Track what each side is actually paid on, then put more into what works.</p></div>
+        <div class="play" data-step="4"></div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="wrap" id="health" aria-labelledby="health-title">
+    <h2 id="health-title">Check a partner's health</h2>
+    <p class="intro">Most partnerships fade quietly before they fail. Rate one partner on three areas to see whether it's healthy, worth watching, or at risk, and what to do next. Review your partners this way every quarter.</p>
+
+    <div class="health">
+      <div class="areas">
+        <fieldset class="area">
+          <legend>Engagement</legend>
+          <p class="signals">Do they show up? Look at responsiveness, attendance at enablement sessions, portal activity, and whether an executive with budget is involved.</p>
+          <div class="seg" role="radiogroup">
+            <label><input type="radio" name="eng" value="2"><span>Strong</span></label>
+            <label><input type="radio" name="eng" value="1"><span>Mixed</span></label>
+            <label><input type="radio" name="eng" value="0"><span>Weak</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="area">
+          <legend>Capability</legend>
+          <p class="signals">Are they investing? Look at certifications, dedicated staff on your product, a named practice lead, and real use of demo environments.</p>
+          <div class="seg" role="radiogroup">
+            <label><input type="radio" name="cap" value="2"><span>Strong</span></label>
+            <label><input type="radio" name="cap" value="1"><span>Mixed</span></label>
+            <label><input type="radio" name="cap" value="0"><span>Weak</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="area">
+          <legend>Performance</legend>
+          <p class="signals">Are they winning? Look at registered pipeline, win rates, delivery quality, revenue trend, and customer expansion after go-live.</p>
+          <div class="seg" role="radiogroup">
+            <label><input type="radio" name="perf" value="2"><span>Strong</span></label>
+            <label><input type="radio" name="perf" value="1"><span>Mixed</span></label>
+            <label><input type="radio" name="perf" value="0"><span>Weak</span></label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="result" id="health-result" aria-live="polite" data-state="none">
+        <span class="lamp" aria-hidden="true"><i></i><i></i><i></i></span>
+        <p class="state" id="health-state">Rate all three areas</p>
+        <p class="action" id="health-action">Your result and a recommended next step will appear here.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="agents" aria-labelledby="agents-title">
+    <h2 id="agents-title">Run your partner team on agents</h2>
+    <p class="intro">You'll ask partners to sell AI. Your own team should be using it first. Here's why it's worth doing, when it makes sense, what it takes, and a path from first experiment to an agent-run partner operation.</p>
+
+    <div class="agent-grid">
+      <article class="agent-card">
+        <h3>Why</h3>
+        <p>Partner work is heavy on coordination: researching accounts, matching overlaps, chasing referrals, updating portals, answering the same product questions, and building quarterly reviews. That's time not spent with partners.</p>
+        <p class="fact">Sellers spend only about 40% of their time selling. Those using agents expect research time to drop 34% and email drafting 36%. <span>Salesforce State of Sales, 2026 <sup>6</sup></span></p>
+        <p>There's a credibility reason too. Partner leaders who run their own team on agents can tell partners what works from experience.</p>
+      </article>
+
+      <article class="agent-card">
+        <h3>When</h3>
+        <p>A task is a good candidate when all four are true:</p>
+        <ul class="rules">
+          <li>It repeats every week, in roughly the same way.</li>
+          <li>The data it needs already lives in a system, like your CRM or partner portal.</li>
+          <li>Someone owns it and can judge whether the output is right.</li>
+          <li>You can measure the time it takes today.</li>
+        </ul>
+        <p>Keep people on relationship moments, negotiations, and strategy.</p>
+        <p class="fact">Gartner expects over 40% of agentic AI projects to be scrapped by 2027 because of cost, unclear value, or weak risk controls. Start where the value is obvious. <span>Gartner, June 2025 <sup>7</sup></span></p>
+      </article>
+
+      <article class="agent-card">
+        <h3>How</h3>
+        <ol class="rules">
+          <li>Pick one workflow and write down every step.</li>
+          <li>Have AI assist a person doing it, then compare quality and time.</li>
+          <li>Let an agent draft the work while a person approves it.</li>
+          <li>Only then let the agent act on its own, within clear limits.</li>
+          <li>Measure time saved and errors, then move to the next workflow.</li>
+        </ol>
+        <p>Set guardrails from day one: a person approves anything sent to a partner or customer, agents only see the data they need, and every action is logged.</p>
+      </article>
+    </div>
+
+    <h3 class="sub">Where agents help across the five steps</h3>
+    <div class="uses">
+      <div class="use"><b>Choose</b><p>Research prospective partners and analyse account overlap reports into a ranked shortlist.</p></div>
+      <div class="use"><b>Build</b><p>Draft joint solution briefs, marketplace listings, and use-case pages for each partner.</p></div>
+      <div class="use"><b>Enable</b><p>Answer partners' product questions on demand, and build demo scripts and sample data for a prospect.</p></div>
+      <div class="use"><b>Co-sell</b><p>Route account overlaps to the right rep, prepare meeting briefs, and sync referrals with cloud partner portals.</p></div>
+      <div class="use"><b>Measure</b><p>Score partner health every week, flag partners turning yellow, and draft quarterly reviews.</p></div>
+    </div>
+
+    <h3 class="sub">Crawl, walk, run</h3>
+    <p class="crw-hint">Select a stage to see what it involves.</p>
+    <div class="crw">
+      <div class="crw-track" role="tablist" aria-label="Agent adoption stage">
+        <button role="tab" id="crw-tab-0" aria-selected="true"  aria-controls="crw-panel" data-stage="0"><span class="dot" aria-hidden="true"></span><span class="pill"><b>Crawl</b><small>Months 0–3</small></span></button>
+        <button role="tab" id="crw-tab-1" aria-selected="false" aria-controls="crw-panel" data-stage="1" tabindex="-1"><span class="dot" aria-hidden="true"></span><span class="pill"><b>Walk</b><small>Months 3–9</small></span></button>
+        <button role="tab" id="crw-tab-2" aria-selected="false" aria-controls="crw-panel" data-stage="2" tabindex="-1"><span class="dot" aria-hidden="true"></span><span class="pill"><b>Run</b><small>Months 9–18</small></span></button>
+      </div>
+      <div class="crw-panel" id="crw-panel" role="tabpanel" aria-labelledby="crw-tab-0"></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="author" aria-labelledby="author-title">
+    <div class="author">
+      <div>
+        <h2 id="author-title">Want to compare notes?</h2>
+        <p>I'm Andrew Mackenzie. I spent seven years at Snyk building partner programs across all four of these partner types. If you're designing or fixing a partner program, I'm happy to brainstorm. Pick a 30-minute slot that suits you.</p>
+        <a class="btn" data-link="booking" href="#author">Book a call</a>
+      </div>
+      <ul class="creds">
+        <li style="--c:var(--gsi)">Led global GSI alliances, including Accenture, Deloitte, and TCS</li>
+        <li style="--c:var(--cloud)">Ran AWS Marketplace co-sell</li>
+        <li style="--c:var(--tech)">Built partnerships and integrations with AI coding tools, including Anthropic, Cursor, Devin, and Factory</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <h4>Sources</h4>
+    <ol>
+      <li><a href="https://www.itsitio.com/distribucion/en-2025-el-701-del-gasto-mundial-en-it-pasa-por-el-canal/">Canalys 2025 channel data, reported by ITSitio (Aug 2025)</a></li>
+      <li><a href="https://itchanneloxygen.com/channel-to-pocket-59-of-hyperscaler-marketplace-spend-by-2030-canalys">Canalys / Omdia marketplace forecast, reported by IT Channel Oxygen (Sep 2025)</a></li>
+      <li><a href="https://channeldrive.in/market-research/hyperscaler-cloud-marketplace-sales-to-hit-us85-billion-by-2028-canalys/">Canalys marketplace sales 2023 baseline, reported by ChannelDrive (Aug 2024)</a></li>
+      <li><a href="https://www.partnerfleet.io/blog/valuable-integration-statistics-to-know">Crossbeam 2023 State of the Partner Ecosystem, compiled by Partner Fleet</a></li>
+      <li><a href="https://aws.amazon.com/blogs/apn/powering-partner-success-2026-innovations/">AWS Partner Network blog, "Powering Next-Level Partner Success" (Dec 2025), citing Omdia, IDC, Canalys, and TechAisle</a></li>
+      <li><a href="https://www.salesforce.com/news/stories/state-of-sales-report-announcement-2026/">Salesforce State of Sales 2026 (survey of 4,050 sales professionals, Aug–Sep 2025; published Feb 2026)</a></li>
+      <li><a href="https://www.newelectronics.co.uk/content/news/over-40-of-agentic-ai-projects-could-be-cancelled-by-2027">Gartner prediction on agentic AI projects, reported by New Electronics (June 2025)</a></li>
+    </ol>
+    <div class="bottom">
+      <span>© <span id="year">2026</span> Andrew Mackenzie</span>
+      <nav aria-label="Elsewhere">
+        <a data-link="linkedin" href="#">LinkedIn</a>
+        <a data-link="booking" href="#author">Book a call</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ===========================================================
+  // PLAYBOOK CONTENT: one entry per partner type, five steps each.
+  // move = what to do, watch = the trap, metric = the number to track.
+  // ===========================================================
+  const PLAYBOOK = {
+    tech: [
+      { move: "Map shared customers before anything else. An account-mapping tool shows where your customer lists overlap. Shortlist the partners with the most overlap and a real handoff between your two products.",
+        watch: "Logo-swap partnerships: a press release and a badge, with no shared users.",
+        metric: "Overlapping customer accounts" },
+      { move: "Ship one integration that removes a manual step in a workflow both products touch. Write the joint use case in one sentence before writing any code.",
+        watch: "Integrations built for a launch announcement that nobody switches on.",
+        metric: "Integration activation rate" },
+      { move: "Give both sales teams a joint demo they can run live on a prospect's own data, plus a 30-minute session for each side's sales engineers. AI tools now make a tailored demo quick to prepare.",
+        watch: "Leaning on decks and one-pagers that nobody reads.",
+        metric: "Sellers on each side who have demoed it" },
+      { move: "Turn account overlap into pipeline: trade warm introductions on open deals where you both have a relationship, list in each other's app directories, and market to the shared base.",
+        watch: "Sharing account lists without agreeing on who follows up.",
+        metric: "Partner-influenced pipeline" },
+      { move: "Compare churn for customers who use the integration against those who don't. That gap is the business case for investing more.",
+        watch: "Tracking installs but never retention.",
+        metric: "Churn gap: integrated vs. non-integrated customers",
+        data: "Crossbeam found customers who use integrations are 58% less likely to churn." }
+    ],
+    cloud: [
+      { move: "Follow your customers' committed spend. Find out which cloud your top target accounts have committed money to, and go deep on that one before adding a second.",
+        watch: "Listing on every marketplace on day one and getting traction on none.",
+        metric: "Share of target accounts with a commit on that cloud",
+        data: "Customers had $467B in committed spend across AWS, Azure, and Google Cloud as of mid-2025 (Canalys / Omdia)." },
+      { move: "Get listed with private offers switched on, and qualify for the cloud's co-sell program so its sellers get credit when your product sells.",
+        watch: "A public listing with no private offers, which most enterprise buyers can't use.",
+        metric: "Co-sell eligible, private offers live" },
+      { move: "Brief the cloud's account managers in their terms: how your deal draws down their customer's commitment and counts toward their number. Skip the product deck.",
+        watch: "Pitching features to sellers who are paid on consumption.",
+        metric: "Cloud sellers actively engaged each quarter" },
+      { move: "Route deals through marketplace private offers, register opportunities in the cloud's partner portal, and use channel private offers to bring resellers into the same transaction.",
+        watch: "Closing deals direct that could have drawn down a customer's commit.",
+        metric: "Marketplace bookings and co-sell opportunities accepted" },
+      { move: "Track what share of new bookings transacts through the marketplace, how many deals the cloud sourced, and whether those deals close faster than direct ones.",
+        watch: "Counting listing views instead of transactions.",
+        metric: "Marketplace share of new bookings",
+        data: "Canalys / Omdia expect 59% of marketplace spend to flow through channel partners by 2030." }
+    ],
+    gsi: [
+      { move: "Pick one or two GSIs and a named practice inside each. You need an executive sponsor and three to five shared target accounts before you call it a partnership.",
+        watch: "A global agreement with no practice that owns it.",
+        metric: "Named sponsor and agreed target accounts" },
+      { move: "Design an offering they can sell with their services attached, such as assessment, then implementation, then managed service. Their margin has to be built into the design.",
+        watch: "Asking a GSI to resell licences with no services in it for them.",
+        metric: "Packaged joint offering with a services line" },
+      { move: "Certify a bench of their practitioners and hand over delivery playbooks so their consultants can deliver without calling you.",
+        watch: "Training sessions with high attendance and no certifications.",
+        metric: "Certified practitioners in the target practice" },
+      { move: "Work account by account in their top clients. Build joint account plans and get your product into their transformation deals early, while the scope is still being written.",
+        watch: "Waiting for the GSI to bring you deals on its own.",
+        metric: "GSI-sourced and influenced pipeline" },
+      { move: "Measure joint wins and the services revenue the GSI earned from your product. That second number is the one their leadership tracks.",
+        watch: "Reporting only your licence revenue to a partner paid in services.",
+        metric: "Services revenue attached per joint win" }
+    ],
+    resell: [
+      { move: "Recruit for gaps in your coverage: regions, customer segments, or buying channels your direct team can't reach.",
+        watch: "Recruiting for volume. Fifty inactive partners cost more than five productive ones.",
+        metric: "Coverage of target segments and regions" },
+      { move: "Keep it simple: one price list, clear margin tiers, and deal registration that protects the partner who found the deal.",
+        watch: "Complicated tiers that partners need a spreadsheet to understand.",
+        metric: "Days from signing to first registered deal" },
+      { move: "Offer a short sales certification, a ready-made demo environment, and a renewal playbook so they can sell without your sales engineers.",
+        watch: "Enablement that assumes partners only sell your product.",
+        metric: "Certified sellers per active partner" },
+      { move: "Honour deal registration every time, tie marketing funds to pipeline outcomes, and set rules for your direct team when a partner is already engaged.",
+        watch: "Direct reps undercutting a registered deal. Partners remember.",
+        metric: "Registered deals won, as a share of those approved" },
+      { move: "Track sourced bookings and renewal rate per partner, and tier partners by results rather than company size.",
+        watch: "Rewarding the biggest logo instead of the most productive partner.",
+        metric: "Sourced bookings per active partner" }
+    ]
+  };
+
+  // ===========================================================
+  // REAL-WORLD EXAMPLES: one per step, per partner type.
+  // Each is drawn from a public source, linked in "src".
+  // ===========================================================
+  const EXAMPLES = {
+    tech: [
+      { who: "PayFit", when: "Crossbeam case study",
+        what: "The payroll software company tested a simple idea: prospects who already use a partner's product should be better leads. It used account mapping to find and prioritize those overlapping accounts.",
+        result: "Leads from partner overlap converted at about twice the rate of leads from other sources, with up to 60% going from lead to demo and 50% from demo to customer.",
+        lesson: "Shared customers are the best signal for which partners to pick.",
+        src: "https://www.casestudies.com/company/crossbeam/case-study/payfit-doubles-win-rates-with-crossbeam", srcName: "Crossbeam case study via CaseStudies.com" },
+      { who: "Snowflake and Salesforce", when: "Generally available April 2024",
+        what: "Customer data is created in Salesforce, but many companies analyze it in Snowflake. The two built data sharing that works in both directions without extract-and-load pipelines.",
+        result: "The integration targets a specific, costly workflow: the data engineering work, delays, and scaling limits of moving data between the two platforms.",
+        lesson: "The best integrations remove a job someone is doing by hand today.",
+        src: "https://snowflake.com/blog/bi-directional-data-sharing-snowflake-salesforce-ga", srcName: "Snowflake blog" },
+      { who: "Gorgias", when: "Crossbeam case study",
+        what: "The customer service platform wrote a six-page internal playbook for co-selling, then turned it into a public version for partners. Sellers get automatic Slack alerts when a partner overlaps one of their open deals, plus ready-made message templates.",
+        result: "Partner-influenced deals closed at a rate about 50% higher than other deals, and partnerships came to account for nearly half of revenue.",
+        lesson: "Enablement works when it shows up inside the tools sellers already use.",
+        src: "https://crossbeam.com/resources/case-studies/how-to-increase-your-tech-partner-programs-revenue-by-30", srcName: "Crossbeam case study" },
+      { who: "Vidyard", when: "2019 to 2020, Crossbeam case study",
+        what: "The video platform matched its free users against partners' customer lists. Accounts that fit its ideal profile and had more than three free users were routed to partner reps for warm introductions.",
+        result: "Quarterly partner-sourced pipeline grew from $25K to $350K in a year, and close rates on partner-sourced deals rose from 15–20% to 50–70%.",
+        lesson: "Co-selling is a routing rule: decide which overlaps get a warm intro, then do it every time.",
+        src: "https://crossbeam.com/case-study/how-vidyard-14xd-its-partner-sourced-revenue-using-crossbeam", srcName: "Crossbeam case study" },
+      { who: "Freshworks", when: "Crossbeam case study",
+        what: "The software company compared churn for customers who use integrations against those who don't.",
+        result: "Customers with at least one integration were 30% less likely to churn. Those with five or more were 60–80% less likely.",
+        lesson: "Retention is the number that proves a technology partnership is worth more investment.",
+        src: "https://www.partnerfleet.io/blog/valuable-integration-statistics-to-know", srcName: "Partner Fleet, citing Crossbeam" }
+    ],
+    cloud: [
+      { who: "Databricks on Microsoft Azure", when: "Announced November 2017",
+        what: "Rather than spreading thin across clouds, Databricks and Microsoft spent more than a year building Azure Databricks as a first-party Azure service. Customers create it from the Azure portal, Microsoft handles billing, and it comes with Azure's standard support terms.",
+        result: "It gave Databricks a place inside the Azure buying motion. Microsoft said it had no similar partnership planned at the time.",
+        lesson: "Going deep with one cloud can be worth more than a thin presence on all three.",
+        src: "https://techcrunch.com/2017/11/15/microsoft-makes-databricks-a-first-party-service-on-azure/", srcName: "TechCrunch" },
+      { who: "Google Cloud and seven open-source data companies", when: "April 2019",
+        what: "Google integrated managed services from Confluent, DataStax, Elastic, InfluxData, MongoDB, Neo4j, and Redis Labs into its console, with one bill and one support channel.",
+        result: "Purchases count toward customers' Google Cloud spending commitments, so buying the partner's product no longer competes with the cloud budget.",
+        lesson: "Build the offer so buying you helps the customer use up money they've already committed to the cloud.",
+        src: "https://techcrunch.com/2019/04/09/google-gives-aws-the-open-source-middle-finger/amp", srcName: "TechCrunch" },
+      { who: "AWS ISV Accelerate", when: "Announced December 2020",
+        what: "AWS built a co-sell program for software partners that gives them access to AWS field sellers, priority co-sell support, and listing in an internal solution library AWS sellers use.",
+        result: "AWS says its sales teams receive cash incentives for closing joint opportunities with partners in the program.",
+        lesson: "Cloud sellers engage when the deal pays them, so qualify for the programs that make that happen.",
+        src: "https://aws.amazon.com/about-aws/whats-new/2020/12/isv-accelerate/", srcName: "AWS announcement" },
+      { who: "CrowdStrike", when: "Calendar year 2024",
+        what: "CrowdStrike lined up its resellers, systems integrators, distributors, and managed service providers to transact through AWS Marketplace instead of around it.",
+        result: "Sales through distributors on AWS Marketplace grew 3,548% year over year.",
+        lesson: "Marketplaces and resellers aren't competing routes. Channel private offers let partners sell through the cloud.",
+        src: "https://www.businesswire.com/news/home/20250226733438/en/CrowdStrike-is-the-First-Cloud-Native-Cybersecurity-ISV-to-Exceed-1-Billion-in-Annual-AWS-Marketplace-Sales", srcName: "CrowdStrike press release" },
+      { who: "CrowdStrike", when: "Reported February 2025",
+        what: "CrowdStrike tracked its AWS Marketplace business as its own line: total sales, growth, and how marketplace deals compared with others.",
+        result: "It passed $1 billion in AWS Marketplace sales in a single year, grew 91% year over year, and saw marketplace deals average four times larger.",
+        lesson: "Measure transactions and deal size, not listing views.",
+        src: "https://www.businesswire.com/news/home/20250226733438/en/CrowdStrike-is-the-First-Cloud-Native-Cybersecurity-ISV-to-Exceed-1-Billion-in-Annual-AWS-Marketplace-Sales", srcName: "CrowdStrike press release" }
+    ],
+    gsi: [
+      { who: "Accenture and Anthropic", when: "December 2025",
+        what: "Instead of a loose alliance, Accenture formed a dedicated Accenture Anthropic Business Group and named Anthropic one of its select strategic partners.",
+        result: "The partnership has a named owner inside the GSI, with joint industry offerings planned for financial services, life sciences, healthcare, and the public sector.",
+        lesson: "A GSI partnership needs a home: a named group or practice that owns it.",
+        src: "https://www.businesswire.com/news/home/20251209640751/en/Accenture-and-Anthropic-Launch-Multi-Year-Partnership-to-Drive-Enterprise-AI-Innovation-and-Value-Across-Industries", srcName: "Accenture press release" },
+      { who: "Accenture and AWS", when: "December 2021",
+        what: "The Accenture AWS Business Group, first formed in 2015, built a joint portfolio of 175 assets and nearly 40 co-created solutions across 16 industries.",
+        result: "Each solution packages AWS technology with Accenture services, so the GSI has something billable to sell in every industry it covers.",
+        lesson: "Build offerings with the GSI's services designed in, not licences with consulting bolted on.",
+        src: "https://www.helpnetsecurity.com/2021/12/01/accenture-aws/", srcName: "Help Net Security" },
+      { who: "Accenture and Anthropic", when: "December 2025",
+        what: "Accenture committed to training approximately 30,000 professionals on Claude and making Claude Code available to tens of thousands of its developers. The companies are co-investing in a Claude Center of Excellence.",
+        result: "Anthropic described it as its largest Claude Code deployment to date.",
+        lesson: "Scale enablement until the GSI's people can deliver without calling you.",
+        src: "https://www.businesswire.com/news/home/20251209640751/en/Accenture-and-Anthropic-Launch-Multi-Year-Partnership-to-Drive-Enterprise-AI-Innovation-and-Value-Across-Industries", srcName: "Accenture press release" },
+      { who: "Okta", when: "Q3 fiscal 2025 earnings call, December 2024",
+        what: "Okta's CEO said the company worked with one of the largest systems integrators to scope a deal worth nearly $5 million in annual recurring revenue.",
+        result: "All of Okta's top 10 deals that quarter involved partners, including GSIs, and each was worth more than $1 million in annual contract value.",
+        lesson: "Get into the GSI's deals while the scope is being written, not after.",
+        src: "https://www.fool.com/earnings/call-transcripts/2024/12/04/okta-okta-q3-2025-earnings-call-transcript/", srcName: "Earnings call transcript, The Motley Fool" },
+      { who: "Salesforce ecosystem", when: "IDC study, September 2021",
+        what: "IDC measured what Salesforce's partner ecosystem earns around Salesforce products, including services, apps, and implementation work.",
+        result: "IDC forecast the ecosystem would make $6.19 for every $1 Salesforce makes by 2026.",
+        lesson: "Show GSIs the services revenue your product creates for them. That's the number their leaders track.",
+        src: "https://www.salesforce.com/in/news/press-releases/2021/09/20/idc-salesforce-economy-2021/", srcName: "Salesforce, citing IDC" }
+    ],
+    resell: [
+      { who: "ThreatDown", when: "Reported April 2026",
+        what: "The security vendor shifted to a channel-first model aimed at the mid-market and managed service providers, segments it couldn't cover efficiently on its own.",
+        result: "Business transacted through distribution grew from about 1% to roughly 40% within a year.",
+        lesson: "Recruit partners for the segments your direct team can't reach.",
+        src: "https://www.threatdown.com/press/releases/threatdown-accelerates-channel-first-strategy-grows-distribution-from-1-to-40/", srcName: "ThreatDown press release" },
+      { who: "Sophos", when: "Sophos partner news",
+        what: "Sophos removed all minimum deal sizes from deal registration, so partners can register approved deals of any size.",
+        result: "Registered deals get protection and added discounts on every line item, which makes even small deals worth registering.",
+        lesson: "Make deal registration simple enough that partners use it on every deal.",
+        src: "https://partnernews.sophos.com/en-us/?p=10085", srcName: "Sophos Partner News" },
+      { who: "Fortinet", when: "October 2022",
+        what: "Fortinet built its Network Security Expert program with free self-paced courses, delivered through training centres in more than 130 countries and 26 languages.",
+        result: "It passed 1 million NSE certifications issued.",
+        lesson: "Free, local, self-paced training scales enablement further than any partner team can.",
+        src: "https://fortinet.gcs-web.com/news-releases/news-release-details/fortinet-surpasses-1-million-network-security-expert-nse", srcName: "Fortinet press release" },
+      { who: "Broadcom and VMware (a cautionary example)", when: "January 2024",
+        what: "After closing its VMware acquisition, Broadcom moved roughly 2,000 of the largest accounts to direct sales. Partners could no longer register deals there, and pending registrations without a quote were denied.",
+        result: "Partners told the press they were alarmed by the lack of information, and some looked for other ways to buy and support VMware.",
+        lesson: "When you change who owns a deal, partners remember. Honour registrations and announce changes clearly.",
+        src: "https://channelweb.co.uk/news/4161460/broadcom-takes-vmware-accounts-direct-effective-immediately", srcName: "CRN UK" },
+      { who: "Cisco 360 Partner Program", when: "Launched early 2026",
+        what: "Cisco replaced its 25-year-old partner framework, including the Gold designation, with a Partner Value Index that weighs partners' capabilities, performance, and engagement.",
+        result: "Partner tiers and incentives are now tied to measured value, with incentives earned as partners hit defined milestones.",
+        lesson: "Tier partners by results, not by company size or badges.",
+        src: "https://www.rcrwireless.com/20260127/ai/cisco-360-partner-program", srcName: "RCR Wireless News" }
+    ]
+  };
+
+  // ===========================================================
+  // 2026–27 UPDATES: how each step is shifting with AI agents.
+  // ===========================================================
+  const NEXT = {
+    tech: [
+      "Favour partners whose products your customers' AI agents will need to work with, not only the apps your users switch between.",
+      "Build for agents as well as people: expose actions an AI agent can call, and package the integration into multi-vendor solutions on the marketplaces.",
+      "Make your partner's own team the first customer. People sell what they use every day.",
+      "Join multi-partner deals: bundle with complementary vendors and a services partner, and sell the whole solution as one offer.",
+      "Add agent-driven usage to your integration metrics as customers automate more of their workflows."
+    ],
+    cloud: [
+      "Look at which cloud your customers are building their AI and agent work on. Agent platforms are becoming a new reason customers choose a cloud.",
+      "List multi-product solutions that combine your product, partner products, and services, with milestone or outcome-based billing where the marketplace supports it.",
+      "Write listings for AI-assisted discovery. Buyers increasingly describe their problem in plain language, so lead with the use case you solve.",
+      "Connect your CRM to the cloud's partner portal through its APIs so co-sell referrals sync automatically instead of by spreadsheet.",
+      "Track co-sell's effect on growth, not only marketplace volume. Canalys data cited by AWS links active co-selling to 51% greater revenue growth."
+    ],
+    gsi: [
+      "Pick GSIs that already use AI agents in their own delivery. They'll sell with conviction what they've proven inside their own business.",
+      "Co-design outcome-priced offerings with reusable IP, such as industry-specific agents and accelerators, that the GSI owns and reuses across clients.",
+      "Train mixed teams: domain experts, agent engineers, security specialists, and change managers. Delivery is becoming a blend of people and agents.",
+      "Lead with business outcomes for line-of-business buyers, using transformation roadmaps rather than product pitches.",
+      "Plan for compression. Agents will cut hours on routine work like migration and support, so track the new advisory, build, and run work your product creates. AWS-commissioned research puts partner services at $7.13 for every $1 of AWS sold."
+    ],
+    resell: [
+      "Recruit managed service providers and partners focused on small business and first-time cloud buyers. AWS cites research that 87% of SMBs seek IT guidance, but only 10% have full-time IT staff.",
+      "Automate pricing for small deals with self-serve, partner-defined offers so partners spend their time on complex deals.",
+      "Use AI to personalise enablement: role-based learning paths, and assistants that answer partners' product questions on demand.",
+      "Let resellers sell through the marketplaces. Channel private offers let a partner own the deal while the customer uses committed cloud spend.",
+      "Shift rewards toward recurring managed-service revenue and customer outcomes, not only one-time resale margin."
+    ]
+  };
+
+  const COLORS = { tech: "--tech", cloud: "--cloud", gsi: "--gsi", resell: "--resell" };
+  const openSteps = new Set();
+  const steps = document.getElementById("steps");
+  const tabs = Array.from(document.querySelectorAll('.switch [role="tab"]'));
+
+  function esc(s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
+
+  function render(type, animate) {
+    document.documentElement.style.setProperty("--active", "var(" + COLORS[type] + ")");
+    steps.setAttribute("aria-labelledby", "tab-" + type);
+    tabs.forEach(function (t) {
+      const on = t.dataset.type === type;
+      t.setAttribute("aria-selected", on);
+      t.tabIndex = on ? 0 : -1;
+    });
+    document.querySelectorAll(".play").forEach(function (el) {
+      const i = +el.dataset.step;
+      const s = PLAYBOOK[type][i];
+      const x = EXAMPLES[type][i];
+      const open = openSteps.has(i);
+      const exId = "ex-" + i;
+      el.innerHTML =
+        "<dl>" +
+          "<div><dt>The move</dt><dd>" + esc(s.move) + "</dd></div>" +
+          "<div><dt>Watch for</dt><dd>" + esc(s.watch) + "</dd></div>" +
+          "<div><dt>Measure</dt><dd class=\"metric\">" + esc(s.metric) + "</dd></div>" +
+        "</dl>" +
+        (s.data ? "<p class=\"data\">" + esc(s.data) + "</p>" : "") +
+        "<div class=\"next\"><span class=\"tag\">2026–27</span><p>" + esc(NEXT[type][i]) + "</p></div>" +
+        "<button type=\"button\" class=\"ex-toggle\" aria-expanded=\"" + open + "\" aria-controls=\"" + exId + "\">" +
+          "<span class=\"label\">" + (open ? "Hide example" : "Show example") + "</span><span class=\"chev\" aria-hidden=\"true\"></span>" +
+        "</button>" +
+        "<div class=\"example\" id=\"" + exId + "\"" + (open ? "" : " hidden") + ">" +
+          "<h4>" + esc(x.who) + "</h4>" +
+          "<p class=\"when\">" + esc(x.when) + "</p>" +
+          "<p>" + esc(x.what) + "</p>" +
+          "<p><strong>Result:</strong> " + esc(x.result) + "</p>" +
+          "<p class=\"lesson\">" + esc(x.lesson) + "</p>" +
+          "<p class=\"src\">Source: <a href=\"" + x.src + "\" target=\"_blank\" rel=\"noopener\">" + esc(x.srcName) + "</a></p>" +
+        "</div>";
+      el.querySelector(".ex-toggle").addEventListener("click", function () {
+        const box = el.querySelector(".example");
+        const nowOpen = box.hidden;
+        box.hidden = !nowOpen;
+        this.setAttribute("aria-expanded", nowOpen);
+        this.querySelector(".label").textContent = nowOpen ? "Hide example" : "Show example";
+        if (nowOpen) openSteps.add(i); else openSteps.delete(i);
+      });
+      if (animate) { el.classList.remove("swap"); void el.offsetWidth; el.classList.add("swap"); }
+    });
+  }
+
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { render(t.dataset.type, true); });
+    t.addEventListener("keydown", function (e) {
+      let j = null;
+      if (e.key === "ArrowRight") j = (i + 1) % tabs.length;
+      if (e.key === "ArrowLeft")  j = (i - 1 + tabs.length) % tabs.length;
+      if (j !== null) { e.preventDefault(); tabs[j].focus(); render(tabs[j].dataset.type, true); }
+    });
+  });
+
+  document.querySelectorAll("[data-pick]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      render(b.dataset.pick, true);
+      document.getElementById("process").scrollIntoView();
+    });
+  });
+
+  render("tech", false);
+
+  // ---------- Crawl, walk, run ----------
+  // Timeframes and staffing are rough guides for a mid-size partner team.
+  const STAGES = [
+    { name: "Crawl: assistants for every person",
+      lead: "People do the work. AI helps each person do it faster.",
+      agents: "Research partners and accounts, prepare for meetings, summarise calls, and write first drafts of emails and briefs.",
+      people: "Everyone on the team uses an assistant every day. One volunteer champion spends 2–4 hours a week collecting what works into a shared library of prompts.",
+      data: "Nothing connected yet. People paste in what's needed, and confidential partner data stays out of any tool your company hasn't approved.",
+      measure: "Hours saved per person per week, and whether drafts need less rework.",
+      next: "Everyone uses it weekly, and you can name two or three repeated tasks worth handing to an agent.",
+      invest: "AI assistant licences for the team, often already included in tools you pay for, plus about an hour a week of practice per person in the first month. No engineering work." },
+    { name: "Walk: agents run workflows, people approve",
+      lead: "Agents do the work for two or three defined workflows. A person checks every output before it goes anywhere.",
+      agents: "Route new account overlaps to the right rep each week, build meeting briefs from CRM data, draft quarterly reviews, and answer partners' product questions from your enablement content.",
+      people: "A partner operations owner spends about half their time running the agents. Partner managers review and approve outputs.",
+      data: "Read-only connections to your CRM, account-mapping tool, and enablement library.",
+      measure: "Cycle times, such as days from overlap to introduction, plus partner response times and how often approvers have to fix the output.",
+      next: "Approvers rarely change the output, and the errors that do occur are small and caught.",
+      invest: "Usage-based AI costs, a security and legal review, and roughly four to eight weeks of setup per workflow." },
+    { name: "Run: agents act within limits",
+      lead: "Connected agents act across your systems on their own, within clear limits. People handle relationships and judgment calls.",
+      agents: "Sync co-sell referrals with cloud partner portals through their APIs, score partner health every week and alert managers, process deal registrations, and serve partners directly through a self-service enablement agent.",
+      people: "Dedicated partner operations and AI engineering capacity, about one or two people for a mid-size program, to build, monitor, and improve the agents. Partner managers spend the time they get back with partners.",
+      data: "Two-way connections to your CRM, partner portals, and marketplaces, with permissions and an audit log for every action.",
+      measure: "Partner-sourced pipeline per partner manager, partner satisfaction, and cost to support each partner.",
+      next: "Keep reviewing what agents are allowed to do. Anything a partner or customer sees still gets a human check when the stakes are high.",
+      invest: "Integration work with your CRM and cloud partner APIs, monitoring and quality testing of agent output, ongoing usage costs, and a quarterly review of agent permissions." }
+  ];
+  const crwTabs = Array.from(document.querySelectorAll(".crw-track [role=tab]"));
+  const crwPanel = document.getElementById("crw-panel");
+  function showStage(i, animate) {
+    const s = STAGES[i];
+    crwTabs.forEach(function (t, j) { t.setAttribute("aria-selected", i === j); t.tabIndex = i === j ? 0 : -1; });
+    crwPanel.setAttribute("aria-labelledby", "crw-tab-" + i);
+    crwPanel.innerHTML =
+      "<h4>" + esc(s.name) + "</h4><p class=\"lead\">" + esc(s.lead) + "</p>" +
+      "<dl class=\"crw-rows\">" +
+        "<div><dt>What AI does</dt><dd>" + esc(s.agents) + "</dd></div>" +
+        "<div><dt>People</dt><dd>" + esc(s.people) + "</dd></div>" +
+        "<div><dt>Data</dt><dd>" + esc(s.data) + "</dd></div>" +
+        "<div><dt>Measure</dt><dd>" + esc(s.measure) + "</dd></div>" +
+        "<div class=\"invest\"><dt>Investment</dt><dd>" + esc(s.invest) + "</dd></div>" +
+        "<div><dt>" + (i < 2 ? "Ready for the next stage when" : "Keep in mind") + "</dt><dd>" + esc(s.next) + "</dd></div>" +
+      "</dl>" +
+      "<p class=\"crw-note\">Timeframes and staffing are rough guides for a mid-size partner team. Adjust them for yours.</p>";
+    if (animate) { crwPanel.classList.remove("swap"); void crwPanel.offsetWidth; crwPanel.classList.add("swap"); }
+  }
+  crwTabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { showStage(i, true); });
+    t.addEventListener("keydown", function (e) {
+      let j = null;
+      if (e.key === "ArrowRight") j = (i + 1) % crwTabs.length;
+      if (e.key === "ArrowLeft")  j = (i - 1 + crwTabs.length) % crwTabs.length;
+      if (j !== null) { e.preventDefault(); crwTabs[j].focus(); showStage(j, true); }
+    });
+  });
+  showStage(0, false);
+
+  // ---------- "Is this partner any good?" checklist ----------
+  const checks = Array.from(document.querySelectorAll("#checklist input"));
+  const verdict = document.getElementById("verdict");
+  checks.forEach(function (c) {
+    c.addEventListener("change", function () {
+      const n = checks.filter(function (x) { return x.checked; }).length;
+      let msg;
+      if (n === 0) msg = "0 of 6. Tick the traits this partner has.";
+      else if (n === 6) msg = "<b>6 of 6.</b> Recommend them with confidence.";
+      else if (n === 5) msg = "<b>5 of 6.</b> A solid partner. Ask them about the missing trait.";
+      else msg = "<b>" + n + " of 6.</b> Talk to them about the gaps before you recommend them to a customer.";
+      verdict.innerHTML = msg;
+    });
+  });
+
+  // ---------- Partner health check ----------
+  const healthBox = document.getElementById("health-result");
+  const healthState = document.getElementById("health-state");
+  const healthAction = document.getElementById("health-action");
+  function val(name) { const el = document.querySelector('input[name="' + name + '"]:checked'); return el ? +el.value : null; }
+  function updateHealth() {
+    const e = val("eng"), c = val("cap"), p = val("perf");
+    if (e === null || c === null || p === null) {
+      const left = [e, c, p].filter(function (v) { return v === null; }).length;
+      healthBox.dataset.state = "none";
+      healthState.textContent = "Rate " + left + " more area" + (left > 1 ? "s" : "");
+      healthAction.textContent = "Your result and a recommended next step will appear here.";
+      return;
+    }
+    const sum = e + c + p;
+    let state, text;
+    if (sum <= 2 || (p === 0 && e === 0)) {
+      state = "red";
+      text = "Step in now. Have an executive-to-executive conversation about whether this partnership still makes sense. If it doesn't, wind it down gracefully and move the effort to healthier partners.";
+    } else if (sum >= 5 && e > 0 && c > 0 && p > 0) {
+      state = "green";
+      text = "Recognise them publicly, give them first look at new opportunities, and invest more: joint planning, funding, and executive time.";
+    } else {
+      state = "yellow";
+      if (p === 2 && e < 2) text = "The results are there, but engagement is slipping. Call them this month and bring in your executive sponsor before the pipeline follows.";
+      else if (e === 2 && p < 2) text = "They're active but not winning yet. Review their open deals together and offer targeted enablement or co-funding on one or two accounts.";
+      else if (c === 0) text = "They aren't investing in your product. Ask what would justify a dedicated team, and offer certification support to get one started.";
+      else text = "The signals are mixed. Book a check-in to find out what has changed, and agree on one improvement to show by next quarter.";
+    }
+    healthBox.dataset.state = state;
+    healthState.textContent = { green: "Healthy", yellow: "Worth watching", red: "At risk" }[state];
+    healthAction.textContent = text;
+  }
+  document.querySelectorAll('.seg input').forEach(function (r) { r.addEventListener("change", updateHealth); });
+
+  // Point booking and LinkedIn buttons at the URLs in LINKS.
+  document.querySelectorAll("[data-link]").forEach(function (el) {
+    const url = LINKS[el.dataset.link];
+    if (url && url.indexOf("REPLACE-ME") === -1) { el.href = url; el.target = "_blank"; el.rel = "noopener"; }
+  });
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
