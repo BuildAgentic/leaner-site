@@ -6,7 +6,15 @@
 <title>The Partner Line | leaner.app</title>
 <meta name="description" content="A field guide to running partner programs with technology companies, hyperscalers and marketplaces, GSIs, and resellers. One five-step process, a different playbook for each.">
 <meta property="og:title" content="The Partner Line">
-<meta property="og:description" content="One process. Four kinds of partners. A field guide for partner leaders.">
+<meta property="og:description" content="One process. Four kinds of partners. A field guide for partner leaders, by Andrew Mackenzie.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://leaner.app/">
+<meta property="og:image" content="https://leaner.app/social.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Partner Line: one process, four kinds of partners. A field guide by Andrew Mackenzie.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="Andrew Mackenzie">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
@@ -49,7 +57,7 @@
   a { color: inherit; }
   :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
   .wrap { max-width: 1120px; margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
-  main > section.wrap { padding-top: 64px; padding-bottom: 64px; }
+  main > section.wrap { padding-top: 52px; padding-bottom: 52px; }
 
   h2 {
     font-stretch: 125%; font-weight: 800; letter-spacing: -0.01em;
@@ -69,11 +77,24 @@
 
   /* ---------- Top ---------- */
   .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 22px; padding-bottom: 22px; }
-  .wordmark { font-stretch: 125%; font-weight: 800; font-size: 19px; text-decoration: none; }
-  .top nav { display: flex; align-items: center; gap: 22px; font-size: 16px; }
-  .top nav a:not(.btn) { text-decoration: none; color: var(--muted); }
-  .top nav a:not(.btn):hover { color: var(--ink); }
-  .top .btn { padding: 9px 16px; font-size: 15px; }
+  .wordmark { white-space: nowrap; font-stretch: 125%; font-weight: 800; font-size: 19px; text-decoration: none; }
+  .top { position: relative; z-index: 20; }
+  .top nav { display: flex; align-items: center; gap: 20px; font-size: 16px; }
+  .menu { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; }
+  .menu a { text-decoration: none; color: var(--muted); white-space: nowrap; }
+  .menu a:hover { color: var(--ink); }
+  .menu-btn {
+    display: none; align-items: center; gap: 8px; font: inherit; font-size: 15px; font-weight: 700;
+    color: var(--ink); background: var(--surface); border: 2px solid var(--rule); border-radius: 999px;
+    padding: 7px 14px; cursor: pointer;
+  }
+  .menu-btn .bars, .menu-btn .bars::before, .menu-btn .bars::after {
+    display: block; width: 16px; height: 2px; background: currentColor; border-radius: 1px; position: relative;
+  }
+  .menu-btn .bars::before, .menu-btn .bars::after { content: ""; position: absolute; left: 0; }
+  .menu-btn .bars::before { top: -5px; } .menu-btn .bars::after { top: 5px; }
+  .menu-btn[aria-expanded="true"] { border-color: var(--ink); }
+  .top .btn { padding: 9px 16px; font-size: 15px; white-space: nowrap; }
 
   /* ---------- Hero ---------- */
   main > section.wrap.hero { padding-top: clamp(40px, 7vw, 88px); padding-bottom: 24px; }
@@ -82,7 +103,10 @@
     line-height: .96; letter-spacing: -0.02em; margin: 0 0 24px; max-width: 11em;
   }
   .hero .lede { font-size: clamp(19px, 2.1vw, 22px); max-width: 36em; margin: 0 0 8px; }
-  .hero .byline { color: var(--muted); font-size: 16px; margin: 0; }
+  .hero .byline { color: var(--muted); font-size: 16px; margin: 0 0 22px; max-width: 46em; }
+  .hero .byline b { color: var(--ink); font-weight: 700; }
+  .hero .byline .updated { display: block; margin-top: 4px; font-size: 14px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
   .map { position: relative; margin: 48px 0 0; }
   .map svg { display: block; width: 100%; height: auto; overflow: visible; }
@@ -333,18 +357,36 @@
   .crw-note { margin: 18px 0 0; font-size: 13px; color: var(--muted); }
   .crw-panel.swap { animation: swap .28s ease-out; }
 
+  /* ---------- About the numbers ---------- */
+  .numbers-note { margin: 22px 0 0; max-width: 48em; font-size: 15px; color: var(--muted); }
+  .numbers-note b { color: var(--ink); }
+
+  /* ---------- From the field ---------- */
+  .notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .note {
+    background: var(--surface); border: 2px solid var(--rule); border-radius: 16px;
+    padding: 22px 24px 24px; border-top: 8px solid var(--c);
+  }
+  .note:last-child { grid-column: 1 / -1; }
+  .note-type { margin: 0 0 8px; font-size: 14px; font-weight: 700; color: var(--muted); }
+  .note h3 { font-stretch: 112%; font-weight: 800; font-size: 22px; line-height: 1.2; margin: 0 0 12px; }
+  .note p { margin: 0; font-size: 16px; max-width: 46em; }
+  .note p.note-type { margin: 0 0 8px; font-size: 14px; }
+
   /* ---------- Author ---------- */
   .author {
     background: var(--ink); color: var(--paper); border-radius: 22px; padding: clamp(32px, 6vw, 64px);
-    display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 40px; align-items: end;
+    display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 48px; align-items: center;
   }
   .author h2 { color: var(--paper); }
   .author p { margin: 0 0 14px; max-width: 34em; color: color-mix(in srgb, var(--paper) 80%, transparent); }
   .author .btn { background: var(--paper); color: var(--ink); border-color: var(--paper); }
   .author .btn:hover { background: transparent; color: var(--paper); }
-  .author .creds { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 16px; }
+  .author .creds { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; font-size: 16px; line-height: 1.5; }
   .author .creds li { padding-left: 22px; position: relative; color: color-mix(in srgb, var(--paper) 88%, transparent); }
   .author .creds li::before { content: ""; position: absolute; left: 0; top: .5em; width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+  .author .creds b { color: var(--paper); font-weight: 750; }
+  .author .btn { margin-top: 10px; }
 
   /* ---------- Footer ---------- */
   footer { padding: 40px 0 56px; color: var(--muted); font-size: 14px; }
@@ -361,6 +403,7 @@
     .stat:nth-child(n+3) { border-top: 1px solid var(--rule); }
     .currencies { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .shifts { grid-template-columns: 1fr; gap: 32px; }
+    .notes { grid-template-columns: 1fr; }
     .health { grid-template-columns: 1fr; }
     .agent-grid { grid-template-columns: 1fr; }
     .uses { grid-template-columns: 1fr; }
@@ -374,17 +417,30 @@
   @media (max-width: 1100px) {
     .currencies { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
-  @media (max-width: 1000px) {
-    .top nav a:not(.btn) { display: none; }
+  /* Header menu: a dropdown at every width */
+  .menu-btn { display: inline-flex; }
+  .menu {
+    display: none; position: absolute; right: var(--gutter); top: calc(100% - 8px);
+    flex-direction: column; gap: 0; min-width: 220px; padding: 8px;
+    background: var(--surface); border: 2px solid var(--rule); border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(19, 33, 58, .12);
   }
+  .menu.open { display: flex; }
+  .menu a { display: block; padding: 10px 12px; border-radius: 8px; color: var(--ink); font-weight: 600; }
+  .menu a:hover, .menu a:focus-visible { background: var(--paper); }
+  
   @media (max-width: 600px) {
     body { font-size: 17px; }
+    .top nav { gap: 8px; }
+    .wordmark { font-size: 17px; }
+    .menu-btn { padding: 9px 11px; min-height: 40px; }
+    .menu-btn .label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .top .btn { padding: 8px 12px; font-size: 14px; }
     .crw { padding: 4px 14px 20px; }
     .crw-track b { font-size: 17px; }
     .crw-track .pill { min-width: 0; width: 100%; padding: 8px 6px; }
     .crw-track button { padding-left: 3px; padding-right: 3px; }
     .crw-track small { font-size: 12px; }
-    .top nav a:not(.btn) { display: none; }
     .currencies { grid-template-columns: 1fr; }
     .stats { grid-template-columns: 1fr; }
     .stat, .stat + .stat { padding-left: 0; border-left: 0; }
@@ -415,19 +471,24 @@
 -->
 <script>
   const LINKS = {
-    booking:  "https://calendar.app.google/REPLACE-ME",   // Google Calendar appointment schedule link
-    linkedin: "https://www.linkedin.com/in/REPLACE-ME"
+    booking:  "https://calendar.app.google/w9PPLoudVmExDP4T6",   // Google Calendar appointment schedule link
+    linkedin: "https://www.linkedin.com/in/andrewmackenzie1"
   };
 </script>
 
 <header class="wrap top">
   <a class="wordmark" href="#top">The Partner Line</a>
   <nav aria-label="Main">
-    <a href="#shifts">What's changing</a>
-    <a href="#currencies">Partner types</a>
-    <a href="#process">The process</a>
-    <a href="#health">Health check</a>
-    <a href="#agents">Agents</a>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="menu"><span class="bars" aria-hidden="true"></span><span class="label">Menu</span></button>
+    <ul class="menu" id="menu">
+      <li><a href="#currencies">Partner types</a></li>
+      <li><a href="#process">The process</a></li>
+      <li><a href="#field">From the field</a></li>
+      <li><a href="#health">Health check</a></li>
+      <li><a href="#shifts">What's changing</a></li>
+      <li><a href="#agents">Agents</a></li>
+      <li><a href="#author">About me</a></li>
+    </ul>
     <a class="btn" data-link="booking" href="#author">Book a call</a>
   </nav>
 </header>
@@ -436,8 +497,12 @@
 
   <section class="wrap hero" aria-labelledby="hero-title">
     <h1 id="hero-title">One process. Four kinds of partners.</h1>
-    <p class="lede">A field guide to running partner programs with technology companies, hyperscalers and marketplaces, global systems integrators, and resellers. The five steps stay the same. What you do at each step changes with who you're partnering with, and with how AI agents are reshaping partnering in 2026 and 2027.</p>
-    <p class="byline">By Andrew Mackenzie</p>
+    <p class="lede">A field guide to running partner programs with technology companies, hyperscalers and marketplaces, GSIs, and resellers. The five steps stay the same. What you do at each one depends on the partner, and on how AI agents are changing partnering in 2026 and 2027.</p>
+    <p class="byline">By <b>Andrew Mackenzie</b>, who has built partner programs with Google Cloud, Accenture, and AI companies including Anthropic and OpenAI. <span class="updated">Last updated October 2026.</span></p>
+    <div class="actions">
+      <a class="btn" href="#currencies">Start with the big idea</a>
+      <a class="btn ghost" href="#author">About me</a>
+    </div>
 
     <div class="map" aria-hidden="true">
       <svg viewBox="0 0 1000 240" role="img">
@@ -469,95 +534,27 @@
     </ul>
   </section>
 
-  <section class="wrap" aria-labelledby="why-title">
+  <section class="wrap" id="why" aria-labelledby="why-title">
     <h2 id="why-title">Why partners decide who wins</h2>
     <p class="intro">Most technology is now bought through, with, or alongside a partner. Getting the program right is no longer a side project.</p>
     <div class="stats">
       <div class="stat"><b>70%</b><p>of global IT spend in 2025 goes to, through, or with channel partners.</p><small>Canalys, 2025 <sup>1</sup></small></div>
-      <div class="stat"><b>$163B</b><p>forecast yearly spend through hyperscaler marketplaces by 2030, up from $16B in 2023.</p><small>Canalys / Omdia <sup>2, 3</sup></small></div>
-      <div class="stat"><b>59%</b><p>of that marketplace spend is expected to flow through channel partners by 2030.</p><small>Canalys / Omdia, 2025 <sup>2</sup></small></div>
-      <div class="stat"><b>58%</b><p>less likely to churn: customers who use a product's integrations.</p><small>Crossbeam, 2023 <sup>4</sup></small></div>
+      <div class="stat"><b>19.6%</b><p>of enterprise software spend already goes through cloud marketplaces, according to a survey of 833 buyers.</p><small>Futurum, 2026 <sup>8</sup></small></div>
+      <div class="stat"><b>$163B</b><p>forecast yearly spend through hyperscaler marketplaces by 2030, up from $16B in 2023, with 59% expected to flow through channel partners.</p><small>Canalys / Omdia <sup>2, 3</sup></small></div>
+      <div class="stat"><b>58%</b><p>less likely to churn: customers who use a product's integrations.</p><small>Crossbeam vendor survey, 2023 <sup>4</sup></small></div>
     </div>
-  </section>
-
-  <section class="wrap" id="shifts" aria-labelledby="shifts-title">
-    <h2 id="shifts-title">What's changing in 2026 and 2027</h2>
-    <p class="intro">AI agents are changing what partners sell, how they price it, and how customers find it. Seven shifts every partner leader should plan for, whichever partner type you work with.</p>
-    <ol class="shifts">
-      <li class="shift">
-        <div class="from-to">
-          <span class="from">Reselling licences and running projects</span>
-          <span class="track" aria-hidden="true"></span>
-          <span class="to">Delivering outcomes with AI agents</span>
-        </div>
-        <p>Partners are adding AI and agents to every service line. Routine work such as migration and support gets cheaper as agents take more of it on, while new work opens up in designing, building, and running agents for customers.</p>
-        <p class="fact">82% of AWS partners already deliver some form of AI to customers. <span>Omdia 2025, via AWS <sup>5</sup></span></p>
-      </li>
-      <li class="shift">
-        <div class="from-to">
-          <span class="from">Hourly rates and fixed fees</span>
-          <span class="track" aria-hidden="true"></span>
-          <span class="to">Pricing tied to business outcomes</span>
-        </div>
-        <p>Customers want partners to share the risk. Build offers where you and your partner are paid against a business result, and pitch them to line-of-business leaders, not only IT.</p>
-        <p class="fact">Outcome-based pricing doubled from 18% to 36% of engagements, while fixed-price work fell from 49% to 29%. 75% of line-of-business buyers say partner relationships are essential. <span>IDC, via AWS <sup>5</sup></span></p>
-      </li>
-      <li class="shift">
-        <div class="from-to">
-          <span class="from">One vendor, one listing</span>
-          <span class="track" aria-hidden="true"></span>
-          <span class="to">Multi-vendor solutions sold as one</span>
-        </div>
-        <p>Cloud marketplaces now sell bundles that combine several vendors' products with professional services, billed by milestone or outcome. The winning offer is often a solution assembled by three or four partners.</p>
-        <p class="fact">AWS Marketplace added multi-product solutions and variable payments for services in late 2025. <span>AWS <sup>5</sup></span></p>
-      </li>
-      <li class="shift">
-        <div class="from-to">
-          <span class="from">Buyers searching and booking demos</span>
-          <span class="track" aria-hidden="true"></span>
-          <span class="to">Buyers asking an AI assistant</span>
-        </div>
-        <p>Marketplaces are adding conversational discovery, where buyers describe their problem in plain language and get matched to solutions. Listings and documentation now need to answer use-case questions directly, for people and for AI.</p>
-        <p class="fact">AWS Marketplace launched an AI-powered "agent mode" for discovery in late 2025. <span>AWS <sup>5</sup></span></p>
-      </li>
-      <li class="shift">
-        <div class="from-to">
-          <span class="from">Partners selling your product</span>
-          <span class="track" aria-hidden="true"></span>
-          <span class="to">Partners building IP on your product</span>
-        </div>
-        <p>The strongest partners package their know-how into reusable, industry-specific agents and accelerators that they own and list on marketplaces. Help them build that IP on your platform: it raises their margin and makes your product harder to replace.</p>
-      </li>
-      <li class="shift">
-        <div class="from-to">
-          <span class="from">Spreadsheets and partner portals</span>
-          <span class="track" aria-hidden="true"></span>
-          <span class="to">Connected, AI-run partner operations</span>
-        </div>
-        <p>Cloud partner portals now offer APIs that connect to your CRM, so co-sell referrals, funding requests, and listings sync automatically. Be your own first customer: run your partner team on the AI tools you ask partners to sell.</p>
-        <p class="fact">Partners that actively co-sell with AWS see 51% greater revenue growth. <span>Canalys, via AWS <sup>5</sup></span></p>
-      </li>
-      <li class="shift">
-        <div class="from-to">
-          <span class="from">Closing the deal and moving on</span>
-          <span class="track" aria-hidden="true"></span>
-          <span class="to">Driving usage after the sale</span>
-        </div>
-        <p>When customers pay for what they use, such as API calls, tokens, or compute, a signed contract only buys access. Revenue arrives as usage grows. Partners earn their place by staying after go-live: helping customers adopt, finding the next use case, and measuring results like time saved rather than logins.</p>
-        <p>AI is arriving faster than most customers can absorb it. The partners who close that gap become hard to replace.</p>
-      </li>
-    </ol>
+    <p class="numbers-note"><b>About the numbers.</b> A lot of partner research is paid for by the clouds and software vendors who benefit from it. Wherever that's the case, I've said so. Treat those figures as a sign of direction, not proof, and lean on your own data where you have it.</p>
   </section>
 
   <section class="wrap" id="currencies" aria-labelledby="cur-title">
     <h2 id="cur-title">Find their currency first</h2>
-    <p class="intro">Every partner type gets paid in something different. A program works when your offer helps them earn more of it. If you only remember one idea from this page, make it this one.</p>
+    <p class="intro">Every partner type gets paid in something different. In my experience, a program works when your offer helps them earn more of it, and stalls when it doesn't. If you only remember one idea from this page, make it this one.</p>
     <div class="currencies">
       <article class="cur" style="--c:var(--tech)">
         <h3>Technology partners</h3>
         <p class="paid">Retention</p>
         <p class="paid-label">What they're paid in</p>
-        <p class="need">An integration that makes their product harder to leave and easier to sell.</p>
+        <p class="need">An integration that makes their product harder to leave, plus introductions to your customers that fill their pipeline.</p>
         <button type="button" data-pick="tech">See their playbook</button>
       </article>
       <article class="cur" style="--c:var(--cloud)">
@@ -576,9 +573,9 @@
       </article>
       <article class="cur" style="--c:var(--resell)">
         <h3>Resellers</h3>
-        <p class="paid">Margin</p>
+        <p class="paid">Profit</p>
         <p class="paid-label">What they're paid in</p>
-        <p class="need">Healthy margin on deals they find, protected so your direct team can't take them.</p>
+        <p class="need">Margin on the deals they find, and increasingly recurring revenue from managing the customer afterwards. Both need protecting from your direct team.</p>
         <button type="button" data-pick="resell">See their playbook</button>
       </article>
     </div>
@@ -586,7 +583,7 @@
 
   <section class="wrap" id="process" aria-labelledby="proc-title">
     <h2 id="proc-title">The five-step process</h2>
-    <p class="intro">Pick a partner type to see the playbook for it. Each step has one move to make, one trap to avoid, one number to watch, what's changing for 2026–27, and a real company that did it.</p>
+    <p class="intro">These are the plays I'd run. Pick a partner type to see its playbook: each step has one move to make, one trap to avoid, one number to watch, what's changing for 2026–27, and a real company that did it.</p>
 
     <div class="switch" role="tablist" aria-label="Partner type">
       <button role="tab" id="tab-tech"   data-type="tech"   style="--c:var(--tech)"   aria-selected="true"  aria-controls="steps">Technology</button>
@@ -647,9 +644,47 @@
     </ol>
   </section>
 
+  <!--
+    ===========================================================
+    FROM THE FIELD: opinion notes in Andrew's voice.
+    Drafts to edit. Each <article> is one note; delete or copy freely.
+    ===========================================================
+  -->
+  <section class="wrap" id="field" aria-labelledby="field-title">
+    <h2 id="field-title">From the field</h2>
+    <p class="intro">Opinions from more than a decade of building partner programs. You may see it differently, and that's exactly what the call button is for.</p>
+    <div class="notes">
+      <article class="note" style="--c:var(--gsi)">
+        <p class="note-type">GSIs</p>
+        <h3>A GSI partnership isn't real until someone's number depends on it</h3>
+        <p>Global agreements are easy to sign and easy to ignore. The partnerships I've seen work had one thing in common: a practice leader inside the integrator whose targets moved when our joint business grew. Find that person before you sign anything, build the business case around their goals rather than yours, and fund their first few engagements if you need to. Logos on a slide don't move pipeline. People with targets do.</p>
+      </article>
+      <article class="note" style="--c:var(--cloud)">
+        <p class="note-type">Hyperscalers</p>
+        <h3>Cloud sellers don't need your pitch. They need to know how you help their number.</h3>
+        <p>Most ISVs walk into a cloud provider with a product deck. The account teams I worked with cared about one thing: whether a deal drew down a customer's committed spend and counted toward their goals. Lead with that, in their language. Make the marketplace private offer the default way you transact, show up in their account planning, and be the partner who makes their quarter easier.</p>
+      </article>
+      <article class="note" style="--c:var(--tech)">
+        <p class="note-type">Technology partners</p>
+        <h3>Ship the integration before the press release</h3>
+        <p>In AI especially, there's pressure to announce partnerships fast. I'd rather launch something small that people actually switch on than a big announcement nobody uses. Pick the one workflow where both products touch, ship it, and watch activation. Co-marketing works far better when you can point to real users, and it gives both sides a reason to invest in what comes next.</p>
+      </article>
+      <article class="note" style="--c:var(--resell)">
+        <p class="note-type">Channel</p>
+        <h3>Your first few channel partners teach you more than the next hundred</h3>
+        <p>When you build a channel program from scratch, the temptation is to recruit widely and see who sticks. I'd start narrow: a handful of partners you work alongside closely. They'll show you how your product really gets sold, where deals stall, and what enablement they need. Write the playbook from what they teach you, then scale. Recruiting before you have a playbook just multiplies the confusion.</p>
+      </article>
+      <article class="note" style="--c:var(--ink)">
+        <p class="note-type">Every partner type</p>
+        <h3>Your hardest partner is your own sales team</h3>
+        <p>Most partner programs don't fail with the partner. They fail inside your own company, when direct reps see partners as competition for the same deal. Fix the incentives first: make sure your sellers win when a partner is involved, get a senior sponsor to back the program in public, and share partner wins internally as loudly as external ones. A partner team can't out-run its own sales compensation plan.</p>
+      </article>
+    </div>
+  </section>
+
   <section class="wrap" id="health" aria-labelledby="health-title">
     <h2 id="health-title">Check a partner's health</h2>
-    <p class="intro">Most partnerships fade quietly before they fail. Rate one partner on three areas to see whether it's healthy, worth watching, or at risk, and what to do next. Review your partners this way every quarter.</p>
+    <p class="intro">Most partnerships fade quietly before they fail. This is the quick check I use: rate one partner on three areas to see whether it's healthy, worth watching, or at risk, and what to do next. The scoring is a rule of thumb, not a formula. Run it every quarter.</p>
 
     <div class="health">
       <div class="areas">
@@ -688,6 +723,58 @@
         <p class="action" id="health-action">Your result and a recommended next step will appear here.</p>
       </div>
     </div>
+  </section>
+
+  <section class="wrap" id="shifts" aria-labelledby="shifts-title">
+    <h2 id="shifts-title">What's changing in 2026 and 2027</h2>
+    <p class="intro">AI agents are changing what partners sell, how they price it, and how customers find it. These are the five shifts I'd plan for, whichever partner type you work with.</p>
+    <ol class="shifts">
+      <li class="shift">
+        <div class="from-to">
+          <span class="from">Reselling licences and running projects</span>
+          <span class="track" aria-hidden="true"></span>
+          <span class="to">Delivering outcomes with AI agents</span>
+        </div>
+        <p>Partners are adding AI and agents to every service line. Routine work such as migration and support gets cheaper as agents take more of it on, while new work opens up in designing, building, and running agents for customers.</p>
+        <p class="fact">82% of AWS partners already deliver some form of AI to customers. <span>Omdia 2025, via AWS <sup>5</sup></span></p>
+      </li>
+      <li class="shift">
+        <div class="from-to">
+          <span class="from">Hourly rates and fixed fees</span>
+          <span class="track" aria-hidden="true"></span>
+          <span class="to">Pricing tied to business outcomes</span>
+        </div>
+        <p>Customers want partners to share the risk. Build offers where you and your partner are paid against a business result, and pitch them to line-of-business leaders, not only IT.</p>
+        <p class="fact">Outcome-based pricing doubled from 18% to 36% of engagements, while fixed-price work fell from 49% to 29%. 75% of line-of-business buyers say partner relationships are essential. <span>IDC, via AWS <sup>5</sup></span></p>
+      </li>
+      <li class="shift">
+        <div class="from-to">
+          <span class="from">One vendor, one listing, found by search</span>
+          <span class="track" aria-hidden="true"></span>
+          <span class="to">Multi-vendor solutions, found by AI</span>
+        </div>
+        <p>Cloud marketplaces now sell bundles that combine several vendors' products with professional services, billed by milestone or outcome. Buyers increasingly find them by describing their problem to an AI assistant. The winning offer is often assembled by three or four partners, and its listing has to answer use-case questions directly, for people and for AI.</p>
+        <p class="fact">AWS Marketplace added multi-product solutions, variable payments for services, and an AI "agent mode" for discovery in late 2025. <span>AWS <sup>5</sup></span></p>
+        <p class="fact">Google Cloud's agent finder matches buyers to partner agents in plain language, and agents can be priced by outcome, such as per support ticket resolved. <span>Google Cloud, Oct 2025 <sup>12</sup></span></p>
+      </li>
+      <li class="shift">
+        <div class="from-to">
+          <span class="from">Partners selling your product</span>
+          <span class="track" aria-hidden="true"></span>
+          <span class="to">Partners building IP on your product</span>
+        </div>
+        <p>The strongest partners package their know-how into reusable, industry-specific agents and accelerators that they own and list on marketplaces. Help them build that IP on your platform: it raises their margin and makes your product harder to replace.</p>
+      </li>
+      <li class="shift">
+        <div class="from-to">
+          <span class="from">Closing the deal and moving on</span>
+          <span class="track" aria-hidden="true"></span>
+          <span class="to">Driving usage after the sale</span>
+        </div>
+        <p>When customers pay for what they use, such as API calls, tokens, or compute, a signed contract only buys access. Revenue arrives as usage grows. AI is arriving faster than most customers can absorb it, so the partners who stay after go-live, help customers adopt, and find the next use case become hard to replace.</p>
+        <p class="fact">Helping customers adopt and manage Google Cloud accounts for 35% of the partner services opportunity around it. AI projects typically move from pilot to production in year three. <span>Canalys, commissioned by Google Cloud, 2025 <sup>9</sup></span></p>
+      </li>
+    </ol>
   </section>
 
   <section class="wrap" id="agents" aria-labelledby="agents-title">
@@ -753,13 +840,15 @@
     <div class="author">
       <div>
         <h2 id="author-title">Want to compare notes?</h2>
-        <p>I'm Andrew Mackenzie. I spent seven years at Snyk building partner programs across all four of these partner types. If you're designing or fixing a partner program, I'm happy to brainstorm. Pick a 30-minute slot that suits you.</p>
+        <p>I'm Andrew Mackenzie. For more than a decade I've built partner programs at Snyk, 360pi, and Phreesia, and advised early-stage SaaS companies on partner strategy. Together, that work covers all four partner types on this page.</p>
+        <p>If you're designing or fixing a partner program, I'm happy to brainstorm. Pick a 30-minute slot that suits you.</p>
         <a class="btn" data-link="booking" href="#author">Book a call</a>
       </div>
       <ul class="creds">
-        <li style="--c:var(--gsi)">Led global GSI alliances, including Accenture, Deloitte, and TCS</li>
-        <li style="--c:var(--cloud)">Ran AWS Marketplace co-sell</li>
-        <li style="--c:var(--tech)">Built partnerships and integrations with AI coding tools, including Anthropic, Cursor, Devin, and Factory</li>
+        <li style="--c:var(--cloud)"><b>Hyperscalers:</b> Ran Snyk's Google Cloud relationship, including Google Cloud Marketplace and co-sell. Recognised as Google Cloud's 2025 Technology Partner of the Year for Application Development.</li>
+        <li style="--c:var(--tech)"><b>Technology partners:</b> Launched Snyk's AI partner program, building integrations with AI companies including Anthropic, OpenAI, Cursor, and Cognition.</li>
+        <li style="--c:var(--gsi)"><b>GSIs:</b> Led Snyk's global Accenture relationship, including a co-investment to build a dedicated Snyk practice. Earlier, launched 360pi's first alliance program with partners including IBM, SAS, and Wipro.</li>
+        <li style="--c:var(--resell)"><b>Channel:</b> Built Phreesia's initial EMR channel program.</li>
       </ul>
     </div>
   </section>
@@ -777,6 +866,11 @@
       <li><a href="https://aws.amazon.com/blogs/apn/powering-partner-success-2026-innovations/">AWS Partner Network blog, "Powering Next-Level Partner Success" (Dec 2025), citing Omdia, IDC, Canalys, and TechAisle</a></li>
       <li><a href="https://www.salesforce.com/news/stories/state-of-sales-report-announcement-2026/">Salesforce State of Sales 2026 (survey of 4,050 sales professionals, Aug–Sep 2025; published Feb 2026)</a></li>
       <li><a href="https://www.newelectronics.co.uk/content/news/over-40-of-agentic-ai-projects-could-be-cancelled-by-2027">Gartner prediction on agentic AI projects, reported by New Electronics (June 2025)</a></li>
+      <li><a href="https://futurumgroup.com/?p=97066">Futurum Group, "Google Cloud Marketplace: Can It Become Gemini's Front Door to the Enterprise?" (Oct 2026), citing Futurum's 2H 2026 Enterprise Software Decision Maker Survey (n=833)</a></li>
+      <li><a href="https://cloud.google.com/blog/topics/partners/new-study-on-maximizing-partner-growth-with-google-cloud/">Google Cloud Partner Ecosystem Multiplier study by Canalys, commissioned by Google Cloud (Jan 2025; blog Jun 2025)</a></li>
+      <li><a href="https://cloud.google.com/blog/topics/partners/introducing-google-cloud-partner-network">Google Cloud, "Introducing Google Cloud Partner Network" (Dec 2025)</a></li>
+      <li><a href="https://www.crn.com.au/news/2026/cloud/google-partner-program-tiering-system-changes">CRN Australia, Google Cloud's new three-tier partner system (2026)</a></li>
+      <li><a href="https://cloud.google.com/blog/topics/partners/google-cloud-ai-agent-marketplace?hl=en">Google Cloud, AI agent marketplace and agent finder (Oct 2025), citing a Futurum study commissioned by Google Cloud</a></li>
     </ol>
     <div class="bottom">
       <span>© <span id="year">2026</span> Andrew Mackenzie</span>
@@ -825,7 +919,8 @@
         metric: "Cloud sellers actively engaged each quarter" },
       { move: "Route deals through marketplace private offers, register opportunities in the cloud's partner portal, and use channel private offers to bring resellers into the same transaction.",
         watch: "Closing deals direct that could have drawn down a customer's commit.",
-        metric: "Marketplace bookings and co-sell opportunities accepted" },
+        metric: "Marketplace bookings and co-sell opportunities accepted",
+        data: "Canalys data cited by AWS links active co-selling with AWS to 51% greater partner revenue growth." },
       { move: "Track what share of new bookings transacts through the marketplace, how many deals the cloud sourced, and whether those deals close faster than direct ones.",
         watch: "Counting listing views instead of transactions.",
         metric: "Marketplace share of new bookings",
@@ -863,7 +958,8 @@
         metric: "Registered deals won, as a share of those approved" },
       { move: "Track sourced bookings and renewal rate per partner, and tier partners by results rather than company size.",
         watch: "Rewarding the biggest logo instead of the most productive partner.",
-        metric: "Sourced bookings per active partner" }
+        metric: "Sourced bookings per active partner",
+        data: "Google Cloud's Partner Network, launched January 2026, now tiers partners by co-sell results: $250K for Select, $2M for Premier, and $20M for Diamond (Google Cloud; CRN Australia)." }
     ]
   };
 
@@ -1005,7 +1101,7 @@
       "Co-design outcome-priced offerings with reusable IP, such as industry-specific agents and accelerators, that the GSI owns and reuses across clients.",
       "Train mixed teams: domain experts, agent engineers, security specialists, and change managers. Delivery is becoming a blend of people and agents.",
       "Lead with business outcomes for line-of-business buyers, using transformation roadmaps rather than product pitches.",
-      "Plan for compression. Agents will cut hours on routine work like migration and support, so track the new advisory, build, and run work your product creates. AWS-commissioned research puts partner services at $7.13 for every $1 of AWS sold."
+      "Plan for compression. Agents will cut hours on routine work like migration and support, so track the new advisory, build, and run work your product creates. Cloud-commissioned studies point the same way: partner services of up to $7.13 for every $1 of AWS sold (Omdia) and up to $7.05 for every $1 of Google Cloud (Canalys)."
     ],
     resell: [
       "Recruit managed service providers and partners focused on small business and first-time cloud buyers. AWS cites research that 87% of SMBs seek IT guidance, but only 10% have full-time IT staff.",
@@ -1086,6 +1182,15 @@
   });
 
   render("tech", false);
+
+  // ---------- Header menu (tablets and phones) ----------
+  const menuBtn = document.querySelector(".menu-btn");
+  const menu = document.getElementById("menu");
+  function setMenu(open) { menu.classList.toggle("open", open); menuBtn.setAttribute("aria-expanded", open); }
+  menuBtn.addEventListener("click", function (e) { e.stopPropagation(); setMenu(!menu.classList.contains("open")); });
+  menu.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
+  document.addEventListener("click", function (e) { if (!e.target.closest(".top")) setMenu(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && menu.classList.contains("open")) { setMenu(false); menuBtn.focus(); } });
 
   // ---------- Crawl, walk, run ----------
   // Timeframes and staffing are rough guides for a mid-size partner team.
@@ -1202,5 +1307,13 @@
   });
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
+<!--
+  ===========================================================
+  OPTIONAL ANALYTICS: free and privacy-friendly.
+  1. Sign up at Cloudflare (dash.cloudflare.com) > Web Analytics > Add a site > leaner.app
+  2. Cloudflare gives you a one-line script with your own token.
+  3. Paste it here, replacing this comment, and commit.
+  ===========================================================
+-->
 </body>
 </html>
