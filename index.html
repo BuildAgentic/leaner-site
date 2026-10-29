@@ -179,6 +179,37 @@
     text-decoration-color: var(--c); text-decoration-thickness: 3px;
   }
 
+  /* ---------- Currency lines ---------- */
+  .routes { list-style: none; margin: 0; padding: 0; display: grid; gap: 38px; }
+  .route { display: grid; grid-template-columns: 58px minmax(0, 1fr); column-gap: 22px; }
+  .route h3, .route-foot { grid-column: 2; }
+  .route .track { grid-column: 1 / -1; }
+  .bullet {
+    flex: none; width: 58px; height: 58px; margin-right: 22px; border-radius: 50%; background: var(--c); color: #fff;
+    display: grid; place-items: center; font-stretch: 100%; font-weight: 800; font-size: 28px; line-height: 1;
+  }
+  .route h3 { font-stretch: 112%; font-weight: 750; font-size: 18px; line-height: 1.2; margin: 0 0 10px; }
+  .track { display: flex; align-items: center; }
+  .rail { flex: 1; min-width: 32px; height: 12px; background: var(--c); border-radius: 6px 0 0 6px; }
+  .terminus {
+    flex: none; width: 34px; height: 34px; margin-left: -6px; border-radius: 50%;
+    background: var(--surface); border: 7px solid var(--ink); position: relative; z-index: 1;
+  }
+  .sign {
+    flex: none; margin: 0 0 0 14px; padding: 9px 18px 10px; border-radius: 6px;
+    background: var(--ink); color: var(--paper); border-top: 6px solid var(--c);
+    font-stretch: 112%; font-weight: 800; font-size: clamp(22px, 2.8vw, 32px); line-height: 1.05; letter-spacing: -0.005em;
+  }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .route-foot { display: flex; justify-content: space-between; align-items: baseline; gap: 12px 32px; margin-top: 14px; }
+  .route-foot .need { margin: 0; max-width: 42em; font-size: 16px; }
+  .route button {
+    flex: none; font: inherit; font-size: 15px; font-weight: 700; color: var(--ink); white-space: nowrap;
+    background: none; border: 0; padding: 0; cursor: pointer;
+    text-decoration: underline; text-underline-offset: 5px; text-decoration-color: var(--c); text-decoration-thickness: 3px;
+  }
+  .route button:hover { text-decoration-thickness: 5px; }
+
   /* ---------- Process ---------- */
   .switch {
     position: sticky; top: 0; z-index: 5; background: var(--paper);
@@ -431,6 +462,11 @@
   
   @media (max-width: 600px) {
     body { font-size: 17px; }
+    .route { grid-template-columns: 40px minmax(0, 1fr); column-gap: 12px; }
+    .bullet { width: 40px; height: 40px; margin-right: 12px; font-size: 20px; }
+    .terminus { width: 26px; height: 26px; border-width: 6px; }
+    .sign { margin-left: 10px; padding: 7px 12px 8px; border-top-width: 5px; }
+    .route-foot { flex-direction: column; align-items: flex-start; }
     .top nav { gap: 8px; }
     .wordmark { font-size: 17px; }
     .menu-btn { padding: 9px 11px; min-height: 40px; }
@@ -548,37 +584,61 @@
 
   <section class="wrap" id="currencies" aria-labelledby="cur-title">
     <h2 id="cur-title">Find their currency first</h2>
-    <p class="intro">Every partner type gets paid in something different. In my experience, a program works when your offer helps them earn more of it, and stalls when it doesn't. If you only remember one idea from this page, make it this one.</p>
-    <div class="currencies">
-      <article class="cur" style="--c:var(--tech)">
+    <p class="intro">Every partner type gets paid in something different. Follow each line to its last stop: that's what the partner is paid in. In my experience, a program works when your offer helps them earn more of it, and stalls when it doesn't. If you only remember one idea from this page, make it this one.</p>
+    <ol class="routes">
+      <li class="route" style="--c:var(--tech)">
         <h3>Technology partners</h3>
-        <p class="paid">Retention</p>
-        <p class="paid-label">What they're paid in</p>
-        <p class="need">An integration that makes their product harder to leave, plus introductions to your customers that fill their pipeline.</p>
-        <button type="button" data-pick="tech">See their playbook</button>
-      </article>
-      <article class="cur" style="--c:var(--cloud)">
+        <div class="track">
+          <span class="bullet" aria-hidden="true">T</span>
+          <span class="rail" aria-hidden="true"></span>
+          <span class="terminus" aria-hidden="true"></span>
+          <p class="sign"><span class="sr">Paid in: </span>Retention</p>
+        </div>
+        <div class="route-foot">
+          <p class="need">An integration that makes their product harder to leave, plus introductions to your customers that fill their pipeline.</p>
+          <button type="button" data-pick="tech">See their playbook</button>
+        </div>
+      </li>
+      <li class="route" style="--c:var(--cloud)">
         <h3>Hyperscalers and marketplaces</h3>
-        <p class="paid">Consumption</p>
-        <p class="paid-label">What they're paid in</p>
-        <p class="need">Deals that draw down customers' committed cloud spend and count toward their sellers' numbers.</p>
-        <button type="button" data-pick="cloud">See their playbook</button>
-      </article>
-      <article class="cur" style="--c:var(--gsi)">
+        <div class="track">
+          <span class="bullet" aria-hidden="true">H</span>
+          <span class="rail" aria-hidden="true"></span>
+          <span class="terminus" aria-hidden="true"></span>
+          <p class="sign"><span class="sr">Paid in: </span>Consumption</p>
+        </div>
+        <div class="route-foot">
+          <p class="need">Deals that draw down customers' committed cloud spend and count toward their sellers' numbers.</p>
+          <button type="button" data-pick="cloud">See their playbook</button>
+        </div>
+      </li>
+      <li class="route" style="--c:var(--gsi)">
         <h3>Global systems integrators</h3>
-        <p class="paid">Services</p>
-        <p class="paid-label">What they're paid in</p>
-        <p class="need">Billable work attached to your product, and an edge in large transformation deals.</p>
-        <button type="button" data-pick="gsi">See their playbook</button>
-      </article>
-      <article class="cur" style="--c:var(--resell)">
+        <div class="track">
+          <span class="bullet" aria-hidden="true">G</span>
+          <span class="rail" aria-hidden="true"></span>
+          <span class="terminus" aria-hidden="true"></span>
+          <p class="sign"><span class="sr">Paid in: </span>Services</p>
+        </div>
+        <div class="route-foot">
+          <p class="need">Billable work attached to your product, and an edge in large transformation deals.</p>
+          <button type="button" data-pick="gsi">See their playbook</button>
+        </div>
+      </li>
+      <li class="route" style="--c:var(--resell)">
         <h3>Resellers</h3>
-        <p class="paid">Profit</p>
-        <p class="paid-label">What they're paid in</p>
-        <p class="need">Margin on the deals they find, and increasingly recurring revenue from managing the customer afterwards. Both need protecting from your direct team.</p>
-        <button type="button" data-pick="resell">See their playbook</button>
-      </article>
-    </div>
+        <div class="track">
+          <span class="bullet" aria-hidden="true">R</span>
+          <span class="rail" aria-hidden="true"></span>
+          <span class="terminus" aria-hidden="true"></span>
+          <p class="sign"><span class="sr">Paid in: </span>Profit</p>
+        </div>
+        <div class="route-foot">
+          <p class="need">Margin on the deals they find, and increasingly recurring revenue from managing the customer afterwards. Both need protecting from your direct team.</p>
+          <button type="button" data-pick="resell">See their playbook</button>
+        </div>
+      </li>
+    </ol>
   </section>
 
   <section class="wrap" id="process" aria-labelledby="proc-title">
