@@ -66,6 +66,8 @@
     font-size: clamp(30px, 4.4vw, 48px); line-height: 1.05; margin: 0 0 12px;
   }
   .intro { color: var(--muted); max-width: 38em; margin: 0 0 40px; }
+  div.intro p { margin: 0 0 14px; }
+  div.intro p:last-child { margin-bottom: 0; }
 
   .btn {
     display: inline-block; text-decoration: none; font-weight: 700; font-size: 16px;
@@ -104,7 +106,7 @@
     font-stretch: 125%; font-weight: 800; font-size: clamp(40px, 7.2vw, 92px);
     line-height: .96; letter-spacing: -0.02em; margin: 0 0 24px; max-width: 11em;
   }
-  .hero .lede { font-size: clamp(19px, 2.1vw, 22px); max-width: 36em; margin: 0 0 8px; }
+  .hero .lede { font-size: clamp(19px, 2.1vw, 22px); max-width: 36em; margin: 0 0 14px; }
   .hero .byline { color: var(--muted); font-size: 16px; margin: 0 0 22px; max-width: 46em; }
   .hero .byline b { color: var(--ink); font-weight: 700; }
   .hero .byline .updated { display: block; margin-top: 4px; font-size: 14px; }
@@ -140,8 +142,10 @@
   .stat small { color: var(--muted); font-size: 13px; }
 
   /* ---------- Shifts ---------- */
-  .shifts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 48px; }
-  .shift { border-top: 2px solid var(--ink); padding-top: 18px; }
+  .shifts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .shift { border-top: 2px solid var(--ink); padding-top: 18px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr); gap: 0 48px; align-items: start; }
+  .shift > .from-to { grid-column: 1; grid-row: 1 / span 20; }
+  .shift > :not(.from-to) { grid-column: 2; }
   .from-to { display: grid; grid-template-columns: auto; gap: 6px; margin-bottom: 14px; }
   .from-to .from { color: var(--muted); font-size: 16px; }
   .from-to .track {
@@ -156,8 +160,9 @@
     background: var(--surface); border: 5px solid var(--ink); box-sizing: border-box;
   }
   .from-to .to { font-stretch: 112%; font-weight: 800; font-size: 23px; line-height: 1.2; }
-  .shift p { margin: 0 0 12px; font-size: 17px; max-width: 34em; }
+  .shift p { margin: 0 0 12px; font-size: 17px; max-width: none; }
   .shift .fact { font-size: 15px; font-weight: 600; padding-left: 14px; border-left: 4px solid var(--ink); }
+  .shift .fact-label { margin: 18px 0 6px; font-size: 13px; font-weight: 750; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
   .shift .fact span { display: block; font-weight: 400; color: var(--muted); font-size: 13px; margin-top: 2px; }
 
   /* ---------- Currencies ---------- */
@@ -205,6 +210,8 @@
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .route-foot { display: flex; justify-content: space-between; align-items: baseline; gap: 12px 32px; margin-top: 14px; }
   .route-foot .need { margin: 0; max-width: 42em; font-size: 16px; }
+  .route-foot div.need p { margin: 0; }
+  .route-foot div.need p + p { margin-top: 10px; }
   .route button {
     flex: none; font: inherit; font-size: 15px; font-weight: 700; color: var(--ink); white-space: nowrap;
     background: none; border: 0; padding: 0; cursor: pointer;
@@ -246,6 +253,8 @@
   }
   .step h3 { font-stretch: 125%; font-weight: 800; font-size: 30px; line-height: 1.1; margin: 8px 0 8px; }
   .step .principle { margin: 0; color: var(--muted); max-width: 22em; }
+  .step .step-text { margin: 12px 0 0; font-size: 16px; max-width: 26em; }
+  .step .principle + .aside, .step .step-text + .aside { margin-top: 20px; }
   .play {
     background: var(--surface); border: 2px solid var(--rule); border-radius: 16px; padding: 22px 24px;
     border-left: 6px solid var(--active); transition: border-color .3s;
@@ -253,6 +262,8 @@
   .play dl { margin: 0; display: grid; gap: 14px; }
   .play dt { font-weight: 750; font-size: 15px; color: var(--muted); margin: 0 0 2px; }
   .play dd { margin: 0; }
+  .play dd p { margin: 0; }
+  .play dd p + p { margin-top: 8px; }
   .play dd.metric { font-weight: 700; }
   .play .data { font-size: 14px; color: var(--muted); margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--rule); }
   .next {
@@ -311,6 +322,13 @@
   .area { margin: 0; padding: 18px 20px; border: 2px solid var(--rule); border-radius: 14px; background: var(--surface); }
   .area legend { font-stretch: 112%; font-weight: 800; font-size: 20px; padding: 0 6px; margin-left: -6px; }
   .area .signals { margin: 0 0 14px; font-size: 15px; color: var(--muted); }
+  .area .q { margin: 2px 0 6px; font-size: 16px; font-weight: 700; }
+  .area .signals + .signals { margin-top: -6px; }
+  .health-next { margin: 32px 0 0; max-width: 46em; }
+  .health-next h3 { font-stretch: 112%; font-weight: 800; font-size: 22px; margin: 0 0 10px; }
+  .health-next ul { margin: 0 0 14px; padding-left: 20px; }
+  .health-next li { margin-bottom: 6px; }
+  .health-next p { margin: 0; color: var(--muted); }
   .seg { display: flex; gap: 8px; flex-wrap: wrap; }
   .seg label { position: relative; cursor: pointer; }
   .seg input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
@@ -341,6 +359,11 @@
   .agent-card .fact { font-size: 15px; font-weight: 600; padding-left: 14px; border-left: 4px solid var(--ink); }
   .agent-card .fact span { display: block; font-weight: 400; color: var(--muted); font-size: 13px; margin-top: 2px; }
   h3.sub { font-stretch: 112%; font-weight: 800; font-size: 24px; margin: 48px 0 16px; }
+  .sub-intro { margin: -6px 0 18px; max-width: 46em; color: var(--muted); }
+  .sub-intro p { margin: 0 0 10px; }
+  .crw-overview { list-style: none; margin: 0 0 22px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 28px; }
+  .crw-overview li { border-top: 2px solid var(--ink); padding-top: 10px; font-size: 16px; }
+  .steps-how li { margin-bottom: 8px; }
 
   .uses { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 2px solid var(--ink); }
   .use { padding: 16px 16px 4px 0; }
@@ -386,6 +409,8 @@
   .crw-rows div { border-top: 1px solid var(--rule); padding-top: 10px; }
   .crw-rows dt { font-weight: 750; font-size: 14px; color: var(--muted); margin-bottom: 2px; }
   .crw-rows dd { margin: 0; font-size: 16px; }
+  .crw-rows dd p { margin: 0; }
+  .crw-rows dd p + p { margin-top: 8px; }
   .crw-rows .invest { grid-column: 1 / -1; background: color-mix(in srgb, var(--ink) 6%, var(--surface)); border-top: 0; padding: 12px 14px; border-radius: 10px; }
   .crw-note { margin: 18px 0 0; font-size: 13px; color: var(--muted); }
   .crw-panel.swap { animation: swap .28s ease-out; }
@@ -400,11 +425,23 @@
     background: var(--surface); border: 2px solid var(--rule); border-radius: 16px;
     padding: 22px 24px 24px; border-top: 8px solid var(--c);
   }
-  .note:last-child { grid-column: 1 / -1; }
+  .note.key {
+    color: var(--paper); border-color: transparent;
+    background-color: var(--ink);
+    background-image: linear-gradient(90deg, var(--tech), var(--cloud), var(--gsi), var(--resell), var(--model));
+    background-size: 100% 8px; background-repeat: no-repeat;
+    background-origin: border-box; background-clip: border-box;
+    box-shadow: 0 14px 34px -18px color-mix(in srgb, var(--ink) 70%, transparent);
+  }
+  .note.key h3 { color: var(--paper); }
+  .note.key p { color: color-mix(in srgb, var(--paper) 86%, transparent); }
+  .note.key p.note-type { color: color-mix(in srgb, var(--paper) 70%, transparent); }
   .note-type { margin: 0 0 8px; font-size: 14px; font-weight: 700; color: var(--muted); }
   .note h3 { font-stretch: 112%; font-weight: 800; font-size: 22px; line-height: 1.2; margin: 0 0 12px; }
   .note p { margin: 0; font-size: 16px; max-width: 46em; }
   .note p.note-type { margin: 0 0 8px; font-size: 14px; }
+  .note h3 + p { margin-top: 0; }
+  .note p + p:not(.note-type) { margin-top: 10px; }
 
   /* ---------- Author ---------- */
   .author {
@@ -436,6 +473,9 @@
     .stat:nth-child(n+3) { border-top: 1px solid var(--rule); }
     .currencies { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .shifts { grid-template-columns: 1fr; gap: 32px; }
+    .crw-overview { grid-template-columns: 1fr; }
+    .shift { grid-template-columns: 1fr; }
+    .shift > .from-to, .shift > :not(.from-to) { grid-column: 1; grid-row: auto; }
     .notes { grid-template-columns: 1fr; }
     .health { grid-template-columns: 1fr; }
     .agent-grid { grid-template-columns: 1fr; }
@@ -535,7 +575,9 @@
 
   <section class="wrap hero" aria-labelledby="hero-title">
     <h1 id="hero-title">One process. Four kinds of partners.</h1>
-    <p class="lede">A field guide to running partner programs with technology companies, hyperscalers and marketplaces, GSIs, and resellers. The five steps stay the same. What you do at each one depends on the partner, and on how AI agents are changing partnering heading into 2027.</p>
+    <p class="lede">A practical guide to building and running partner programs with technology companies, hyperscalers and marketplaces, GSIs, and resellers.</p>
+    <p class="lede">The fundamentals are pretty consistent across all four. You still need to choose the right partners, build something worthwhile together, get their teams up to speed, work on deals, and measure what's happening. But the way you approach each step changes quite a bit depending on who you're working with.</p>
+    <p class="lede">And with AI agents starting to change how software gets built, sold, and delivered, there's another dimension to consider as we head into 2027.</p>
     <p class="byline">By <b>Andrew Mackenzie</b>. <span class="updated">Last updated November 2026.</span></p>
     <div class="actions">
       <a class="btn" href="#currencies">Start with the big idea</a>
@@ -573,20 +615,31 @@
   </section>
 
   <section class="wrap" id="why" aria-labelledby="why-title">
-    <h2 id="why-title">Why partners decide who wins</h2>
-    <p class="intro">Most technology is now bought with or through a partner. Getting the program right is no longer a side project.</p>
+    <h2 id="why-title">Why partners increasingly decide who wins</h2>
+    <div class="intro">
+      <p>A lot of enterprise technology is no longer bought through a straightforward vendor-to-customer relationship. Partners influence what gets considered, how products are implemented, where customers spend their budgets, and whether they stick around.</p>
+      <p>That makes your partner strategy a pretty important part of your overall go-to-market strategy. It shouldn't be something you get around to once the direct sales team is up and running.</p>
+      <p>A few numbers help explain why.</p>
+    </div>
     <div class="stats">
       <div class="stat"><b>70%</b><p>of global IT spend in 2025 goes to, through, or with channel partners.</p><small>Canalys, 2025 <sup>1</sup></small></div>
-      <div class="stat"><b>19.6%</b><p>of enterprise software spend already goes through cloud marketplaces, according to a survey of 833 buyers.</p><small>Futurum, 2026 <sup>8</sup></small></div>
-      <div class="stat"><b>$163B</b><p>forecast yearly spend through hyperscaler marketplaces by 2030, up from $16B in 2023, with 59% expected to flow through channel partners.</p><small>Canalys / Omdia <sup>2, 3</sup></small></div>
-      <div class="stat"><b>58%</b><p>less likely to churn among customers who use a product's integrations.</p><small>Crossbeam vendor survey, 2023 <sup>4</sup></small></div>
+      <div class="stat"><b>19.6%</b><p>of enterprise software spending already goes through cloud marketplaces, based on a survey of 833 buyers.</p><small>Futurum, 2026 <sup>8</sup></small></div>
+      <div class="stat"><b>$163B</b><p>projected annual spend through hyperscaler marketplaces by 2030, up from $16B in 2023. Around 59% is expected to flow through channel partners.</p><small>Canalys / Omdia <sup>2, 3</sup></small></div>
+      <div class="stat"><b>58%</b><p>less likely to churn when customers use a product's integrations.</p><small>Crossbeam vendor survey, 2023 <sup>4</sup></small></div>
     </div>
-    <p class="numbers-note"><b>About the numbers.</b> A lot of partner research is paid for by the clouds and software vendors who benefit from it. Wherever that's the case, I've said so. Treat those figures as a sign of direction and lean on your own data where you have it.</p>
+    <p class="numbers-note"><b>A note on the numbers.</b> Some of the research in this space is commissioned by cloud providers and software companies with a commercial interest in the findings. I've called that out where relevant. The figures are useful for understanding the direction of travel, but I'd always put your own customer and partner data first.</p>
   </section>
 
   <section class="wrap" id="currencies" aria-labelledby="cur-title">
-    <h2 id="cur-title">Find their currency first</h2>
-    <p class="intro">Every partner type gets paid in something different. Follow each line to its last stop to see what that partner is paid in. In my experience, a program works when your offer helps them earn more of it, and stalls when it doesn't. If you only remember one idea from this page, make it this one.</p>
+    <h2 id="cur-title">Start by understanding what the partner actually wants</h2>
+    <div class="intro">
+      <p>One of the mistakes I see in partner programs is assuming that every partner is motivated by the same things.</p>
+      <p>They're not.</p>
+      <p>A technology company might care most about retention. A cloud provider wants to grow consumption. A GSI is looking for services revenue and opportunities to expand its practice. A reseller wants a healthy margin and a reason to keep investing in the relationship.</p>
+      <p>These differences matter more than most partner teams realise.</p>
+      <p>In my experience, partnerships tend to work when what you're offering helps the other company achieve something it already cares about. They tend to struggle when the value is mostly on your side.</p>
+      <p>If there's one principle I'd take away from this guide, it's to understand what your partner gets paid for, then build the relationship around helping them do more of it.</p>
+    </div>
     <ol class="routes">
       <li class="route" style="--c:var(--tech)">
         <h3>Technology partners</h3>
@@ -594,11 +647,11 @@
           <span class="bullet" aria-hidden="true">T</span>
           <span class="rail" aria-hidden="true"></span>
           <span class="terminus" aria-hidden="true"></span>
-          <p class="sign"><span class="sr">Paid in </span>Retention</p>
+          <p class="sign"><span class="sr">Their currency is </span>Retention</p>
         </div>
         <div class="route-foot">
-          <p class="need">An integration that makes their product harder to leave, plus introductions to your customers that fill their pipeline.</p>
-          <button type="button" data-pick="tech">See the tech partner playbook</button>
+          <p class="need">They want integrations that make their product more valuable and harder for customers to leave. They also want access to new customers and opportunities that help their own sales pipeline.</p>
+          <button type="button" data-pick="tech">See the technology partner playbook</button>
         </div>
       </li>
       <li class="route" style="--c:var(--cloud)">
@@ -607,10 +660,10 @@
           <span class="bullet" aria-hidden="true">H</span>
           <span class="rail" aria-hidden="true"></span>
           <span class="terminus" aria-hidden="true"></span>
-          <p class="sign"><span class="sr">Paid in </span>Consumption</p>
+          <p class="sign"><span class="sr">Their currency is </span>Consumption</p>
         </div>
         <div class="route-foot">
-          <p class="need">Deals that draw down customers' committed cloud spend and count toward their sellers' numbers.</p>
+          <p class="need">Cloud providers want customers using more of their infrastructure. Your product can help them get there, particularly when a deal draws down a customer's existing cloud commitment and contributes to the account team's targets.</p>
           <button type="button" data-pick="cloud">See the hyperscaler playbook</button>
         </div>
       </li>
@@ -620,10 +673,10 @@
           <span class="bullet" aria-hidden="true">G</span>
           <span class="rail" aria-hidden="true"></span>
           <span class="terminus" aria-hidden="true"></span>
-          <p class="sign"><span class="sr">Paid in </span>Services</p>
+          <p class="sign"><span class="sr">Their currency is </span>Services revenue</p>
         </div>
         <div class="route-foot">
-          <p class="need">Billable work attached to your product, and an edge in large transformation deals.</p>
+          <p class="need">GSIs need opportunities to sell consulting, implementation, and ongoing services. Your product should give them a reason to build a practice around it and bring it into larger transformation projects.</p>
           <button type="button" data-pick="gsi">See the GSI playbook</button>
         </div>
       </li>
@@ -633,10 +686,13 @@
           <span class="bullet" aria-hidden="true">R</span>
           <span class="rail" aria-hidden="true"></span>
           <span class="terminus" aria-hidden="true"></span>
-          <p class="sign"><span class="sr">Paid in </span>Profit</p>
+          <p class="sign"><span class="sr">Their currency is </span>Profit</p>
         </div>
         <div class="route-foot">
-          <p class="need">Margin on the deals they find, and increasingly recurring revenue from managing the customer afterwards. Both need protecting from your direct team.</p>
+          <div class="need">
+            <p>Resellers need to make money on the deals they bring in. Increasingly, they also want recurring revenue from managing and supporting customers after the initial sale.</p>
+            <p>Both matter, and both need to be protected. If your direct sales team keeps taking the opportunities or the ongoing services revenue, don't expect resellers to stay motivated.</p>
+          </div>
           <button type="button" data-pick="resell">See the reseller playbook</button>
         </div>
       </li>
@@ -645,7 +701,10 @@
 
   <section class="wrap" id="process" aria-labelledby="proc-title">
     <h2 id="proc-title">The five-step process</h2>
-    <p class="intro">These are the plays I'd run. Pick a partner type to see its playbook. Each step has one move to make, one trap to avoid, one number to watch, what's changing in 2027, and a real company that did it.</p>
+    <div class="intro">
+      <p>These are the five steps I'd use to build and run a partner program. The process stays pretty much the same regardless of partner type, but the priorities and tactics can be very different.</p>
+      <p>Choose a partner type to see how I'd approach each one. For every step, I'll cover the move I'd make, the mistake I'd watch out for, the metric I'd track, what's likely to change in 2027, and an example from a company that's put it into practice.</p>
+    </div>
 
     <div class="switch" role="tablist" aria-label="Partner type">
       <button role="tab" id="tab-tech"   data-type="tech"   style="--c:var(--tech)"   aria-selected="true"  aria-controls="steps">Technology</button>
@@ -657,50 +716,61 @@
     <ol class="steps" id="steps" role="tabpanel" aria-labelledby="tab-tech">
       <li class="step" id="step-1" data-n="1">
         <div>
-          <h3>Choose</h3><p class="principle">Fewer, better partners. Every partnership costs focus, so pick the ones that share your customers.</p>
+          <h3>Choose</h3><p class="principle">Be selective. The right five partners are worth more than fifty names on a spreadsheet.</p>
+          <p class="step-text">Every partnership takes time to build and maintain. Before recruiting another partner, I'd want to know why they're a good fit and what both sides stand to gain.</p>
           <div class="aside">
-            <h4>Is this partner any good?</h4>
-            <p class="aside-intro">Tick what's true. Use it before you recommend a partner to a customer.</p>
+            <h4>Is this partner worth investing in?</h4>
+            <p class="aside-intro">Here's a quick checklist I'd use before recommending a partner to a customer.</p>
             <ul class="checklist" id="checklist">
-              <li><label><input type="checkbox"> They use your product in their own business as well as in demos</label></li>
-              <li><label><input type="checkbox"> They have clear rules for using AI responsibly, and turn down bad-fit work</label></li>
-              <li><label><input type="checkbox"> They have a dedicated, certified team for your product</label></li>
-              <li><label><input type="checkbox"> They can show recent, measurable customer results, with references</label></li>
-              <li><label><input type="checkbox"> They stay with customers after go-live and are open about problems</label></li>
-              <li><label><input type="checkbox"> They've built their own tools or IP on your product</label></li>
+              <li><label><input type="checkbox"> They use your product themselves, not just in demos</label></li>
+              <li><label><input type="checkbox"> They have clear policies around responsible AI use and know when to turn down work that isn't a good fit</label></li>
+              <li><label><input type="checkbox"> They have people specifically trained and certified on your product</label></li>
+              <li><label><input type="checkbox"> They can point to recent customer results and provide references</label></li>
+              <li><label><input type="checkbox"> They stay involved after implementation and are honest when things aren't going well</label></li>
+              <li><label><input type="checkbox"> They've developed their own tools, IP, or solutions using your product</label></li>
             </ul>
             <p class="verdict" id="verdict" aria-live="polite">0 of 6. Tick the traits this partner has.</p>
+            <p class="aside-note">Use the checklist to get a better sense of where a potential partner stands. Not every partner needs to tick every box, but the more of these traits they have, the more likely they are to become a productive relationship.</p>
           </div>
         </div>
         <div class="play" data-step="0"></div>
       </li>
       <li class="step" id="step-2" data-n="2">
         <div>
-          <h3>Build</h3><p class="principle">Create joint value you can describe in one sentence, before anyone signs anything.</p>
+          <h3>Build</h3><p class="principle">Start small. Get something working before you try to build a big partnership.</p>
           <div class="aside">
             <h4>Expect the first project to be rough</h4>
-            <p>Two companies that haven't worked together will hit slow approvals and goals that don't line up. Plan for that from the start.</p>
+            <p>Two companies can agree that there's a great opportunity to work together and still struggle to get the first project off the ground. Different approval processes, competing priorities, and unclear ownership can slow things down surprisingly quickly.</p>
+            <p>I'd plan for that rather than assume everything will fall into place. A few things help.</p>
             <ul class="rules">
-              <li>Keep it small enough to finish in a few weeks.</li>
-              <li>Agree on one measure of success and cut anything that doesn't serve it.</li>
-              <li>Name one accountable owner on each side.</li>
-              <li>Walk through their legal and security reviews before you build.</li>
+              <li>Keep the first project small enough to complete in a few weeks.</li>
+              <li>Agree on one clear measure of success.</li>
+              <li>Put a named owner on each side who is accountable for getting it done.</li>
+              <li>Understand the other company's legal, security, and technical approval processes before starting development.</li>
             </ul>
-            <p class="aside-note">Good first projects include a joint sales training session or a lightweight connector. What you learn about how they work is worth as much as the result.</p>
+            <p class="aside-note">A good first project might be a joint sales training session or a simple integration. The actual deliverable matters, but so does learning how the two companies work together.</p>
           </div>
         </div>
         <div class="play" data-step="1"></div>
       </li>
       <li class="step" id="step-3" data-n="3">
-        <div><h3>Enable</h3><p class="principle">Make it easy for their sellers to win without you in the room. A live demo on the customer's own data does more than any one-pager.</p></div>
+        <div><h3>Enable</h3><p class="principle">Give their salespeople a reason to sell your product, and make it easy for them to do so.</p>
+          <p class="step-text">You can put together the best partner training materials in the world, but they won't make much difference if a partner's sales team can't confidently explain your product to a customer.</p>
+          <p class="step-text">The quickest way to change that is to give them something they can actually use.</p>
+          <p class="step-text">A live demo using a prospect's own data is usually far more effective than another presentation deck. It gives the seller a chance to show how the products work together in a real situation.</p></div>
         <div class="play" data-step="2"></div>
       </li>
       <li class="step" id="step-4" data-n="4">
-        <div><h3>Co-sell</h3><p class="principle">Turn the partnership into named deals in named accounts.</p></div>
+        <div><h3>Co-sell</h3><p class="principle">Turn the relationship into actual opportunities.</p>
+          <p class="step-text">At some point, the partnership needs to move beyond training sessions, integrations, and joint announcements. You need to see it showing up in real customer conversations and sales opportunities.</p>
+          <p class="step-text">This is where a lot of programs struggle. Both companies may agree to work together, but nobody has a clear plan for identifying deals, making introductions, or following up.</p></div>
         <div class="play" data-step="3"></div>
       </li>
       <li class="step" id="step-5" data-n="5">
-        <div><h3>Measure</h3><p class="principle">Track what each side is actually paid on, then put more into what works.</p></div>
+        <div><h3>Measure</h3><p class="principle">Look at what the partnership actually delivers, not how busy everyone is.</p>
+          <p class="step-text">Partner teams can easily fall into the trap of measuring activity. How many training sessions did we run? How many integrations did we launch? How many partners attended the quarterly business review?</p>
+          <p class="step-text">Those numbers have their place, but they don't tell you whether the partnership is working.</p>
+          <p class="step-text">I'd start with the outcome that matters most to the particular partner and work backwards from there.</p></div>
         <div class="play" data-step="4"></div>
       </li>
     </ol>
@@ -714,50 +784,89 @@
   -->
   <section class="wrap" id="field" aria-labelledby="field-title">
     <h2 id="field-title">From the field</h2>
-    <p class="intro">These are my personal opinions, drawn from more than a decade of building partner programs. They aren't industry consensus or the view of any company I've worked for. If you see it differently, that's exactly what the call button is for.</p>
+    <div class="intro">
+      <p>The views below are my own. They're based on more than a decade of working on partner programs, rather than an industry consensus or the official position of any company I've worked for.</p>
+      <p>Some of these lessons took longer to learn than they should have. Hopefully, sharing them saves someone else a bit of time.</p>
+    </div>
     <div class="notes">
       <article class="note" style="--c:var(--gsi)">
         <p class="note-type">GSIs</p>
-        <h3>A GSI partnership isn't real until someone's number depends on it</h3>
-        <p>Global agreements are easy to sign and easy to ignore. The partnerships I've seen work had one thing in common. There was a practice leader inside the integrator whose targets moved when our joint business grew. Find that person before you sign anything, build the business case around their goals rather than yours, and fund their first few engagements if you need to. Logos on a slide won't move pipeline on their own.</p>
+        <h3>A GSI partnership isn't real until someone's number depends on it.</h3>
+        <p>It's relatively easy to sign a global agreement with a large systems integrator. Getting anyone inside that organisation to do something with it is another matter.</p>
+        <p>The partnerships I've seen work best all had something in common. There was a practice leader whose own targets were affected by the success of the relationship.</p>
+        <p>That's the person you need to find.</p>
+        <p>Before signing a big agreement, work out who owns the relevant practice, what they're trying to achieve, and how your product helps them get there. Build the business case around their priorities, not just your own. If necessary, put some money behind the first few engagements to help get things moving.</p>
+        <p>A logo on a partner page doesn't create a pipeline. Having someone internally who is genuinely motivated to build the business does.</p>
       </article>
       <article class="note" style="--c:var(--cloud)">
         <p class="note-type">Hyperscalers</p>
-        <h3>Cloud sellers don't need your pitch. They need to know how you help their number.</h3>
-        <p>Most ISVs walk into a cloud provider with a product deck. The account teams I worked with cared about one thing, which was whether a deal drew down a customer's committed spend and counted toward their goals. Lead with that, in their language. Make the marketplace private offer the default way you transact and show up in their account planning. Be the partner who makes their quarter easier.</p>
+        <h3>Cloud sellers don't need another product pitch. They need to know how you help them hit their number.</h3>
+        <p>I've seen plenty of software companies approach cloud providers with a standard product presentation. That's usually not what the account teams are looking for.</p>
+        <p>The people selling cloud services care about their customers' consumption, committed spend, and account targets. If your product helps them grow cloud usage or get a customer to draw down an existing commitment, you've got a much more interesting conversation.</p>
+        <p>Lead with that.</p>
+        <p>Understand how the cloud provider measures its sales teams, make marketplace private offers a normal part of how you transact, and get involved in account planning wherever possible.</p>
+        <p>The goal is simple. Become the partner who makes it easier for the cloud account team to have a good quarter.</p>
       </article>
       <article class="note" style="--c:var(--tech)">
         <p class="note-type">Technology partners</p>
-        <h3>Ship the integration before the press release</h3>
-        <p>In AI especially, there's pressure to announce partnerships fast. I'd rather launch something small that people actually switch on than a big announcement nobody uses. Pick the one workflow where both products touch, ship it, and watch activation. Co-marketing works far better when you can point to real users, and it gives both sides a reason to invest in what comes next.</p>
+        <h3>Build the integration before you announce the partnership.</h3>
+        <p>There's a lot of pressure in AI to announce partnerships quickly. Everyone wants to be associated with the latest model provider, platform, or AI company.</p>
+        <p>But an announcement doesn't mean customers have a reason to care.</p>
+        <p>I'd much rather see two companies release a small integration that people actually use than announce a strategic partnership with nothing meaningful behind it.</p>
+        <p>Find one workflow where the products genuinely complement each other. Build something useful, get customers using it, and pay attention to activation.</p>
+        <p>Once you've got that, co-marketing becomes much easier. You have real customers and real use cases to talk about, rather than a partnership announcement that everyone forgets a week later.</p>
       </article>
       <article class="note" style="--c:var(--model)">
         <p class="note-type">Model providers</p>
-        <h3>Your model provider can ship your feature. Build what they can't.</h3>
-        <p>A model provider is a partner that can also ship your core feature in its next release. I've watched AI labs get very good, very fast, at work ISVs used to own. A better feature won't protect you for long. Lean on what a lab can't easily copy, whether that's your proprietary data, your depth in one workflow, your customer relationships, or staying neutral across every model your customers use. Build traction without waiting for their help. Labs tend to reach out when they're launching something and need partners to make it credible, and the time from invite to launch is short. Keep sprint capacity free to build around new model releases, or you'll miss the window.</p>
+        <h3>Your model provider might build your feature. Figure out what it can't easily replace.</h3>
+        <p>This is one of the more uncomfortable realities for software companies building in AI.</p>
+        <p>The model providers are moving incredibly quickly. Features that once gave an independent software vendor a meaningful advantage can suddenly appear in a model provider's next release.</p>
+        <p>I've watched AI labs become very good, very quickly, at building capabilities that other companies previously considered their own territory.</p>
+        <p>Trying to stay ahead by simply building a slightly better feature isn't a particularly sustainable strategy.</p>
+        <p>Instead, think about what you have that a model provider would struggle to replicate. It might be proprietary data, deep expertise in a particular workflow, established customer relationships, or the ability to work across multiple models without being tied to one provider.</p>
+        <p>Build your business around those advantages, and don't wait for a model provider to give you permission to grow.</p>
+        <p>There's another practical point worth considering. Model providers often reach out when they're preparing to launch something and need credible partners around it. The time between getting invited and the actual launch can be surprisingly short.</p>
+        <p>If you're building in this space, keep some engineering capacity available. Being able to respond quickly to a new model release can create opportunities that disappear if you need three months to get something built.</p>
       </article>
       <article class="note" style="--c:var(--resell)">
         <p class="note-type">Channel</p>
-        <h3>Your first few channel partners teach you more than the next hundred</h3>
-        <p>When you build a channel program from scratch, the temptation is to recruit widely and see who sticks. I'd start narrow, with a handful of partners you work alongside closely. They'll show you how your product gets sold and where deals stall. Write the playbook from what they teach you, then scale. Recruiting before you have a playbook just multiplies the confusion.</p>
+        <h3>Your first few channel partners will teach you more than the next hundred.</h3>
+        <p>When companies start building a channel program, there's often a temptation to recruit as many partners as possible. The thinking is that more partners mean more reach and, eventually, more revenue.</p>
+        <p>I'd take a different approach.</p>
+        <p>Start with a small group of partners and work closely with them. Get involved in their sales conversations, understand how they position your product, and pay attention to where deals get stuck.</p>
+        <p>You'll learn things about your product, pricing, sales process, and onboarding that you probably wouldn't discover sitting inside your own company.</p>
+        <p>Use those lessons to build the channel playbook. Once you have something that works, start recruiting more broadly.</p>
+        <p>Recruiting hundreds of partners before you've figured out how to help them sell is a good way to create a much bigger version of the same problem.</p>
       </article>
-      <article class="note" style="--c:var(--ink)">
+      <article class="note key" style="--c:var(--ink)">
         <p class="note-type">Every partner type</p>
-        <h3>Your hardest partner is your own sales team</h3>
-        <p>Most partner programs don't fail with the partner. They fail inside your own company, when direct reps see partners as competition for the same deal. Fix the incentives first. Make sure your sellers win when a partner is involved, and get a senior sponsor to back the program in public. Share partner wins internally as loudly as you share them outside. A partner team can't out-run its own sales compensation plan.</p>
+        <h3>Your toughest partner to win over might be your own sales team.</h3>
+        <p>I've seen partner programs struggle not because the external partners weren't interested, but because the company's own sales organisation wasn't particularly keen on working with them.</p>
+        <p>It's understandable. If a direct sales rep thinks bringing a partner into a deal means giving up revenue or commission, they're going to be reluctant to make that introduction.</p>
+        <p>You can build the best partner strategy in the world, but it won't get very far if your compensation plan encourages the direct team to work around it.</p>
+        <p>Fix the incentives first.</p>
+        <p>Make sure your salespeople benefit when partners help close a deal. Get a senior executive to visibly support the program, and make a point of sharing partner wins internally.</p>
+        <p>The partner team can't spend all its time trying to build external relationships while fighting its own sales organisation at the same time.</p>
       </article>
     </div>
   </section>
 
   <section class="wrap" id="health" aria-labelledby="health-title">
     <h2 id="health-title">Check a partner's health</h2>
-    <p class="intro">Most partnerships fade quietly before they fail. This is the quick check I use. Rate one partner on three areas to see whether it's healthy, worth watching, or at risk, and what to do next. The scoring is a rule of thumb. Run it every quarter.</p>
+    <div class="intro">
+      <p>Partnerships rarely fall apart overnight. More often, things gradually go quiet. People stop responding, training attendance drops, opportunities dry up, and nobody quite knows who's supposed to do what.</p>
+      <p>By the time someone notices, the relationship may already be in trouble.</p>
+      <p>I like to do a simple health check every quarter. It doesn't need to be complicated. The idea is to take an honest look at three things, which are engagement, capability, and performance.</p>
+      <p>Rate each one as Strong, Mixed, or Weak. It's a rule of thumb rather than a scientific scoring model, but it's a useful way to spot problems before they become bigger ones.</p>
+    </div>
 
     <div class="health">
       <div class="areas">
         <fieldset class="area">
-          <legend>Engagement</legend>
-          <p class="signals">Do they show up? Look at responsiveness, attendance at enablement sessions, portal activity, and whether an executive with budget is involved.</p>
+          <legend>1. Engagement</legend>
+          <p class="q">Are they actually showing up?</p>
+          <p class="signals">Look at how responsive the partner is, whether people attend enablement sessions, how active they are in your partner portal, and whether anyone senior is involved.</p>
+          <p class="signals">A partnership where nobody has the time or authority to make decisions is going to struggle, regardless of how promising it looked at the start.</p>
           <div class="seg" role="radiogroup">
             <label><input type="radio" name="eng" value="2"><span>Strong</span></label>
             <label><input type="radio" name="eng" value="1"><span>Mixed</span></label>
@@ -765,8 +874,10 @@
           </div>
         </fieldset>
         <fieldset class="area">
-          <legend>Capability</legend>
-          <p class="signals">Are they investing? Look at certifications, dedicated staff on your product, a named practice lead, and real use of demo environments.</p>
+          <legend>2. Capability</legend>
+          <p class="q">Are they putting real resources behind the relationship?</p>
+          <p class="signals">Look for certified people, dedicated resources, a named practice or business lead, and evidence that they're investing time in learning and demonstrating your product.</p>
+          <p class="signals">A partner might be enthusiastic about working together, but enthusiasm isn't the same as having the capability to deliver.</p>
           <div class="seg" role="radiogroup">
             <label><input type="radio" name="cap" value="2"><span>Strong</span></label>
             <label><input type="radio" name="cap" value="1"><span>Mixed</span></label>
@@ -774,8 +885,10 @@
           </div>
         </fieldset>
         <fieldset class="area">
-          <legend>Performance</legend>
-          <p class="signals">Are they winning? Look at registered pipeline, win rates, delivery quality, revenue trend, and customer expansion after go-live.</p>
+          <legend>3. Performance</legend>
+          <p class="q">Is the partnership producing results?</p>
+          <p class="signals">Look at registered pipeline, win rates, delivery quality, revenue trends, and what happens after customers go live.</p>
+          <p class="signals">I'd pay particular attention to customer expansion and adoption. Winning the initial deal is important, but a partner who helps customers get more value from your product is often much more valuable over time.</p>
           <div class="seg" role="radiogroup">
             <label><input type="radio" name="perf" value="2"><span>Strong</span></label>
             <label><input type="radio" name="perf" value="1"><span>Mixed</span></label>
@@ -790,11 +903,25 @@
         <p class="action" id="health-action">Your result and a recommended next step will appear here.</p>
       </div>
     </div>
+    <div class="health-next">
+      <h3>What to do with the results</h3>
+      <ul>
+        <li>If engagement is strong but performance is weak, the partner may need better sales support or a clearer proposition.</li>
+        <li>If capability is weak, you may need to invest in training, certification, or a more focused solution.</li>
+        <li>If engagement is weak across the board, it's worth having a direct conversation about whether the relationship is still a priority for them.</li>
+        <li>And if all three areas are weak, be realistic about how much more time and money you want to invest.</li>
+      </ul>
+      <p>Run the same assessment every quarter. The trend is often more useful than any individual score.</p>
+    </div>
   </section>
 
   <section class="wrap" id="shifts" aria-labelledby="shifts-title">
     <h2 id="shifts-title">Looking ahead to 2027</h2>
-    <p class="intro">AI agents are changing what partners sell and how they price it. Customers are finding partners differently too. Five shifts to plan for in 2027, whichever partner type you work with.</p>
+    <div class="intro">
+      <p>AI agents are starting to change the economics of partner businesses. They're affecting what partners sell, how they deliver services, and how they charge customers.</p>
+      <p>They're also changing how customers discover solutions in the first place.</p>
+      <p>I see five shifts that partner leaders should be thinking about, regardless of whether they work with technology companies, hyperscalers, GSIs, or resellers.</p>
+    </div>
     <ol class="shifts">
       <li class="shift">
         <div class="from-to">
@@ -802,35 +929,51 @@
           <span class="track" aria-hidden="true"></span>
           <span class="to">Delivering outcomes with AI agents</span>
         </div>
-        <p>Partners are adding AI and agents to every service line. Routine work such as migration and support gets cheaper as agents take more of it on, while new work opens up in building and running agents for customers.</p>
+        <p>Partners are adding AI and agents to more of their service offerings. Some of the traditional work, particularly routine migration, implementation, and support tasks, will become cheaper as agents take on more of the workload.</p>
+        <p>That doesn't necessarily mean less opportunity for partners. It means the opportunity is moving.</p>
+        <p>There will be more demand for partners who can design, build, deploy, and manage AI agents that solve specific customer problems.</p>
+        <p class="fact-label">The number worth watching</p>
         <p class="fact">82% of AWS partners already deliver some form of AI to customers. <span>Omdia 2025, via AWS <sup>5</sup></span></p>
       </li>
       <li class="shift">
         <div class="from-to">
           <span class="from">Hourly rates and fixed fees</span>
           <span class="track" aria-hidden="true"></span>
-          <span class="to">Pricing tied to business outcomes</span>
+          <span class="to">Pricing based on business outcomes</span>
         </div>
-        <p>Customers want partners to share the risk. Build offers where you and your partner are paid against a business result, and pitch them to line-of-business leaders, not only IT.</p>
-        <p class="fact">Outcome-based pricing doubled from 18% to 36% of engagements, while fixed-price work fell from 49% to 29%. 75% of line-of-business buyers say partner relationships are essential. <span>IDC, via AWS <sup>5</sup></span></p>
+        <p>Customers are becoming more interested in paying for results rather than simply paying for the time it takes to deliver something.</p>
+        <p>That creates an opportunity for partners to rethink how they package and price their services.</p>
+        <p>Instead of selling a fixed number of consulting hours, consider offers where both the software vendor and the partner have a financial incentive to achieve a measurable business outcome.</p>
+        <p>It also changes who you need to sell to. These conversations increasingly belong with business leaders who own the outcome, not just the IT team responsible for buying the technology.</p>
+        <p class="fact-label">The numbers worth watching</p>
+        <p class="fact">Outcome-based pricing doubled from 18% to 36% of engagements, while fixed-price work fell from 49% to 29%. The same research found that 75% of line-of-business buyers consider partner relationships essential. <span>IDC, via AWS <sup>5</sup></span></p>
       </li>
       <li class="shift">
         <div class="from-to">
-          <span class="from">One vendor, one listing, found by search</span>
+          <span class="from">Individual vendor listings</span>
           <span class="track" aria-hidden="true"></span>
-          <span class="to">Multi-vendor solutions, found by AI</span>
+          <span class="to">Multi-vendor solutions discovered through AI</span>
         </div>
-        <p>Cloud marketplaces now sell bundles that combine several vendors' products with professional services, billed by milestone or outcome. Buyers increasingly find them by describing their problem to an AI assistant. The winning offer is often assembled by three or four partners, and its listing has to answer use-case questions directly, for people and for AI.</p>
-        <p class="fact">AWS Marketplace added multi-product solutions, variable payments for services, and an AI "agent mode" for discovery in late 2025. <span>AWS <sup>5</sup></span></p>
-        <p class="fact">Google Cloud's agent finder matches buyers to partner agents in plain language, and agents can be priced by outcome, such as per support ticket resolved. <span>Google Cloud, Oct 2025 <sup>12</sup></span></p>
+        <p>Cloud marketplaces are becoming more interesting than simple places to buy software licences.</p>
+        <p>We're starting to see offers that combine several software products with professional services, all packaged together and billed through a single marketplace transaction.</p>
+        <p>That's a meaningful change for partner teams.</p>
+        <p>A customer might describe a problem to an AI assistant and get recommended a solution involving three or four different vendors and a services partner. The opportunity is no longer just about getting your own product listed. It's about being part of the solution that gets recommended.</p>
+        <p>Your marketplace listing also needs to do a better job of explaining what the product actually helps customers achieve. That information needs to make sense to a human buyer and be easy for AI-powered discovery tools to interpret.</p>
+        <p>There are already some interesting examples.</p>
+        <p class="fact">AWS Marketplace introduced multi-product solutions, more flexible service payment options, and an AI agent mode for discovery in late 2025. <span>AWS <sup>5</sup></span></p>
+        <p class="fact">Google Cloud has also introduced an agent finder that lets buyers search for partner-built agents using natural language. Those agents can be priced against outcomes, such as the number of support tickets resolved. <span>Google Cloud, October 2025 <sup>12</sup></span></p>
       </li>
       <li class="shift">
         <div class="from-to">
           <span class="from">Partners selling your product</span>
           <span class="track" aria-hidden="true"></span>
-          <span class="to">Partners building IP on your product</span>
+          <span class="to">Partners building their own IP on your platform</span>
         </div>
-        <p>The strongest partners package their know-how into reusable, industry-specific agents and accelerators that they own and list on marketplaces. Help them build that IP on your platform. It raises their margin and makes your product harder to replace.</p>
+        <p>The best partners will increasingly do more than implement and resell your software.</p>
+        <p>They'll build their own intellectual property on top of it, such as industry-specific agents, reusable accelerators, specialised workflows, and packaged solutions that they can sell repeatedly.</p>
+        <p>That's a much more interesting relationship than one based entirely on referral fees or resale margins.</p>
+        <p>Your job is to give partners the tools, APIs, documentation, and support they need to build those solutions.</p>
+        <p>If they can make more money by building on your platform, and their own IP becomes more valuable because your product is underneath it, you've created a stronger reason for them to stay.</p>
       </li>
       <li class="shift">
         <div class="from-to">
@@ -838,60 +981,84 @@
           <span class="track" aria-hidden="true"></span>
           <span class="to">Driving usage after the sale</span>
         </div>
-        <p>When customers pay for what they use, such as API calls, tokens, or compute, a signed contract only buys access. Revenue arrives as usage grows. AI is arriving faster than most customers can absorb it, so the partners who stay after go-live and help customers find the next use case become hard to replace.</p>
-        <p class="fact">Helping customers adopt and manage Google Cloud accounts for 35% of the partner services opportunity around it. AI projects typically move from pilot to production in year three. <span>Canalys, commissioned by Google Cloud, 2025 <sup>9</sup></span></p>
+        <p>The traditional software sales model put a lot of emphasis on getting the contract signed. Increasingly, particularly with consumption-based pricing, that's only the beginning.</p>
+        <p>When customers pay for API calls, tokens, or compute, a signed contract doesn't automatically translate into meaningful revenue. Customers need to use the product, and ideally find more ways to use it over time.</p>
+        <p>This is particularly important with AI. Customers are experimenting quickly, but many still need help turning pilots into something that works reliably in production.</p>
+        <p>That creates a significant opportunity for partners who stay involved after go-live. They can help customers identify new use cases, improve adoption, and make sure the technology is delivering something useful.</p>
+        <p>These are the partners who become difficult to replace.</p>
+        <p class="fact-label">The number worth watching</p>
+        <p class="fact">Canalys estimated that helping customers adopt and manage Google Cloud accounts for 35% of the partner services opportunity around the platform. Its research also suggested that AI projects typically take until their third year to move from pilot to production. <span>Canalys, commissioned by Google Cloud, 2025 <sup>9</sup></span></p>
       </li>
     </ol>
   </section>
 
   <section class="wrap" id="agents" aria-labelledby="agents-title">
     <h2 id="agents-title">Run your partner team on agents</h2>
-    <p class="intro">You'll ask partners to sell AI. Your own team should be using it first. This section covers why it's worth doing, when it makes sense, what it takes, and a path from first experiment to an agent-run partner operation.</p>
+    <div class="intro">
+      <p>If you're asking your partners to sell AI and build AI-powered solutions, there's a pretty good argument for using it inside your own partner organisation first.</p>
+      <p>Partner management involves a surprising amount of repetitive work. Researching accounts, checking customer overlaps, following up on referrals, updating partner portals, answering the same product questions, and putting together quarterly reviews can easily consume most of a team's week.</p>
+      <p>A lot of that work is necessary. But it doesn't all need to be done manually.</p>
+      <p>Here's how I'd think about introducing agents into a partner organisation, where they can help, and how to get started without turning the whole thing into an expensive technology project.</p>
+    </div>
 
     <div class="agent-grid">
       <article class="agent-card">
-        <h3>Why</h3>
-        <p>Partner work is heavy on coordination, such as researching accounts, matching overlaps, chasing referrals, updating portals, answering the same product questions, and building quarterly reviews. All of it is time not spent with partners.</p>
-        <p class="fact">Sellers spend only about 40% of their time selling. Those using agents expect research time to drop 34% and email drafting 36%. <span>Salesforce State of Sales, 2026 <sup>6</sup></span></p>
-        <p>There's a credibility reason too. Partner leaders who run their own team on agents can tell partners what works from experience.</p>
+        <h3>Why bother?</h3>
+        <p>The obvious reason is productivity. If an agent can take care of some of the research, administration, and follow-up work, your team gets more time to spend with partners.</p>
+        <p class="fact">Salesforce's 2026 State of Sales report found that sellers spend only around 40% of their time actually selling. Salespeople using agents expect research time to fall by 34% and email drafting time by 36%. <span>Salesforce State of Sales, 2026 <sup>6</sup></span></p>
+        <p>There's another reason that's easy to overlook, and that's credibility.</p>
+        <p>It's much easier to have a useful conversation with a partner about AI when you've already worked through some of the practical challenges yourself. You'll have a much better understanding of what works, where the limitations are, and where human involvement still matters.</p>
       </article>
 
       <article class="agent-card">
-        <h3>When</h3>
-        <p>A task is a good candidate when all four of these are true.</p>
+        <h3>When should you use an agent?</h3>
+        <p>Not every task needs an agent. In fact, I'd be pretty cautious about trying to automate everything at once.</p>
+        <p>A task is a good candidate when four things are true.</p>
         <ul class="rules">
-          <li>It repeats every week, in roughly the same way.</li>
-          <li>The data it needs already lives in a system, like your CRM or partner portal.</li>
-          <li>Someone owns it and can judge whether the output is right.</li>
-          <li>You can measure the time it takes today.</li>
+          <li>It happens regularly, ideally every week.</li>
+          <li>The information needed to complete it already exists somewhere, such as your CRM or partner portal.</li>
+          <li>Someone on the team understands the task well enough to check whether the result is correct.</li>
+          <li>You have a reasonable way to measure how long it takes today.</li>
         </ul>
-        <p>Keep people on relationships and negotiations.</p>
-        <p class="fact">Gartner expects over 40% of agentic AI projects to be scrapped by 2027 because of cost, unclear value, or weak risk controls. Start where the value is obvious. <span>Gartner, June 2025 <sup>7</sup></span></p>
+        <p>I'd leave relationship-building, sensitive negotiations, and important commercial decisions with people.</p>
+        <p class="fact">There's also a good reason not to rush. Gartner predicted that more than 40% of agentic AI projects could be scrapped by 2027 because of costs, unclear business value, or inadequate risk controls. <span>Gartner, June 2025 <sup>7</sup></span></p>
+        <p>Start with a problem that's easy to understand and has a measurable payoff. Don't start with an agent just because it's technically possible to build one.</p>
       </article>
 
       <article class="agent-card">
-        <h3>How</h3>
-        <ol class="rules">
-          <li>Pick one workflow and write down every step.</li>
-          <li>Have AI assist a person doing it, then compare quality and time.</li>
-          <li>Let an agent draft the work while a person approves it.</li>
-          <li>Only then let the agent act on its own, within clear limits.</li>
-          <li>Measure time saved and errors, then move to the next workflow.</li>
+        <h3>How I'd approach it</h3>
+        <p>I'd take a fairly gradual approach.</p>
+        <ol class="rules steps-how">
+          <li><b>Map the workflow first.</b> Pick one task and write down exactly how the team currently completes it. Don't skip this step. If you don't understand the existing process, you won't know whether the agent is improving it.</li>
+          <li><b>Start with AI assistance.</b> Have someone use AI to help with the work they're already doing. Compare the quality of the output and the time involved.</li>
+          <li><b>Let an agent prepare the work.</b> Once you're comfortable with the results, let an agent prepare drafts, research, or recommendations. A person still reviews and approves everything.</li>
+          <li><b>Give it more responsibility gradually.</b> Only allow an agent to take actions independently once you've established clear rules, tested the workflow, and understand what can go wrong.</li>
+          <li><b>Measure the results.</b> Track time saved, accuracy, and how much manual correction is still needed. If the results are good, move on to another workflow.</li>
         </ol>
-        <p>Set guardrails from day one. A person approves anything sent to a partner or customer. Agents see only the data they need, and every action is logged.</p>
+        <p>One thing I'd put in place from the beginning is a clear set of guardrails. Anything being sent to a partner or customer should have human approval. Agents should only access the information they need, and their actions should be logged.</p>
       </article>
     </div>
 
-    <h3 class="sub">Where agents help across the five steps</h3>
+    <h3 class="sub">Where agents can help across the five steps</h3>
+    <p class="sub-intro">There are opportunities throughout the partner lifecycle.</p>
     <div class="uses">
-      <div class="use"><b>Choose</b><p>Research prospective partners and analyse account overlap reports into a ranked shortlist.</p></div>
-      <div class="use"><b>Build</b><p>Draft joint solution briefs and marketplace listings for each partner.</p></div>
-      <div class="use"><b>Enable</b><p>Answer partners' product questions on demand, and build demo scripts and sample data for a prospect.</p></div>
-      <div class="use"><b>Co-sell</b><p>Route account overlaps to the right rep and sync referrals with cloud partner portals.</p></div>
-      <div class="use"><b>Measure</b><p>Score partner health every week and flag anyone turning yellow before the quarterly review.</p></div>
+      <div class="use"><b>Choose</b><p>Research potential partners, look at account overlap reports, and turn the findings into a shortlist ranked by relevance.</p></div>
+      <div class="use"><b>Build</b><p>Prepare first drafts of joint solution briefs, integration requirements, and marketplace listings for individual partners.</p></div>
+      <div class="use"><b>Enable</b><p>Answer routine product questions, help partners find the right documentation, and generate demo scripts and sample data for specific prospects.</p></div>
+      <div class="use"><b>Co-sell</b><p>Identify account overlaps, route opportunities to the right salespeople, and keep referral information in sync with cloud partner portals.</p></div>
+      <div class="use"><b>Measure</b><p>Review partner activity and performance every week. Flag relationships that are starting to deteriorate rather than waiting until the next quarterly business review.</p></div>
     </div>
 
     <h3 class="sub">Crawl, walk, run</h3>
+    <div class="sub-intro">
+      <p>I'd approach this as an 18-month journey rather than a project that needs to be completed in one quarter.</p>
+      <p>The timings below are rough guides for a mid-sized partner team. You might move faster or slower depending on your systems, team size, and appetite for change.</p>
+    </div>
+    <ul class="crw-overview">
+      <li><b>Crawl, months 0–3.</b> Get everyone comfortable using AI assistants in their everyday work.</li>
+      <li><b>Walk, months 3–9.</b> Start introducing agents into specific workflows, with people reviewing the output.</li>
+      <li><b>Run, months 9–18.</b> Move towards an operation where agents handle more of the routine work and people focus on exceptions, decisions, and relationships.</li>
+    </ul>
     <p class="crw-hint">Select a stage to see what it involves.</p>
     <div class="crw">
       <div class="crw-track" role="tablist" aria-label="Agent adoption stage">
@@ -956,22 +1123,22 @@
   // ===========================================================
   const PLAYBOOK = {
     tech: [
-      { move: "Map shared customers before anything else. An account-mapping tool shows where your customer lists overlap. Shortlist the partners with the most overlap and a real handoff between your two products.",
-        watch: "Logo-swap partnerships, where you get a press release and a badge but no shared users.",
-        metric: "Overlapping customer accounts" },
-      { move: "Ship one integration that removes a manual step in a workflow both products touch. Write the joint use case in one sentence before writing any code.",
-        watch: "Integrations built for a launch announcement that nobody switches on.",
+      { move: "Start by looking at your existing customer base. Use an account-mapping tool to identify where your customers overlap with theirs. Then narrow the list to partners with meaningful overlap and a clear reason for customers to use both products.",
+        watch: "Partnerships that look impressive on a website but don't go anywhere. A press release, a logo on each other's partner pages, and a joint announcement don't necessarily mean anyone is actually using the products together.",
+        metric: "Number of overlapping customer accounts" },
+      { move: "Find one workflow where both products are involved and build an integration that removes a manual step. Before anyone starts writing code, make sure both teams can explain the joint use case in a single sentence.",
+        watch: "Building an integration primarily to announce it. I've seen plenty of partnerships launch integrations that customers never actually turn on.",
         metric: "Integration activation rate" },
-      { move: "Give both sales teams a joint demo they can run live on a prospect's own data, plus a 30-minute session for each side's sales engineers. AI tools now make a tailored demo quick to prepare.",
-        watch: "Leaning on decks and one-pagers that nobody reads.",
-        metric: "Sellers on each side who have demoed it" },
-      { move: "Turn account overlap into pipeline. Trade warm introductions on open deals where you both have a relationship, and list in each other's app directories.",
-        watch: "Sharing account lists without agreeing on who follows up.",
+      { move: "Build a joint demo that both sales teams can run with a prospect's data. Follow that up with a short, practical session for the sales engineers on each side. Thirty minutes is a reasonable starting point.\n\nAI tools can also make it much quicker to prepare demos tailored to a particular prospect or industry.",
+        watch: "Assuming that sending over a deck or a one-page product overview counts as enablement. Most sellers have more material than they know what to do with already.",
+        metric: "Number of sellers on each side who have actually demonstrated the joint solution" },
+      { move: "Start with the account overlap you've already identified. Look for active opportunities where both companies have an existing relationship and make warm introductions between the relevant account teams.\n\nIt's also worth making sure your products are listed in each other's directories and marketplaces, so customers can find the joint solution without needing an introduction.",
+        watch: "Exchanging account lists and assuming something will happen. Sharing information is only useful when there's an agreed owner and a clear next step for each opportunity.",
         metric: "Partner-influenced pipeline" },
-      { move: "Compare churn for customers who use the integration against those who don't. That gap is the business case for investing more.",
-        watch: "Tracking installs but never retention.",
-        metric: "Churn gap between integrated and non-integrated customers",
-        data: "Crossbeam found customers who use integrations are 58% less likely to churn." }
+      { move: "For technology partners, compare churn among customers using the integration with churn among those who aren't. That difference gives you a much better indication of the integration's value than the number of installs.",
+        watch: "Celebrating integration launches and install numbers without checking whether customers are actively using what you've built.",
+        metric: "The churn difference between customers who use the integration and those who don't",
+        data: "Crossbeam's research found that customers using integrations were 58% less likely to churn." }
     ],
     cloud: [
       { move: "Follow your customers' committed spend. Find out which cloud your top target accounts have committed money to, and go deep on that one before adding a second.",
@@ -1150,11 +1317,11 @@
   // ===========================================================
   const NEXT = {
     tech: [
-      "Favour partners whose products your customers' AI agents will need to work with, not only the apps your users switch between.",
-      "Build for agents as well as people. Expose actions an AI agent can call, and package the integration into multi-vendor solutions on the marketplaces.",
-      "Make your partner's own team the first customer. People sell what they use every day.",
-      "Join multi-partner deals. Bundle with complementary vendors and a services partner, and sell the whole solution as one offer.",
-      "Add agent-driven usage to your integration metrics as customers automate more of their workflows."
+      "Think beyond the applications your customers use today. As AI agents become more involved in business workflows, the best technology partners will increasingly be the ones whose products those agents need to interact with.",
+      "Don't build integrations just for people to click through. Think about what an AI agent might need to do with your product. Expose useful actions that agents can call, and look for opportunities to package the integration into broader solutions on cloud marketplaces.",
+      "Start by making your partner's own employees successful customers. If they use your product in their day-to-day work, they'll have a much easier time explaining its value to someone else.",
+      "Get comfortable working in multi-partner deals. Increasingly, the strongest offers will combine complementary software products with implementation and managed services from another partner. Rather than selling your product on its own, you'll be helping sell a complete solution.",
+      "Start tracking usage generated by AI agents alongside traditional integration activity. As customers automate more of their workflows, you'll want to understand whether agents are actually using the capabilities you've made available."
     ],
     cloud: [
       "Look at which cloud your customers are building their AI and agent work on. Agent platforms are becoming a new reason customers choose a cloud.",
@@ -1202,12 +1369,12 @@
       const exId = "ex-" + i;
       el.innerHTML =
         "<dl>" +
-          "<div><dt>The move</dt><dd>" + esc(s.move) + "</dd></div>" +
-          "<div><dt>Watch for</dt><dd>" + esc(s.watch) + "</dd></div>" +
-          "<div><dt>Measure</dt><dd class=\"metric\">" + esc(s.metric) + "</dd></div>" +
+          "<div><dt>The move</dt><dd>" + s.move.split("\n\n").map(function (q) { return "<p>" + esc(q) + "</p>"; }).join("") + "</dd></div>" +
+          "<div><dt>Watch out for</dt><dd>" + esc(s.watch) + "</dd></div>" +
+          "<div><dt>What to measure</dt><dd class=\"metric\">" + esc(s.metric) + "</dd></div>" +
         "</dl>" +
         (s.data ? "<p class=\"data\">" + esc(s.data) + "</p>" : "") +
-        "<div class=\"next\"><span class=\"tag\">2027 outlook</span><p>" + esc(NEXT[type][i]) + "</p></div>" +
+        "<div class=\"next\"><span class=\"tag\">Looking ahead to 2027</span><p>" + esc(NEXT[type][i]) + "</p></div>" +
         "<button type=\"button\" class=\"ex-toggle\" aria-expanded=\"" + open + "\" aria-controls=\"" + exId + "\">" +
           "<span class=\"label\">" + (open ? "Hide example" : "Show example") + "</span><span class=\"chev\" aria-hidden=\"true\"></span>" +
         "</button>" +
@@ -1262,24 +1429,24 @@
   // ---------- Crawl, walk, run ----------
   // Timeframes and staffing are rough guides for a mid-size partner team.
   const STAGES = [
-    { name: "Crawl, with an assistant for every person",
-      lead: "People do the work. AI helps each person do it faster.",
-      agents: "Research partners and accounts, prepare for meetings, summarise calls, and write first drafts of emails and briefs.",
-      people: "Everyone on the team uses an assistant every day. One volunteer champion spends 2–4 hours a week collecting what works into a shared library of prompts.",
-      data: "Nothing connected yet. People paste in what's needed, and confidential partner data stays out of any tool your company hasn't approved.",
-      measure: "Hours saved per person per week, and whether drafts need less rework.",
-      next: "Everyone uses it weekly, and you can name two or three repeated tasks worth handing to an agent.",
-      invest: "AI assistant licences for the team, often already included in tools you pay for, plus about an hour a week of practice per person in the first month. No engineering work." },
-    { name: "Walk, where agents run workflows and people approve",
-      lead: "Agents do the work for two or three defined workflows. A person checks every output before it goes anywhere.",
+    { name: "Crawl, an assistant for everyone",
+      lead: "At this stage, people are still doing the work. AI is simply helping them do it more quickly.",
+      agents: "Research partners and accounts, prepare meeting notes, summarise calls, and produce first drafts of emails, briefs, and other documents.",
+      people: "Everyone on the partner team should be using an assistant regularly. I'd also identify one person who is interested in the technology and give them a couple of hours each week to collect useful examples, prompts, and lessons from the rest of the team.",
+      data: "Keep things simple. There's no need to connect everything to your CRM immediately. People can provide the information they need manually, provided they use approved tools and follow your company's data policies.\n\nConfidential partner information should never be pasted into tools that haven't been approved for that purpose.",
+      measure: "Look at hours saved per person each week and whether the first drafts produced by AI need less editing over time.",
+      next: "When everyone is using AI at least weekly and you can identify two or three repetitive tasks that would benefit from being handed over to an agent.",
+      invest: "Start with AI assistant licences for the team. You may already have access to some of these through software you're paying for.\n\nAllow around an hour a week for people to practise and share what they're learning during the first month. You shouldn't need engineering resources at this stage." },
+    { name: "Walk, agents working alongside the team",
+      lead: "At this stage, agents start taking responsibility for preparing and completing parts of specific workflows. People remain involved and approve the important decisions.",
       agents: "Route new account overlaps to the right rep each week, build meeting briefs from CRM data, draft quarterly reviews, and answer partners' product questions from your enablement content.",
       people: "A partner operations owner spends about half their time running the agents. Partner managers review and approve outputs.",
       data: "Read-only connections to your CRM, account-mapping tool, and enablement library.",
       measure: "Cycle times, such as days from overlap to introduction, plus partner response times and how often approvers have to fix the output.",
       next: "Approvers rarely change the output, and the errors that do occur are small and caught.",
       invest: "Usage-based AI costs and a security and legal review. Expect roughly four to eight weeks of setup per workflow." },
-    { name: "Run, where agents act within limits",
-      lead: "Connected agents act across your systems on their own, within clear limits. People handle relationships and judgment calls.",
+    { name: "Run, an agent-enabled partner operation",
+      lead: "By this point, agents can manage more of the routine coordination across the partner lifecycle. The team spends less time chasing information and updating systems, and more time working on strategy, commercial relationships, and opportunities that need human judgement.",
       agents: "Sync co-sell referrals with cloud partner portals through their APIs, score partner health every week and alert managers, process deal registrations, and serve partners directly through a self-service enablement agent.",
       people: "Dedicated partner operations and AI engineering capacity, about one or two people for a mid-size program, to build, monitor, and improve the agents. Partner managers spend the time they get back with partners.",
       data: "Two-way connections to your CRM, partner portals, and marketplaces, with permissions and an audit log for every action.",
@@ -1289,6 +1456,7 @@
   ];
   const crwTabs = Array.from(document.querySelectorAll(".crw-track [role=tab]"));
   const crwPanel = document.getElementById("crw-panel");
+  function paras(v) { return v.split("\n\n").map(function (q) { return "<p>" + esc(q) + "</p>"; }).join(""); }
   function showStage(i, animate) {
     const s = STAGES[i];
     crwTabs.forEach(function (t, j) { t.setAttribute("aria-selected", i === j); t.tabIndex = i === j ? 0 : -1; });
@@ -1296,14 +1464,13 @@
     crwPanel.innerHTML =
       "<h4>" + esc(s.name) + "</h4><p class=\"lead\">" + esc(s.lead) + "</p>" +
       "<dl class=\"crw-rows\">" +
-        "<div><dt>What AI does</dt><dd>" + esc(s.agents) + "</dd></div>" +
-        "<div><dt>People</dt><dd>" + esc(s.people) + "</dd></div>" +
-        "<div><dt>Data</dt><dd>" + esc(s.data) + "</dd></div>" +
-        "<div><dt>Measure</dt><dd>" + esc(s.measure) + "</dd></div>" +
-        "<div class=\"invest\"><dt>Investment</dt><dd>" + esc(s.invest) + "</dd></div>" +
-        "<div><dt>" + (i < 2 ? "Ready for the next stage when" : "Keep in mind") + "</dt><dd>" + esc(s.next) + "</dd></div>" +
-      "</dl>" +
-      "<p class=\"crw-note\">Timeframes and staffing are rough guides for a mid-size partner team. Adjust them for yours.</p>";
+        "<div><dt>What AI does</dt><dd>" + paras(s.agents) + "</dd></div>" +
+        "<div><dt>People</dt><dd>" + paras(s.people) + "</dd></div>" +
+        "<div><dt>Data</dt><dd>" + paras(s.data) + "</dd></div>" +
+        "<div><dt>How to measure progress</dt><dd>" + paras(s.measure) + "</dd></div>" +
+        "<div class=\"invest\"><dt>Investment</dt><dd>" + paras(s.invest) + "</dd></div>" +
+        "<div><dt>" + (i < 2 ? "When to move on" : "Keep in mind") + "</dt><dd>" + paras(s.next) + "</dd></div>" +
+      "</dl>";
     if (animate) { crwPanel.classList.remove("swap"); void crwPanel.offsetWidth; crwPanel.classList.add("swap"); }
   }
   crwTabs.forEach(function (t, i) {
