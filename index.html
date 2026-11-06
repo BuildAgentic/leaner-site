@@ -276,6 +276,9 @@
     background: var(--ink); color: var(--paper); margin-top: 1px;
   }
   .next p { margin: 0; font-size: 16px; }
+  .next { grid-template-columns: minmax(0, 1fr); row-gap: 8px; }
+  .next .tag { justify-self: start; }
+  .next p + p { margin-top: 0; }
   .ex-toggle {
     margin-top: 18px; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer;
     color: var(--ink); background: transparent; border: 2px solid var(--ink); border-radius: 999px;
@@ -715,13 +718,13 @@
 
     <ol class="steps" id="steps" role="tabpanel" aria-labelledby="tab-tech">
       <li class="step" id="step-1" data-n="1">
-        <div>
+        <div class="step-left" data-step="0">
           <h3>Choose</h3><p class="principle">Be selective. The right five partners are worth more than fifty names on a spreadsheet.</p>
           <p class="step-text">Every partnership takes time to build and maintain. Before recruiting another partner, I'd want to know why they're a good fit and what both sides stand to gain.</p>
           <div class="aside">
             <h4>Is this partner worth investing in?</h4>
             <p class="aside-intro">Here's a quick checklist I'd use before recommending a partner to a customer.</p>
-            <ul class="checklist" id="checklist">
+            <ul class="checklist">
               <li><label><input type="checkbox"> They use your product themselves, not just in demos</label></li>
               <li><label><input type="checkbox"> They have clear policies around responsible AI use and know when to turn down work that isn't a good fit</label></li>
               <li><label><input type="checkbox"> They have people specifically trained and certified on your product</label></li>
@@ -729,14 +732,14 @@
               <li><label><input type="checkbox"> They stay involved after implementation and are honest when things aren't going well</label></li>
               <li><label><input type="checkbox"> They've developed their own tools, IP, or solutions using your product</label></li>
             </ul>
-            <p class="verdict" id="verdict" aria-live="polite">0 of 6. Tick the traits this partner has.</p>
+            <p class="verdict" aria-live="polite">0 of 6. Tick the traits this partner has.</p>
             <p class="aside-note">Use the checklist to get a better sense of where a potential partner stands. Not every partner needs to tick every box, but the more of these traits they have, the more likely they are to become a productive relationship.</p>
           </div>
         </div>
         <div class="play" data-step="0"></div>
       </li>
       <li class="step" id="step-2" data-n="2">
-        <div>
+        <div class="step-left" data-step="1">
           <h3>Build</h3><p class="principle">Start small. Get something working before you try to build a big partnership.</p>
           <div class="aside">
             <h4>Expect the first project to be rough</h4>
@@ -754,20 +757,20 @@
         <div class="play" data-step="1"></div>
       </li>
       <li class="step" id="step-3" data-n="3">
-        <div><h3>Enable</h3><p class="principle">Give their salespeople a reason to sell your product, and make it easy for them to do so.</p>
+        <div class="step-left" data-step="2"><h3>Enable</h3><p class="principle">Give their salespeople a reason to sell your product, and make it easy for them to do so.</p>
           <p class="step-text">You can put together the best partner training materials in the world, but they won't make much difference if a partner's sales team can't confidently explain your product to a customer.</p>
           <p class="step-text">The quickest way to change that is to give them something they can actually use.</p>
           <p class="step-text">A live demo using a prospect's own data is usually far more effective than another presentation deck. It gives the seller a chance to show how the products work together in a real situation.</p></div>
         <div class="play" data-step="2"></div>
       </li>
       <li class="step" id="step-4" data-n="4">
-        <div><h3>Co-sell</h3><p class="principle">Turn the relationship into actual opportunities.</p>
+        <div class="step-left" data-step="3"><h3>Co-sell</h3><p class="principle">Turn the relationship into actual opportunities.</p>
           <p class="step-text">At some point, the partnership needs to move beyond training sessions, integrations, and joint announcements. You need to see it showing up in real customer conversations and sales opportunities.</p>
           <p class="step-text">This is where a lot of programs struggle. Both companies may agree to work together, but nobody has a clear plan for identifying deals, making introductions, or following up.</p></div>
         <div class="play" data-step="3"></div>
       </li>
       <li class="step" id="step-5" data-n="5">
-        <div><h3>Measure</h3><p class="principle">Look at what the partnership actually delivers, not how busy everyone is.</p>
+        <div class="step-left" data-step="4"><h3>Measure</h3><p class="principle">Look at what the partnership actually delivers, not how busy everyone is.</p>
           <p class="step-text">Partner teams can easily fall into the trap of measuring activity. How many training sessions did we run? How many integrations did we launch? How many partners attended the quarterly business review?</p>
           <p class="step-text">Those numbers have their place, but they don't tell you whether the partnership is working.</p>
           <p class="step-text">I'd start with the outcome that matters most to the particular partner and work backwards from there.</p></div>
@@ -1141,22 +1144,23 @@
         data: "Crossbeam's research found that customers using integrations were 58% less likely to churn." }
     ],
     cloud: [
-      { move: "Follow your customers' committed spend. Find out which cloud your top target accounts have committed money to, and go deep on that one before adding a second.",
-        watch: "Listing on every marketplace on day one and getting traction on none.",
-        metric: "Share of target accounts with a commit on that cloud",
+      { move: "Start with your top target accounts. Find out where they've committed their cloud spend, then prioritise the provider with the greatest overlap. Build a proper relationship there before spreading your team across multiple marketplaces.",
+        watch: "Trying to list on every marketplace on day one and getting traction on none of them. A listing is relatively easy to get. Building a relationship with the people who can bring you into customer deals takes much longer.",
+        metric: "Share of target accounts with a committed spend on that cloud",
         data: "Customers had $467B in committed spend across AWS, Azure, and Google Cloud as of mid-2025 (Canalys / Omdia)." },
-      { move: "Get listed with private offers switched on, and qualify for the cloud's co-sell program so its sellers get credit when your product sells.",
-        watch: "A public listing with no private offers, which most enterprise buyers can't use.",
-        metric: "Co-sell eligible, private offers live" },
-      { move: "Brief the cloud's account managers in their terms. Show how your deal draws down their customer's commitment and counts toward their number, and skip the product deck.",
-        watch: "Pitching features to sellers who are paid on consumption.",
-        metric: "Cloud sellers actively engaged each quarter" },
-      { move: "Route deals through marketplace private offers and register them in the cloud's partner portal. Use channel private offers to bring resellers into the same transaction.",
-        watch: "Closing deals direct that could have drawn down a customer's commit.",
-        metric: "Marketplace bookings and co-sell opportunities accepted",
+      { move: "Get your product listed, make sure private offers are enabled, and work through the requirements for the cloud's co-sell program.\n\nDon't treat marketplace onboarding as an administrative task. It's an important part of making the partnership commercially useful.",
+        watch: "Having a public marketplace listing but no private offer capability. Enterprise customers often need a negotiated offer rather than the ability to click a button and buy at the advertised price.",
+        metric: "Number of co-sell-eligible products with private offers live" },
+      { move: "Brief the cloud's account managers in their own language.\n\nShow them how a deal draws down a customer's committed spend, how it contributes to their targets, and where it fits into their existing account plans.\n\nKeep the product explanation short. They can learn the technical details when there's an actual opportunity to work on.",
+        watch: "Leading with product features when the person you're talking to is measured on cloud consumption. Your technology might be impressive, but that doesn't automatically give them a reason to sell it.",
+        metric: "Number of cloud sellers actively engaged with your team each quarter",
+        data: "I'd focus on meaningful engagement rather than simply counting how many people attended a training session." },
+      { move: "Where appropriate, route deals through marketplace private offers and register them in the cloud provider's partner portal.\n\nIf you're working with a reseller, look at channel private offers so they can participate in the same transaction.\n\nThe aim is to make it straightforward for everyone involved. The customer can use their cloud commitment, the cloud provider gets credit for the transaction, and your partner can participate in the deal.",
+        watch: "Closing deals directly when the customer could have bought through the marketplace and used their existing cloud commitment.\n\nThis is often an avoidable mistake. Make sure your direct sales team understands when a marketplace transaction makes sense and has a straightforward way to get one in place.",
+        metric: "Marketplace bookings and the number of co-sell opportunities accepted by the cloud provider",
         data: "Canalys data cited by AWS links active co-selling with AWS to 51% greater partner revenue growth." },
-      { move: "Track what share of new bookings goes through the marketplace and how many deals the cloud sourced. Then check whether those deals close faster than direct ones.",
-        watch: "Counting listing views instead of transactions.",
+      { move: "Track the percentage of new bookings that go through the marketplace and separate deals sourced by the cloud provider from deals your own team brought in.\n\nThen compare the two sales motions. Do marketplace deals close faster? Are average deal sizes larger? Do customers expand more quickly?\n\nThat's where you'll start to understand the real value of the relationship.",
+        watch: "Celebrating marketplace listing views and engagement without looking at actual transactions.\n\nA busy marketplace page isn't necessarily a successful marketplace business.",
         metric: "Marketplace share of new bookings",
         data: "Canalys / Omdia expect 59% of marketplace spend to flow through channel partners by 2030." }
     ],
@@ -1324,11 +1328,11 @@
       "Start tracking usage generated by AI agents alongside traditional integration activity. As customers automate more of their workflows, you'll want to understand whether agents are actually using the capabilities you've made available."
     ],
     cloud: [
-      "Look at which cloud your customers are building their AI and agent work on. Agent platforms are becoming a new reason customers choose a cloud.",
-      "List multi-product solutions that combine your product, partner products, and services, with milestone or outcome-based billing where the marketplace supports it.",
-      "Write listings for AI-assisted discovery. Buyers increasingly describe their problem in plain language, so lead with the use case you solve.",
-      "Connect your CRM to the cloud's partner portal through its APIs so co-sell referrals sync automatically instead of by spreadsheet.",
-      "Track co-sell's effect on growth, not only marketplace volume. Canalys data cited by AWS links active co-selling to 51% greater revenue growth."
+      "Don't just look at where customers are spending their cloud budget today. Pay attention to where they're building their AI and agent infrastructure.\n\nAgent platforms are becoming another reason customers choose one cloud over another. Being aligned with that decision early could make a big difference to your position in future deals.",
+      "Start thinking about multi-product solutions rather than individual software listings.\n\nThe opportunity is to combine your product with complementary vendor products and partner services into something that solves a broader customer problem. Where the marketplace supports it, look at milestone-based or outcome-based billing too.",
+      "Marketplace listings need to work for AI-assisted discovery as well as traditional search.\n\nCustomers are increasingly describing their problems in plain language and asking AI tools to recommend solutions. Make sure your listing explains the problem you solve, who it's for, and how the solution works. Don't assume buyers will search for your product category or company name.",
+      "Stop managing referrals through spreadsheets and email wherever you can avoid it.\n\nConnect your CRM to the cloud provider's partner portal through its APIs so referrals, opportunity updates, and deal information can move between systems automatically.\n\nThe less time your team spends updating two systems, the more time they have to work on actual opportunities.",
+      "Look beyond marketplace volume and understand what co-selling contributes to your overall growth.\n\nCanalys data cited by AWS links active co-selling to 51% greater partner revenue growth. That's a useful reason to look at the quality of your cloud relationships, not just how many deals you process through the marketplace.\n\nThe question I'd ask every quarter is simple. Are we getting more business because of this relationship, or are we just changing where the transactions happen?"
     ],
     gsi: [
       "Pick GSIs that already use AI agents in their own delivery. They'll sell with conviction what they've proven inside their own business.",
@@ -1353,7 +1357,23 @@
 
   function esc(s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
 
+  // Left-hand column of each step, per partner type. Types not listed use the default (Technology) text.
+  const LEFT_DEFAULT = Array.from(document.querySelectorAll(".step-left")).map(function (el) { return el.innerHTML; });
+  const LEFT = {
+    cloud: [
+          "<h3>Choose</h3><p class=\"principle\">Follow your customers' cloud commitments. Don't try to be everywhere at once.</p><p class=\"step-text\">It's tempting to get listed on AWS, Azure, and Google Cloud marketplaces as quickly as possible. More listings mean more visibility, right?</p><p class=\"step-text\">Not necessarily.</p><p class=\"step-text\">The better place to start is with your customers. Find out which cloud providers your biggest target accounts have committed to spending money with, and focus your efforts there.</p><p class=\"step-text\">If a customer has a significant AWS commitment, for example, there's a good reason to make sure your product is available through AWS Marketplace and that the account team knows how it fits into their plans.</p><p class=\"step-text\">You can always expand to another cloud later. First, make one relationship work.</p><div class=\"aside\"><h4>Is this partner worth investing in?</h4><p class=\"aside-intro\">Here's a quick checklist I'd use before recommending a cloud partner to a customer.</p><ul class=\"checklist\"><li><label><input type=\"checkbox\"> Your target customers have meaningful committed spend with that cloud provider</label></li><li><label><input type=\"checkbox\"> Your product helps customers consume more of the cloud's services</label></li><li><label><input type=\"checkbox\"> You have a clear use case that makes sense to the cloud's account teams</label></li><li><label><input type=\"checkbox\"> You can transact through the marketplace, including private offers</label></li><li><label><input type=\"checkbox\"> You have a named owner responsible for the cloud relationship</label></li><li><label><input type=\"checkbox\"> You have a realistic plan to build relationships with the cloud's sales and partner teams</label></li></ul><p class=\"verdict\" aria-live=\"polite\">0 of 6. Tick what's true for this cloud.</p><p class=\"aside-note\">Not every opportunity needs to tick every box straight away. But if you can't explain why the cloud provider would want to help sell your product, it's worth going back to the drawing board.</p></div>",
+          "<h3>Build</h3><p class=\"principle\">Get the marketplace basics right before worrying about the bigger partnership.</p><p class=\"step-text\">You don't need a complicated global agreement to start doing business with a hyperscaler. You need a product listing that works for enterprise buyers, a way to transact through private offers, and a clear path into the cloud provider's co-sell program.</p><p class=\"step-text\">I'd get those things sorted first.</p><p class=\"step-text\">Private offers are particularly important. Large customers often want to use their existing cloud commitments to pay for third-party software. If your product isn't set up to support that, you're making it harder for them to buy from you.</p><p class=\"step-text\">There are also internal benefits. Getting into the cloud's co-sell program means its sellers can receive credit for helping you close business, which gives them a much better reason to get involved.</p>",
+          "<h3>Enable</h3><p class=\"principle\">Make it clear to cloud sellers why they should care about your product.</p><p class=\"step-text\">Cloud account managers get approached by a lot of software companies. Most turn up with a product presentation and a list of features.</p><p class=\"step-text\">I'd take a different approach.</p><p class=\"step-text\">The people selling cloud services are measured on consumption, customer commitments, and their own account targets. They want to understand how your product helps them achieve those things.</p><p class=\"step-text\">If your deal helps a customer use more of their committed cloud spend, say so. If it helps protect an important account or opens up a new workload, explain that too.</p><p class=\"step-text\">You don't need another hour-long product presentation. You need a much shorter conversation about why helping you win makes their job easier.</p>",
+          "<h3>Co-sell</h3><p class=\"principle\">Make the marketplace part of how you actually sell.</p><p class=\"step-text\">A cloud partnership becomes much more valuable when it starts showing up in real customer opportunities.</p><p class=\"step-text\">Getting introduced to an account manager is a good start, but it doesn't mean much unless that relationship leads to customer conversations and closed deals.</p><p class=\"step-text\">I'd make marketplace transactions part of the normal sales process, rather than something the team remembers to consider at the end of a deal.</p>",
+          "<h3>Measure</h3><p class=\"principle\">Look at the business the marketplace generates, not how many people visit your listing.</p><p class=\"step-text\">It's easy to get distracted by marketplace activity. Listing views, clicks, product page visits, and the number of people who have attended a co-sell session can all look encouraging.</p><p class=\"step-text\">But none of them necessarily translates into revenue.</p><p class=\"step-text\">I'd focus on how much new business comes through the marketplace, how many opportunities the cloud provider actually brings you, and whether those deals perform better than your direct sales opportunities.</p>"
+    ]
+  };
+
   function render(type, animate) {
+    document.querySelectorAll(".step-left").forEach(function (el) {
+      const html = (LEFT[type] || LEFT_DEFAULT)[+el.dataset.step];
+      if (el.innerHTML !== html) el.innerHTML = html;
+    });
     document.documentElement.style.setProperty("--active", "var(" + COLORS[type] + ")");
     steps.setAttribute("aria-labelledby", "tab-" + type);
     tabs.forEach(function (t) {
@@ -1370,11 +1390,11 @@
       el.innerHTML =
         "<dl>" +
           "<div><dt>The move</dt><dd>" + s.move.split("\n\n").map(function (q) { return "<p>" + esc(q) + "</p>"; }).join("") + "</dd></div>" +
-          "<div><dt>Watch out for</dt><dd>" + esc(s.watch) + "</dd></div>" +
+          "<div><dt>Watch out for</dt><dd>" + s.watch.split("\n\n").map(function (q) { return "<p>" + esc(q) + "</p>"; }).join("") + "</dd></div>" +
           "<div><dt>What to measure</dt><dd class=\"metric\">" + esc(s.metric) + "</dd></div>" +
         "</dl>" +
         (s.data ? "<p class=\"data\">" + esc(s.data) + "</p>" : "") +
-        "<div class=\"next\"><span class=\"tag\">Looking ahead to 2027</span><p>" + esc(NEXT[type][i]) + "</p></div>" +
+        "<div class=\"next\"><span class=\"tag\">Looking ahead to 2027</span>" + NEXT[type][i].split("\n\n").map(function (q) { return "<p>" + esc(q) + "</p>"; }).join("") + "</div>" +
         "<button type=\"button\" class=\"ex-toggle\" aria-expanded=\"" + open + "\" aria-controls=\"" + exId + "\">" +
           "<span class=\"label\">" + (open ? "Hide example" : "Show example") + "</span><span class=\"chev\" aria-hidden=\"true\"></span>" +
         "</button>" +
@@ -1484,19 +1504,19 @@
   });
   showStage(0, false);
 
-  // ---------- "Is this partner any good?" checklist ----------
-  const checks = Array.from(document.querySelectorAll("#checklist input"));
-  const verdict = document.getElementById("verdict");
-  checks.forEach(function (c) {
-    c.addEventListener("change", function () {
-      const n = checks.filter(function (x) { return x.checked; }).length;
-      let msg;
-      if (n === 0) msg = "0 of 6. Tick the traits this partner has.";
-      else if (n === 6) msg = "<b>6 of 6.</b> Recommend them with confidence.";
-      else if (n === 5) msg = "<b>5 of 6.</b> A solid partner. Ask them about the missing trait.";
-      else msg = "<b>" + n + " of 6.</b> Talk to them about the gaps before you recommend them to a customer.";
-      verdict.innerHTML = msg;
-    });
+  // ---------- "Is this partner worth investing in?" checklist ----------
+  document.addEventListener("change", function (ev) {
+    if (!ev.target.matches(".checklist input")) return;
+    const box = ev.target.closest(".aside");
+    const all = box.querySelectorAll(".checklist input");
+    const total = all.length;
+    const n = Array.from(all).filter(function (x) { return x.checked; }).length;
+    let msg;
+    if (n === 0) msg = "0 of " + total + ". Tick what's true.";
+    else if (n === total) msg = "<b>" + n + " of " + total + ".</b> Recommend them with confidence.";
+    else if (n === total - 1) msg = "<b>" + n + " of " + total + ".</b> A solid partner. Look into the missing one.";
+    else msg = "<b>" + n + " of " + total + ".</b> Talk through the gaps before you recommend them to a customer.";
+    box.querySelector(".verdict").innerHTML = msg;
   });
 
   // ---------- Partner health check ----------
