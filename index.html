@@ -541,6 +541,21 @@
     .map .labels a span { display: none; }
     .map .labels { height: 30px; }
   }
+  @media (max-width: 420px) {
+    .wordmark { font-size: 15px; gap: 6px; }
+    .wordmark .mark { width: 32px; height: 23px; }
+    .top { gap: 10px; }
+    .top nav { gap: 6px; }
+    .top .btn { padding: 8px 11px; font-size: 13px; white-space: nowrap; }
+  }
+  @media (max-width: 370px) {
+    .wordmark { font-size: 14px; gap: 5px; }
+    .wordmark .mark { width: 28px; height: 20px; }
+    .menu-btn { padding: 8px 9px; }
+  }
+  @media (max-width: 340px) {
+    .wordmark span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  }
   @media (prefers-reduced-motion: reduce) {
     .map .ln { animation: none; stroke-dashoffset: 0; }
     .map .stn { animation: none; opacity: 1; }
@@ -576,7 +591,7 @@
       <li><a href="#agents">Agents</a></li>
       <li><a href="#author">About me</a></li>
     </ul>
-    <a class="btn" data-link="booking" href="#author">Book a call</a>
+    <a class="btn" data-link="booking" href="#author">Compare notes</a>
   </nav>
 </header>
 
@@ -790,7 +805,7 @@
   <section class="wrap" id="field" aria-labelledby="field-title">
     <h2 id="field-title">From the field</h2>
     <div class="intro">
-      <p>The views below are my own. They're based on more than a decade of working on partner programs, rather than an industry consensus or the official position of any company I've worked for.</p>
+      <p>These are my own views, not an industry consensus or the position of any company I've worked for.</p>
       <p>Some of these lessons took longer to learn than they should have. Hopefully, sharing them saves someone else a bit of time.</p>
     </div>
     <div class="notes">
@@ -1074,8 +1089,9 @@
       <div>
         <h2 id="author-title">Want to compare notes?</h2>
         <p>I'm Andrew Mackenzie. For more than a decade I've built partner programs at Snyk, 360pi, and Phreesia, and advised early-stage SaaS companies on partner strategy. Together, that work covers all four partner types on this page.</p>
+        <p>I built this site to keep my own thinking in one place. If it's useful, or you see things differently, I'd like to hear about it.</p>
         <p>If you're designing or fixing a partner program, I'm happy to brainstorm. Pick a 30-minute slot that suits you.</p>
-        <a class="btn" data-link="booking" href="#author">Book a call</a>
+        <a class="btn" data-link="booking" href="#author">Compare notes</a>
       </div>
       <ul class="creds">
         <li style="--c:var(--cloud)"><b>Hyperscalers.</b> Ran Snyk's Google Cloud relationship, including Google Cloud Marketplace and co-sell. Recognised as Google Cloud's 2025 Technology Partner of the Year for Application Development.</li>
@@ -1109,7 +1125,7 @@
       <span>© <span id="year">2026</span> Andrew Mackenzie</span>
       <nav aria-label="Elsewhere">
         <a data-link="linkedin" href="#">LinkedIn</a>
-        <a data-link="booking" href="#author">Book a call</a>
+        <a data-link="booking" href="#author">Compare notes</a>
       </nav>
     </div>
   </div>
